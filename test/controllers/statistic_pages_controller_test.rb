@@ -29,4 +29,9 @@ class StatisticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "About | #{basic_title}"
   end
 
+  test "should get contact" do
+    get contact_url
+    assert_response :success
+    assert_select "title", "Contact | #{basic_title}"
+  end
 end

@@ -5,7 +5,7 @@ module ApplicationHelper
     base_title = "艾弗枫的小站"
     if title.present?
       title + " | " + base_title
-    elsif
+    else
       base_title
     end
   end

@@ -31,7 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Haml is a templating engine for HTML. It's designed to make it both easier and more pleasant to write HTML documents
 gem 'haml', '~> 5.1', '>= 5.1.2'
 
-gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+# gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 
 gem 'jquery-rails'
