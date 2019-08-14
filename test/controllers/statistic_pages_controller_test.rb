@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StatisticPagesControllerTest < ActionDispatch::IntegrationTest
   def basic_title
-    "艾弗枫的小站"
+    "Iverfeng's little website"
   end
 
   test "should get root" do

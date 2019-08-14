@@ -54,10 +54,10 @@ class UserTest < ActiveSupport::TestCase
 
   # 测试邮箱地址是唯一的!!!
   test "email adresses should be unique" do
-    duplicate_user = @user.dup
+    duplicate_user = @user.clone
     # duplicate_user.email = @user.email.downcase
     @user.save
-    assert_not duplicate_user.save?
+    assert_not duplicate_user.valid?
   end
 
   # 测试邮箱地址应该被存储为小写格式
