@@ -5,4 +5,17 @@
       %ul.nav.navbar-nav.navbar-right
         %li= link_to "Home", root_path
         %li= link_to "Help", help_path
-        %li= link_to "Log in", login_path
+        - if logged_in?
+          %li= link_to "Users", '#'
+          %li.dropdown
+            %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+              Account
+              %b.caret
+            %ul.dropdown-menu
+              %li= link_to "Profile", current_user
+              %li= link_to "Settings", '#'
+              %li.divider
+              %li= link_to "Log out", logout_path, method: :delete
+        - else
+          %li= link_to "Log in", login_path
+
