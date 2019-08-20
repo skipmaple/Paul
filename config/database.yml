@@ -28,4 +28,4 @@ test:
 production:
   pool: 5
   adapter: postgresql
-  database: iverfeng_production
+  database: iverfeng_development
