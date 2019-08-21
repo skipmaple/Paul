@@ -12,5 +12,10 @@ class ActiveSupport::TestCase
   fixtures :all
   include ApplicationHelper
 
+  # 如果用户已登录，返回true
+  def is_logged_in?
+    session[:user_id].present?
+  end
+
   # Add more helper methods to be used by all tests here...
 end
