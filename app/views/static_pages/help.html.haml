@@ -1,4 +1,14 @@
 -provide(:title, "Help")
 
-%h1 Sample App
-%p This is help page for me
+%h1 help page
+%p This is help page
+
+
+.dropdown
+  %button.btn.btn-default.dropdown-toggle{:type => "button", :id => "dropdownMenu1", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "true"}
+    Dropdown
+    %span.caret
+  %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+    %li action1
+    %li action2
+    %li action3

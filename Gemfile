@@ -33,6 +33,7 @@ gem 'haml', '~> 5.1', '>= 5.1.2'
 
 # gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem 'sassc-rails'
 
 gem 'jquery-rails'
 
@@ -63,7 +64,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.20.0'
+  # gem 'pg', '0.20.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
