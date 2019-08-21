@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destory
-
+  def destroy
+    log_in(nil)
+    redirect_to login_path unless logged_in?
   end
 end
