@@ -25,8 +25,8 @@ end
 
 class ActionDispatch::IntegrationTest
   # 登入指定的用户
-  def log_in_as(user, password: 'password', remember_me: '1')
-    post login_path, params: { session: { email: user.emal,
+  def log_in_as(user, remember_me, password: 'password')
+    post login_path, params: { session: { email: user.email,
                                           password: password,
                                           remember_me: remember_me } }
   end

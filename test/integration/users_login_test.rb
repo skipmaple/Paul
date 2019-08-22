@@ -46,6 +46,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     # 登录， 设定cookie
     log_in_as(@user, remember_me: '1')
     delete logout_path
+    delete logout_path
     # 再次登录， 确认 cookie 被删除了
     log_in_as(@user, remember_me: '0')
     assert_empty cookies['remember_token']
