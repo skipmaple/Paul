@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_162115) do
+ActiveRecord::Schema.define(version: 2019_08_21_110211) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", comment: "用户名"
+    t.string "email", comment: "邮箱"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
+    t.string "password_digest", comment: "密码验证"
+    t.string "remember_digest", comment: "记住我"
   end
 
 end
