@@ -85,6 +85,8 @@ GEM
     crass (1.0.4)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (2.1.2)
+      i18n (>= 0.8)
     ffi (1.11.1)
     formatador (0.2.5)
     globalid (0.4.2)
@@ -265,6 +267,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.4, >= 3.4.1)
   byebug
   capybara (>= 2.15)
+  faker (~> 2.1, >= 2.1.2)
   guard
   guard-minitest
   haml (~> 5.1, >= 5.1.2)
