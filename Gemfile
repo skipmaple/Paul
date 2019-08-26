@@ -75,3 +75,5 @@ gem 'nokogiri', '>= 1.10.4'
 
 # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 2.1', '>= 2.1.2'
+# Hooks into will_paginate to format the html to match Twitter Bootstrap styling. Extension code was originally written by Isaac Bowen (https://gist.github.com/1182136).
+gem 'bootstrap-will_paginate', '~> 1.0'
