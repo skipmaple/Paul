@@ -6,17 +6,42 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name:                  "Example User",
-             email:                 "example@email.com",
-             password:              "foobar",
-             password_confirmation: "foobar")
+User.create!(name:                  "Drew Lee",
+             email:                 "skipmaple@gmail.com",
+             password:              "mypassword",
+             password_confirmation: "mypassword",
+             admin:                 true,
+             activated:             true,
+             activated_at:          Time.zone.now
+            )
 
-99.times do |n|
+User.create!(name:                  "Example User",
+             email:                 "example@gmail.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin:                 true,
+             activated:             true,
+             activated_at:          Time.zone.now
+            )
+
+email_list = []
+
+99.times do
   name = Faker::Name.name
-  email = "example-#{n+1}@email.com"
-  password = "password"
+  prefix = name.split(' ').last
+  # suffix = %w[gmail 163 126 qq hotmail yahoo]
+  suffix = %w[gmail]
+  email = "#{prefix}@#{suffix[rand(suffix.size)]}.com"
+  # next if User.pluck(:email).include?(email)
+  puts email
+  next if email_list.include?(email) || prefix.include?('\'') || prefix.include?('.')
+  email_list.push(email)
+  password = "mypassword"
   User.create!(name:                  name,
                email:                 email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               activated:             true,
+               activated_at:          Time.zone.now
+              )
 end
