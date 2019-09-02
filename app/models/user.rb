@@ -61,6 +61,11 @@ class User < ApplicationRecord
     update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
   end
 
+  # 如果密码重设请求超时了，返回true
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
   private
 
   # 把电子邮件地址转换为小写
