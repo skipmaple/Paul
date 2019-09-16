@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     redirect_to root_path unless @user.activated?
   end
 
@@ -56,14 +57,7 @@ class UsersController < ApplicationController
 
   # 前置过滤器
 
-  # 确保用户已登录
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_path
-    end
-  end
+
 
   # 确保是正确的用户
   def correct_user
