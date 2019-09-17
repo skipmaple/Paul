@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_secure_password
 
-  has_many :microposts
+  has_many :microposts, dependent: :destroy
 
   # 为了持久保存会话，在数据库中记住用户
   def remember
@@ -66,6 +66,13 @@ class User < ApplicationRecord
   # 如果密码重设请求超时了，返回true
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # 实现动态流原型
+  # 完整的实现参见第14章
+  def feed
+    microposts
+    # Micropost.where("user_id = ?", id)
   end
 
   private
