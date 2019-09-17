@@ -57,8 +57,6 @@ class UsersController < ApplicationController
 
   # 前置过滤器
 
-
-
   # 确保是正确的用户
   def correct_user
     @user = User.find(params[:id])
