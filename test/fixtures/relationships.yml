@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  follower: michael
+  followed: lebron
+
+two:
+  follower: michael
+  followed: melo
+
+three:
+  follower: lebron
+  followed: michael
+
+four:
+  follower: paul
+  followed: michael
