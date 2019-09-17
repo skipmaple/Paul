@@ -38,3 +38,5 @@ yarn-debug.log*
 .generators
 Guardfile
 /.idea/*
+/public/uploads/*
+/config/database.yml

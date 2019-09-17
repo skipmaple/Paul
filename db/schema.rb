@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_144459) do
+ActiveRecord::Schema.define(version: 2019_09_16_163405) do
+
+  create_table "microposts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.text "content", comment: "博客内容"
+    t.bigint "user_id", null: false, comment: "user_id为外键"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "picture", comment: "micropost上传图片"
+    t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "name", comment: "用户名"
@@ -27,4 +37,5 @@ ActiveRecord::Schema.define(version: 2019_08_28_144459) do
     t.datetime "reset_sent_at", comment: "密码重设摘要发送时间"
   end
 
+  add_foreign_key "microposts", "users"
 end
