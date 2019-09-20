@@ -102,4 +102,22 @@ class UserTest < ActiveSupport::TestCase
   #   michael.unfollow(lebron)
   #   assert_not michael.following?(lebron)
   # end
+
+  test "feed should have the right posts" do
+    michael = users(:michael)
+    paul    = users(:paul)
+    lebron  = users(:lebron)
+    # 关注的用户发布的微博
+    lebron.microposts.each do |post_following|
+      assert michael.feed.include?(post_following)
+    end
+    # 自己的微博
+    michael.microposts.each do |post_self|
+      assert michael.feed.include?(post_self)
+    end
+    # 未关注用户的微博
+    paul.microposts.each do |post_unfollowed|
+      assert_not michael.feed.include?(post_unfollowed)
+    end
+  end
 end

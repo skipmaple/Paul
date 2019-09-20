@@ -76,11 +76,10 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
-  # 实现动态流原型
-  # 完整的实现参见第14章
+  # 返回用户的动态流
   def feed
-    microposts
-    # Micropost.where("user_id = ?", id)
+    following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
   end
 
   # 关注另一个用户
