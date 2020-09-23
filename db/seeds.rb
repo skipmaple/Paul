@@ -7,23 +7,25 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Users
-User.create!(name:                  "Drew Lee",
-             email:                 "skipmaple@gmail.com",
-             password:              "mypassword",
-             password_confirmation: "mypassword",
-             admin:                 true,
-             activated:             true,
-             activated_at:          Time.zone.now
-            )
+User.create!(
+    name: "Drew Lee",
+    email: "skipmaple@gmail.com",
+    password: "mypassword",
+    password_confirmation: "mypassword",
+    admin: true,
+    activated: true,
+    activated_at: Time.zone.now
+)
 
-User.create!(name:                  "Example User",
-             email:                 "example@gmail.com",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             admin:                 true,
-             activated:             true,
-             activated_at:          Time.zone.now
-            )
+User.create!(
+    name: "Example User",
+    email: "example@gmail.com",
+    password: "foobar",
+    password_confirmation: "foobar",
+    admin: true,
+    activated: true,
+    activated_at: Time.zone.now
+)
 
 email_list = []
 
@@ -38,13 +40,14 @@ email_list = []
   next if email_list.include?(email) || prefix.include?('\'') || prefix.include?('.')
   email_list.push(email)
   password = "mypassword"
-  User.create!(name:                  name,
-               email:                 email,
-               password:              password,
-               password_confirmation: password,
-               activated:             true,
-               activated_at:          Time.zone.now
-              )
+  User.create!(
+      name: name,
+      email: email,
+      password: password,
+      password_confirmation: password,
+      activated: true,
+      activated_at: Time.zone.now
+  )
 end
 
 # Microposts
@@ -52,7 +55,7 @@ users = User.order(:created_at).take(7)
 50.times do
   content = Faker::Lorem.sentence
   puts content
-  users.each { |user| user.microposts.create!(content: content)}
+  users.each { |user| user.microposts.create!(content: content) }
 end
 
 # Following relationships
@@ -61,4 +64,4 @@ user = users.first
 following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user)}
+followers.each { |follower| follower.follow(user) }

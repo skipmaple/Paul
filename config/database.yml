@@ -6,20 +6,20 @@ default: &default
   wait_time: 110
   reconnect: true
   username: root
-  password: root
+  password: rootpwd
 
 development:
   <<: *default
-  database: iverfeng_development
+  database: Paul
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: iverfeng_development
+  database: Paul
 
 production:
   pool: 5
   adapter: postgresql
-  database: iverfeng_development
+  database: Paul
