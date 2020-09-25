@@ -1,8 +1,8 @@
-%h1 Iverfeng
+%h1= t(:title_upcase)
 
-%p Hi
+%p= t(:email_hi)
 = @user.name
 
-%p Welcome to Setaria! Click on the link below to activate your account:
+%p= t(:activate_email_content)
 
-= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email)
+= link_to "#{t(:activate)}", edit_account_activation_url(@user.activation_token, email: @user.email)

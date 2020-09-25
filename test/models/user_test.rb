@@ -120,4 +120,10 @@ class UserTest < ActiveSupport::TestCase
       assert_not michael.feed.include?(post_unfollowed)
     end
   end
+
+  # 验证用户有默认语言设置为'zh-CN'
+  test "should have default locale value" do
+    assert @user.locale == 'zh-CN'
+  end
+
 end

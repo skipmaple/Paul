@@ -1,6 +1,6 @@
-Hi
+= t(:email_hi)
 = @user.name
 
-Welcome to Setaria! Click on the link below to activate your account:
+= t(:activate_email_content)
 
 = edit_account_activation_url(@user.activation_token, email: @user.email)

@@ -1,16 +1,16 @@
 - provide(:title, "Login")
-%h1 Login
+%h1 #{t(:login)}
 .row
   .col-md-6.col-md-offset-3
     = form_for(:session, url: login_path) do |f|
-      = f.label :email
+      = f.label t(:email)
       = f.email_field :email, class: 'form-control'
-      = f.label :password
-      = link_to "(forgot password)", new_password_reset_path
+      = f.label t(:password)
+      = link_to "(#{t(:forgot_password)}?)", new_password_reset_path
       = f.password_field :password, class: 'form-control'
       = f.label :remember_me, class: 'checkbox inline' do
         = f.check_box :remember_me
-        %span Remember me
-      = f.submit "login", class: "btn btn-primary"
+        %span= t(:remember_me)
+      = f.submit t(:login), class: "btn btn-primary"
 
-    %p New user?  #{link_to "Sign up now!", signup_path}
+    %p #{t(:new_user?)}  #{link_to t(:sign_up_now), signup_path}

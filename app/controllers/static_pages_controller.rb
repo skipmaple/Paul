@@ -14,4 +14,13 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def language
+    return unless I18n.locale_available?(params[:locale])
+
+    current_user.update!(locale: params[:locale]) if logged_in? && current_user&.locale != params[:locale]
+    I18n.default_locale = params[:locale]
+    redirect_to request.referrer || root_url
+  end
+
 end

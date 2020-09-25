@@ -86,3 +86,6 @@ gem 'carrierwave', '~> 2.0', '>= 2.0.1'
 
 # Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
 gem 'mini_magick', '~> 4.9', '>= 4.9.5'
+
+# Centralization of locale data collection for Ruby on Rails.
+gem 'rails-i18n', '~> 6.0.0'
