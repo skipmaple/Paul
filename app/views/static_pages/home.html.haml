@@ -1,4 +1,4 @@
--provide(:title, "Home")
+-provide(:title, t(:home))
 
 - if logged_in?
   .row
@@ -10,16 +10,19 @@
       %section.micropost_form
         = render 'shared/micropost_form'
     .col-md-8
-      %h3 Micropost Feed
+      %h3= t(:micropost_feed)
       = render 'shared/feed'
 - else
   .center.jumbotron
-    %h1 Welcome to the Setaria
+    %h1= t(:welcome_title)
+
+    -#%h2
+    -#  This is the home page for the
+    -#  %a{href: "http://baidu.com"} Setaria
 
     %h2
-      This is the home page for the
-      %a{href: "http://baidu.com"} Setaria
+      %a{href: "#"}= t(:welcome_content, project_name: "#{t(:base_title)}")
 
-    = link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"
+    = link_to t(:sign_up_now), signup_path, class: "btn btn-lg btn-primary"
 
 -#= link_to image_tag("setaria.jpg", alt: "Setaria logo"), root_path

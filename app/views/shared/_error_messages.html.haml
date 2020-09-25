@@ -1,9 +1,7 @@
 - if object.errors.any?
   #error_explanation
     .alert.alert-danger
-      The form contains
-      = pluralize(object.errors.count, "error")
-      \.
+      #{t(:form_error, error_count: I18n.locale == :en ? pluralize(object.errors.count, "error") : object.errors.count)}
     %ul
     - object.errors.full_messages.each do |msg|
       %li= msg

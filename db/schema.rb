@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_022419) do
+ActiveRecord::Schema.define(version: 2020_09_24_134646) do
 
   create_table "microposts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content", comment: "博客内容"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_022419) do
     t.datetime "activated_at", comment: "激活时间"
     t.string "reset_digest", comment: "密码重设摘要"
     t.datetime "reset_sent_at", comment: "密码重设摘要发送时间"
+    t.string "locale", default: "zh-CN", comment: "语言"
   end
 
   add_foreign_key "microposts", "users"

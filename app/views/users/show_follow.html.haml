@@ -4,10 +4,10 @@
     %section.user_info
       = gravatar_for @user
       %h1= @user.name
-      %span= link_to "view my profile", @user
-      %span
-        %b Microposts:
-        = @user.microposts.count
+      -#%span= link_to "view my profile", @user
+      -#%span
+      -#  %b Microposts:
+      -#  = @user.microposts.count
     %section.stats
       = render 'shared/stats'
       - if @users.any?

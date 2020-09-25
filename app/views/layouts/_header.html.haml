@@ -1,20 +1,27 @@
 %header.navbar.navbar-fixed-top.navbar-inverse
   .container
-    = link_to "Setaria", root_path, id: "logo"
+    = link_to t(:base_title), root_path, id: "logo"
     %nav
       %ul.nav.navbar-nav.navbar-right
-        %li= link_to "Home", root_path
-        %li= link_to "Help", help_path
+        %li= link_to t(:home), root_path
+        %li= link_to t(:help), help_path
+        %li.dropdown
+          %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+            #{t(:language)}
+            %b.caret
+            %ul.dropdown-menu
+              %li= link_to '中文', language_path(locale: 'zh-CN')
+              %li= link_to 'English', language_path(locale: 'en')
         - if logged_in?
-          %li= link_to "Users", users_path
+          %li= link_to t(:users), users_path
           %li.dropdown
             %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
-              Account
+              #{t(:account)}
               %b.caret
             %ul.dropdown-menu
-              %li= link_to "Profile", current_user
-              %li= link_to "Settings", edit_user_path(current_user)
+              %li= link_to t(:profile), current_user
+              %li= link_to t(:settings), edit_user_path(current_user)
               %li.divider
-              %li= link_to "Log out", logout_path, method: :delete
+              %li= link_to t(:logout), logout_path, method: :delete
         - else
-          %li= link_to "Log in", login_path
+          %li= link_to t(:login), login_path

@@ -3,8 +3,12 @@
   %a{ href: "#{following_user_path(@user)}"}
     %strong.stat#following
       = @user.following.count
-    following
+    = t(:following)
   %a{ href: "#{followers_user_path(@user)}"}
     %strong.stat#followers
       = @user.followers.count
-    followers
+    = t(:followers)
+  %a{ href: "#{user_path(@user)}"}
+    %strong.stat#my_profile
+      = @user.microposts.count
+    = t(:micropost, count: @user.microposts.count)

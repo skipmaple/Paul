@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StatisticPagesControllerTest < ActionDispatch::IntegrationTest
   def basic_title
-    "Setaria"
+    "Kellin"
   end
 
   test "should get root" do

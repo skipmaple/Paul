@@ -4,14 +4,14 @@ class Micropost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 140 }
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
-  validate :picture_size
+  validate :check_picture_size
 
   private
 
   # 验证上传的图像大小
-  def picture_size
+  def check_picture_size
     if picture.size > 5.megabytes
-      errors.add(:picture, "should be less than 5MB")
+      errors.add(:picture, t(:over_max_file_size_alert))
     end
   end
 end
