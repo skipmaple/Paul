@@ -30,6 +30,7 @@ User.create!(
 email_list = []
 
 99.times do
+  Faker::Config.locale = :en
   name = Faker::Name.name
   prefix = name.split(' ').last
   # suffix = %w[gmail 163 126 qq hotmail yahoo]
