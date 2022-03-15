@@ -33,10 +33,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
-.gitignore
 .generators
 Guardfile
 /.idea/*
 /public/uploads/*
-/config/database.yml
+config/database.yml
+data

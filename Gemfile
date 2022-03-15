@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '3.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3.3'
+gem 'rails', '~> 7.0.2.3'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3', '~> 1.4'
-gem 'mysql2', '>= 0.3.13', '< 0.6.0'
+gem 'mysql2', '~> 0.5.3'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -88,4 +88,8 @@ gem 'carrierwave', '~> 2.0', '>= 2.0.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 
 # Centralization of locale data collection for Ruby on Rails.
-gem 'rails-i18n', '~> 6.0.0'
+gem 'rails-i18n', '~> 7.0', '>= 7.0.3'
+
+gem "psych", "~> 3.3.2"
+
+gem "importmap-rails", "~> 1.0"

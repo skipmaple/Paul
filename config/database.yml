@@ -7,6 +7,8 @@ default: &default
   reconnect: true
   username: root
   password: rootpwd
+  host: 172.17.0.1
+  port: 3306
 
 development:
   <<: *default
