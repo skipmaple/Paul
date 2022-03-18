@@ -76,3 +76,12 @@ zh-CN:
   all_users: 全部用户
   language: 语言
   are_you_sure: 确定要删除吗?
+
+  views:
+    pagination:
+      first: 首页
+      truncate: ...
+      last: 尾页
+      previous: 上一页
+      next: 下一页
+

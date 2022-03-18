@@ -32,13 +32,11 @@ email_list = []
 99.times do
   Faker::Config.locale = :en
   name = Faker::Name.name
-  prefix = name.split(' ').last
-  # suffix = %w[gmail 163 126 qq hotmail yahoo]
-  suffix = %w[gmail]
-  email = "#{prefix}@#{suffix[rand(suffix.size)]}.com"
+  first_name = name.split(' ').last
+  email = Faker::Internet.free_email(name: first_name)
   # next if User.pluck(:email).include?(email)
   puts email
-  next if email_list.include?(email) || prefix.include?('\'') || prefix.include?('.')
+  next if email_list.include?(email) || first_name.include?('\'') || first_name.include?('.')
   email_list.push(email)
   password = "mypassword"
   User.create!(
@@ -54,7 +52,7 @@ end
 # Microposts
 users = User.order(:created_at).take(7)
 50.times do
-  content = Faker::Lorem.sentence
+  content =  Faker::Quote.matz
   puts content
   users.each { |user| user.microposts.create!(content: content) }
 end

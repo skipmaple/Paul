@@ -6,36 +6,34 @@ ruby '3.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0.2.3'
 # Use sqlite3 as the database for Active Record
-# gem 'sqlite3', '~> 1.4'
 gem 'mysql2', '~> 0.5.3'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.6', '>= 5.6.2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5'
+gem 'sass-rails', '~> 6.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+# gem 'webpacker', '~> 5.4', '>= 5.4.3'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5.2', '>= 5.2.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.11', '>= 2.11.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-gem 'bcrypt'
+gem 'bcrypt', '~> 3.1', '>= 3.1.17'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '~> 1.11', '>= 1.11.1', require: false
 # Haml is a templating engine for HTML. It's designed to make it both easier and more pleasant to write HTML documents
-gem 'haml', '~> 5.1', '>= 5.1.2'
+gem 'haml', '~> 5.2', '>= 5.2.2'
 
-# gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
-gem 'sassc-rails'
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
-gem 'jquery-rails'
+# gem 'jquery-rails', '~> 4.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -44,16 +42,16 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '~> 4.2'
+  # gem 'listen', '~> 3.7', '>= 3.7.1'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem 'spring', '~> 4.0'
+  # gem 'spring-watcher-listen', '~> 2.0', '>= 2.0.1'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '~> 3.36'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
@@ -73,19 +71,19 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser. Among Nokogiri's many features is the ability to search documents via XPath or CSS3 selectors.
-gem 'nokogiri', '>= 1.10.4'
+gem 'nokogiri', '~> 1.13', '>= 1.13.3'
 
 # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
-gem 'faker', '~> 2.1', '>= 2.1.2'
+gem 'faker', '~> 2.20'
 
 # Hooks into will_paginate to format the html to match Twitter Bootstrap styling. Extension code was originally written by Isaac Bowen (https://gist.github.com/1182136).
 gem 'bootstrap-will_paginate', '~> 1.0'
 
 # Upload files in your Ruby applications, map them to a range of ORMs, store them on different backends.
-gem 'carrierwave', '~> 2.0', '>= 2.0.1'
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
 
 # Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
-gem 'mini_magick', '~> 4.9', '>= 4.9.5'
+gem 'mini_magick', '~> 4.11'
 
 # Centralization of locale data collection for Ruby on Rails.
 gem 'rails-i18n', '~> 7.0', '>= 7.0.3'
@@ -93,3 +91,18 @@ gem 'rails-i18n', '~> 7.0', '>= 7.0.3'
 gem "psych", "~> 3.3.2"
 
 gem "importmap-rails", "~> 1.0"
+
+# Pagination
+gem "kaminari", "~> 1.2"
+
+gem "html2haml", "~> 2.2"
+
+gem "sprockets-rails", "~> 3.4"
+
+gem "haml-rails", "~> 2.0"
+
+gem "turbo-rails", "~> 1.0"
+
+gem "stimulus-rails", "~> 1.0"
+
+gem "cssbundling-rails", "~> 1.1"

@@ -17,6 +17,10 @@ module Paul
 
     # https://guides.rubyonrails.org/upgrading_ruby_on_rails.html#active-storage-default-variant-processor-changed-to-vips
     config.active_storage.variant_processor = :vips
+
+    config.generators do |g|
+      g.template_engine :haml
+    end
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
