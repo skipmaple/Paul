@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include LetterAvatar::AvatarHelper
 
   # 根据所在的页面返回完整的标题
   def full_title(title = "")
