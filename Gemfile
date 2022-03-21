@@ -106,3 +106,9 @@ gem "turbo-rails", "~> 1.0"
 gem "stimulus-rails", "~> 1.0"
 
 gem "cssbundling-rails", "~> 1.1"
+
+gem "letter_avatar", "~> 0.3.9"
+
+gem "chinese_pinyin", "~> 1.1"
+
+gem "tailwindcss-rails", "~> 2.0"

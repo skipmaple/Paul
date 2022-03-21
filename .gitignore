@@ -42,3 +42,4 @@ data
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+/public/system/

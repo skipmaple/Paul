@@ -1,3 +1,4 @@
+
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
@@ -96,6 +97,16 @@ class User < ApplicationRecord
   # 如果当前用户关注了指定的用户，返回true
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def username_for_avatar
+    # Translate Chinese hanzi to pinyin
+    # https://github.com/flyerhzm/chinese_pinyin
+    Pinyin.t(self.name)
+  end
+
+  def avatar_url(size: nil, scale: 2, **args)
+    GravatarService.new.execute(email, size, scale, username: name)
   end
 
   private
