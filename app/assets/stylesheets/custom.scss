@@ -139,9 +139,9 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-}
+//.gravatar {
+//  float: left;
+//}
 
 .gravatar_edit {
   margin-top: 15px;
@@ -278,4 +278,16 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+#logout-button {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+  text-decoration: none;
+  background-color: transparent;
 }

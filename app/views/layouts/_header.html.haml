@@ -22,6 +22,6 @@
               %li= link_to t(:profile), current_user
               %li= link_to t(:settings), edit_user_path(current_user)
               %li.divider
-              %li= link_to t(:logout), logout_path, method: :delete
+              %li= link_to t(:logout), logout_path, data: { turbo_method: :delete }
         - else
           %li= link_to t(:login), login_path
