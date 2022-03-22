@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.0'
+ruby '3.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0.2.3'
 # Use sqlite3 as the database for Active Record
 # gem 'mysql2', '~> 0.5.3'
-gem "pg", "~> 1.3"
+gem 'pg', '~> 1.3'
 # Use Puma as the app server
 gem 'puma', '~> 5.6', '>= 5.6.2'
 # Use SCSS for stylesheets
@@ -31,7 +31,8 @@ gem 'bootsnap', '~> 1.11', '>= 1.11.1', require: false
 # Haml is a templating engine for HTML. It's designed to make it both easier and more pleasant to write HTML documents
 gem 'haml', '~> 5.2', '>= 5.2.2'
 
-gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+# gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem "bootstrap", "~> 5.1"
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
 group :development, :test do
@@ -59,7 +60,7 @@ end
 group :production do
   # gem 'pg', '0.20.0'
   # The Ruby cloud services library. Supports all major cloud providers including AWS, Rackspace, Linode, Blue Box, StormOnDemand, and many others. Full support for most AWS services including EC2, S3, CloudWatch, SimpleDB, ELB, and RDS.
-  gem 'fog', '~> 2.2'
+  # gem 'fog', '~> 2.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -83,27 +84,29 @@ gem 'mini_magick', '~> 4.11'
 # Centralization of locale data collection for Ruby on Rails.
 gem 'rails-i18n', '~> 7.0', '>= 7.0.3'
 
-gem "psych", "~> 3.3.2"
+gem 'psych', '~> 3.3.2'
 
-gem "importmap-rails", "~> 1.0"
+gem 'importmap-rails', '~> 1.0'
 
 # Pagination
-gem "kaminari", "~> 1.2"
+gem 'kaminari', '~> 1.2'
 
-gem "html2haml", "~> 2.2"
+gem 'html2haml', '~> 2.2'
 
-gem "sprockets-rails", "~> 3.4"
+gem 'sprockets-rails', '~> 3.4'
 
-gem "haml-rails", "~> 2.0"
+gem 'haml-rails', '~> 2.0'
 
-gem "turbo-rails", "~> 1.0"
+gem 'turbo-rails', '~> 1.0'
 
-gem "stimulus-rails", "~> 1.0"
+gem 'stimulus-rails', '~> 1.0'
 
-gem "cssbundling-rails", "~> 1.1"
+gem 'cssbundling-rails', '~> 1.1'
 
-gem "letter_avatar", "~> 0.3.9"
+gem 'letter_avatar', '~> 0.3.9'
 
-gem "chinese_pinyin", "~> 1.1"
+gem 'chinese_pinyin', '~> 1.1'
 
-gem "tailwindcss-rails", "~> 2.0"
+gem 'tailwindcss-rails', '~> 2.0'
+
+gem "sassc", "~> 2.4"

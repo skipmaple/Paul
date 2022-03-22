@@ -52,8 +52,8 @@ RUN set -eux; \
 RUN gem update --system \
  && gem install bundler foreman \
  && bundle config --global frozen 1 \
- && bundle config set without 'test' \
- && bundle install --jobs 4 --without "development test"
+ && bundle config set without 'test development' \
+ && bundle install --jobs 4
 
 # ========================================================
 # Application layer
