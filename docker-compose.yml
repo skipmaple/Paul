@@ -1,0 +1,63 @@
+# This file contains a *development* configuration for running Octobox.
+#
+# * You can use this file as-is to give Octobox a try on your local machine; it pulls
+#   images from Docker Hub and uses the default 'development' environment.
+#
+# * You can use this file as an example for your own production configuration, either
+#   by overriding it or just creating your own from scratch. 'docker-compose.override.yml'
+#   is gitignored for your convenience.
+#
+# * Similarly, if you're a developer who has cloned the Octobox repository to
+#   actively develop Octobox, you can override this file by adding the following to
+#   a docker-compose.override.yml:
+#
+#   version: '3'
+#   services:
+#     app:
+#       build:
+#         context: .
+#         dockerfile: Dockerfile
+#
+# This will build your own image from your local filesystem to test changes.
+# Using `$ docker-compose up` will automatically merge the override file in to
+# this one.
+#
+version: '3'
+services:
+  app:
+    image: skipmaple/paul:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - RAILS_ENV=production
+      - PAUL_DATABASE_NAME=postgres
+      - PAUL_DATABASE_USERNAME=postgres
+      - PAUL_DATABASE_PASSWORD=paul_password
+      - PAUL_DATABASE_HOST=database.service.paul.internal
+      - REDIS_URL=redis://redis.service.paul.internal
+    networks:
+      - internal
+    depends_on:
+      - database.service.paul.internal
+      - redis.service.paul.internal
+
+  database.service.paul.internal:
+    image: postgres:9.6-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - internal
+    environment:
+      - POSTGRES_PASSWORD=paul_password
+
+  redis.service.paul.internal:
+    image: redis:4.0-alpine
+    networks:
+      - internal
+
+volumes:
+  pg_data:
+
+networks:
+  internal:
+    driver: bridge

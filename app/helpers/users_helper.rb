@@ -12,8 +12,11 @@ module UsersHelper
   #
   # end
 
-
   def gravatar_for(user, size: 80)
-    image_tag(avatar_icon_for_user(user, size=size), alt: user.name, size: size, class: "inline-block rounded-full ring-2 ring-white")
+    if Rails.env.development?
+      image_tag(avatar_icon_for_no_network(user), alt: user.name, size: size, class: "inline-block rounded-full ring-2 ring-white")
+    else
+      image_tag(avatar_icon_for_user(user, size = size), alt: user.name, size: size, class: "inline-block rounded-full ring-2 ring-white")
+    end
   end
 end
