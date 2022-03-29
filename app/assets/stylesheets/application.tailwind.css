@@ -1,3 +1,114 @@
+/* header font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* body font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply font-heading;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 49px;
+        line-height: 64px;
+        /* identical to box height, or 131% */
+        text-transform: capitalize;
+        color: #000000;
+    }
+
+    h2 {
+        @apply font-heading;
+        /* Heading/H2/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 39.06px;
+        line-height: 56px;
+        /* identical to box height, or 143% */
+        text-transform: capitalize;
+        color: #000000;
+    }
+
+    h3 {
+        @apply font-heading;
+        /* Heading/H3/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 31.25px;
+        line-height: 48px;
+        /* identical to box height, or 154% */
+        text-transform: capitalize;
+        color: #000000;
+    }
+
+    h4 {
+        @apply font-heading;
+        /* Heading/H4/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 40px;
+        /* identical to box height, or 160% */
+        text-transform: capitalize;
+        color: #000000;
+    }
+
+    h5 {
+        @apply font-heading;
+        /* Heading/H5/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 32px;
+        /* identical to box height, or 160% */
+        text-transform: capitalize;
+        color: #000000;
+    }
+
+    h6 {
+        @apply font-heading;
+        /* Heading/H6/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height, or 150% */
+        text-transform: capitalize;
+        color: #000000;
+    }
+}
+
+@layer utilities {
+    .body-small-regular {
+        /* Body/Small/Regular */
+        @apply font-sans text-sm font-normal;
+    }
+
+    .body-small-bold {
+        /* Body/Small/Bold */
+        @apply font-sans text-sm font-bold;
+    }
+
+    .body-medium-regular {
+        /* Body/Medium/Regular */
+        @apply font-sans text-base font-normal;
+    }
+
+    .body-medium-bold {
+        /* Body/Medium/Bold */
+        @apply font-sans text-base font-bold;
+    }
+
+    .body-large-regular {
+        /* Body/Large/Regular */
+        @apply font-sans text-lg font-normal;
+    }
+
+    .body-large-bold {
+        /* Body/Large/Bold */
+        @apply font-sans text-lg font-bold;
+    }
+
+}

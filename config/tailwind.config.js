@@ -35,6 +35,21 @@ module.exports = {
                 600: '#CB3131',
             },
         },
+        fontFamily: {
+            sans: ['"Open Sans"', 'sans-serif'],
+            heading: ['Poppins', 'sans-serif']
+        },
+        fontSize: {
+            sm: ['12.8px', {
+                lineHeight: '16px',
+            }],
+            base: ['16px', {
+                lineHeight: '24px',
+            }],
+            lg: ['20px', {
+                lineHeight: '32px',
+            }],
+        },
         extend: {
             colors: {
                 'primary': {
