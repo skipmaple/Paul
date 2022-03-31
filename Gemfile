@@ -43,6 +43,8 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '~> 4.2'
+
+  gem "rails_real_favicon", "~> 0.1.1"
 end
 
 group :test do
@@ -110,3 +112,4 @@ gem 'chinese_pinyin', '~> 1.1'
 gem 'tailwindcss-rails', '~> 2.0'
 
 gem "sassc", "~> 2.4"
+

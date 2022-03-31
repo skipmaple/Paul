@@ -3,28 +3,21 @@
   %head
     %title= full_title(yield(:title))
     %meta{ "name": "viewport", "content": "width=device-width,initial-scale=1" }
-    -#%meta{ "name": "turbo-cache-control", "content": "no-cache" }
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "tailwind","inter-font", "data-turbo-track": 'reload'
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
+    -# insert favicons. use https://realfavicongenerator.net/
+    = render 'application/favicon'
     = render 'layouts/shim'
 
   %body
     = render 'layouts/header'
     .container
       - flash.each do |message_type, message|
-        -#%div{:class => "alert alert-#{message_type}"}
-        -#  = message
         = content_tag(:div, message, class: "alert alert-#{message_type}")
       = yield
       = render 'layouts/footer'
       = debug(params) if Rails.env.development?
-
--#加入以下三句使bootstrap dropdown生效
-%script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
-%script{src: "//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}
-%script
-  $('.dropdown-toggle').dropdown()
