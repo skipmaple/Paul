@@ -5,15 +5,18 @@
     %meta{ "name": "viewport", "content": "width=device-width,initial-scale=1" }
     = csrf_meta_tags
     = csp_meta_tag
+
+    %link{"rel": "stylesheet", "href": "https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css" }
+    %script{ "src":"https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"}
+    = javascript_importmap_tags
     = stylesheet_link_tag "tailwind","inter-font", "data-turbo-track": 'reload'
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = javascript_importmap_tags
 
     -# insert favicons. use https://realfavicongenerator.net/
     = render 'application/favicon'
     = render 'layouts/shim'
 
-  %body
+  %body{:class => "bg-light-100 dark:bg-dark-600"}
     = render 'layouts/header'
     .container
       - flash.each do |message_type, message|
@@ -21,3 +24,11 @@
       = yield
       = render 'layouts/footer'
       = debug(params) if Rails.env.development?
+
+:javascript
+  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+  } else {
+      document.documentElement.classList.remove('dark')
+  }

@@ -4,8 +4,11 @@ module.exports = {
     content: [
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js',
-        './app/views/**/*.{erb,haml,html,slim}'
+        './app/views/**/*.{erb,haml,html,slim}',
+        './vendor/javascript/*.js',
+        './vendor/javascript/**/*.js',
     ],
+    darkMode: 'class',
     theme: {
         colors: {
             transparent: 'transparent',

@@ -1,6 +1,6 @@
 en:
   # basic
-  base_title: Kellin
+  base_title: OneTail
   home: Home
   help: Help
   users: Users
@@ -16,7 +16,7 @@ en:
 
   # email
   email: email
-  title_upcase: KELLIN
+  title_upcase: ONETAIL
   email_hi: Hi
   activate_email_content: "Welcome to Kellin! Click on the link below to activate your account:"
   activate: Activate
