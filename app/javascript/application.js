@@ -2,6 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "flowbite"
-import "flowbite/plugin"
 import "./dark_mode_switcher"
 

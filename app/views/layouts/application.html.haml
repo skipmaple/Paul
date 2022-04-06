@@ -7,10 +7,11 @@
     = csp_meta_tag
 
     = stylesheet_link_tag "tailwind","inter-font", "data-turbo-track": 'reload'
+    = stylesheet_link_tag "https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css", "data-turbo-track": 'reload'
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
-    %link{"rel": "stylesheet", "href": "https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css" }
+    -#%link{"rel": "stylesheet", "href": "https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css" }
     %script{ "src":"https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"}
 
     -# insert favicons. use https://realfavicongenerator.net/

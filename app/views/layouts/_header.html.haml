@@ -26,13 +26,44 @@
 -#        - else
 -#          %li= link_to t(:login), login_path
 
-%header
+%header.leading-normal.tracking-normal
   %nav.p-2.mt-0.fixed.w-full.z-10.top-0{:class => "bg-light-400 dark:bg-dark-transparent-200"}
     .container.flex.flex-wrap.justify-between.items-center.mx-auto
       %a.flex.items-center.no-underline{ :class => "hover:text-white hover:no-underline", :href => root_path }
         %h3.self-center.text-dark-400
           =t(:base_title)
-      -#.flex.w-full.pt-2.content-center.justify-between{ :class => "md:w-1/2 md:justify-end" }
+      - if logged_in?
+        .flex.items-center.md:order-2
+          %button#user-menu-button.flex.mr-3.text-sm.bg-gray-800.rounded-full.md:mr-0.focus:ring-4.focus:ring-gray-300.dark:focus:ring-gray-600{"aria-expanded" => "false", "data-dropdown-toggle" => "dropdown", :type => "button"}
+            %span.sr-only Open user menu
+            -#%img.w-8.h-8.rounded-full{:alt => "user photo", :src => "/docs/images/people/profile-picture-3.jpg"}/
+            = gravatar_for @user, class: "w-10 h-10 rounded-full"
+          / Dropdown menu
+          #dropdown.hidden.z-50.my-4.text-base.list-none.bg-white.rounded.divide-y.divide-gray-100.shadow.dark:bg-gray-700.dark:divide-gray-600
+            .py-3.px-4
+              %span.block.text-sm.text-gray-900.dark:text-white
+                = @user&.name
+              %span.block.text-sm.font-medium.text-gray-500.truncate.dark:text-gray-400
+                = @user&.email
+            %ul.py-1{"aria-labelledby" => "dropdown"}
+              %li
+                %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => user_path(current_user)}
+                  = t(:profile)
+              %li
+                %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => users_path}
+                  = t(:users)
+              %li
+                %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => edit_user_path(current_user)}
+                  = t(:settings)
+              %li
+                %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => logout_path, data: { turbo_method: :delete }}
+                  = t(:logout)
+          %button.inline-flex.items-center.p-2.ml-1.text-sm.text-gray-500.rounded-lg.md:hidden.hover:bg-gray-100.focus:outline-none.focus:ring-2.focus:ring-gray-200.dark:text-gray-400.dark:hover:bg-gray-700.dark:focus:ring-gray-600{"aria-controls" => "mobile-menu-2", "aria-expanded" => "false", "data-collapse-toggle" => "mobile-menu-2", :type => "button"}
+            %span.sr-only Open main menu
+            %svg.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{"clip-rule" => "evenodd", :d => "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "fill-rule" => "evenodd"}
+            %svg.hidden.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{"clip-rule" => "evenodd", :d => "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
       #mobile-menu-2.hidden.justify-between.items-center.w-full.md:flex.md:w-auto.md:order-1
         %ul.flex.flex-col.mt-4.md:flex-row.md:space-x-8.md:mt-0
           %li
@@ -41,28 +72,9 @@
           %li
             %a{ :class=>"inline-block body-medium-bold text-dark-300 no-underline hover:text-dark-400 hover:underline py-2 px-4", :href => about_path }
               =t(:about)
-          - if logged_in?
-            %li
-              %a{ :class=>"inline-block body-medium-bold text-dark-300 no-underline hover:text-dark-400 hover:underline py-2 px-4", :href => users_path }
-                = t(:users)
-            %li
-              %button#dropdownNavbarLink.inline-block.body-medium-bold.text-dark-300.hover:underline.hover:text-dark-400.md:hover:underline.py-2.px-4
-                #{t(:account)}
-                %svg.ml-1.w-4.h-4{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
-                  %path{"clip-rule" => "evenodd", :d => "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
-              #dropdownNavbar.hidden.z-10.w-44.bg-white.rounded.divide-y.divide-gray-100.shadow.dark:bg-gray-700.dark:divide-gray-600{"data-popper-escaped" => "", "data-popper-placement" => "top", "data-popper-reference-hidden" => "", :style => "position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(1293px, 1765px);"}
-                %ul.py-1.text-sm.text-gray-700.dark:text-gray-400{"aria-labelledby" => "dropdownLargeButton"}
-                  %li
-                    %a.block.py-2.px-4.hover:bg-gray-100.dark:hover:bg-gray-600.dark:hover:text-white{:href => current_user}= t(:profile)
-                  %li
-                    %a.block.py-2.px-4.hover:bg-gray-100.dark:hover:bg-gray-600.dark:hover:text-white{:href => edit_user_path(current_user)}= t(:settings)
-                .py-1
-                  %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-400.dark:hover:text-white{:href => logout_path, data: { turbo_method: :delete }}= t(:logout)
-          - else
+          - if !logged_in?
             %li
               %a{ :class=>"inline-block body-medium-bold text-dark-300 no-underline hover:text-dark-400 hover:underline py-2 px-4", :href => login_path }= t("login")
-          -#%li.mr-3
-          -#  %a{ :class=>"inline-block body-medium-bold text-dark-300 no-underline hover:text-dark-400 hover:underline py-2 px-4", :href=>"#" }Blog
 
         .flex.md:order-2
           / Dark mode switcher
@@ -81,46 +93,46 @@
             %svg.hidden.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
               %path{"clip-rule" => "evenodd", :d => "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
 
-%header.leading-normal.tracking-normal.hidden
-  %nav.bg-white.border-gray-200.px-2.sm:px-4.rounded.dark:bg-gray-800{:class => "py-2.5"}
-    .container.flex.flex-wrap.justify-between.items-center.mx-auto
-      %a.flex.items-center{:href => "https://flowbite.com"}
-        %img.mr-3.h-6.sm:h-9{:alt => "Flowbite Logo", :src => "/docs/images/logo.svg"}/
-        %span.self-center.text-xl.font-semibold.whitespace-nowrap.dark:text-white Flowbite
-      .flex.items-center.md:order-2
-        %button#user-menu-button.flex.mr-3.text-sm.bg-gray-800.rounded-full.md:mr-0.focus:ring-4.focus:ring-gray-300.dark:focus:ring-gray-600{"aria-expanded" => "false", "data-dropdown-toggle" => "dropdown", :type => "button"}
-          %span.sr-only Open user menu
-          %img.w-8.h-8.rounded-full{:alt => "user photo", :src => "/docs/images/people/profile-picture-3.jpg"}/
-        / Dropdown menu
-        #dropdown.hidden.z-50.my-4.text-base.list-none.bg-white.rounded.divide-y.divide-gray-100.shadow.dark:bg-gray-700.dark:divide-gray-600
-          .py-3.px-4
-            %span.block.text-sm.text-gray-900.dark:text-white Bonnie Green
-            %span.block.text-sm.font-medium.text-gray-500.truncate.dark:text-gray-400 name@flowbite.com
-          %ul.py-1{"aria-labelledby" => "dropdown"}
-            %li
-              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"} Dashboard
-            %li
-              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"} Settings
-            %li
-              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"} Earnings
-            %li
-              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"} Sign out
-        %button.inline-flex.items-center.p-2.ml-1.text-sm.text-gray-500.rounded-lg.md:hidden.hover:bg-gray-100.focus:outline-none.focus:ring-2.focus:ring-gray-200.dark:text-gray-400.dark:hover:bg-gray-700.dark:focus:ring-gray-600{"aria-controls" => "mobile-menu-2", "aria-expanded" => "false", "data-collapse-toggle" => "mobile-menu-2", :type => "button"}
-          %span.sr-only Open main menu
-          %svg.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
-            %path{"clip-rule" => "evenodd", :d => "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "fill-rule" => "evenodd"}
-          %svg.hidden.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
-            %path{"clip-rule" => "evenodd", :d => "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
-      #mobile-menu-2.hidden.justify-between.items-center.w-full.md:flex.md:w-auto.md:order-1
-        %ul.flex.flex-col.mt-4.md:flex-row.md:space-x-8.md:mt-0.md:text-sm.md:font-medium
-          %li
-            %a.block.py-2.pr-4.pl-3.text-white.bg-blue-700.rounded.md:bg-transparent.md:text-blue-700.md:p-0.dark:text-white{"aria-current" => "page", :href => "#"} Home
-          %li
-            %a.block.py-2.pr-4.pl-3.text-gray-700.border-b.border-gray-100.hover:bg-gray-50.md:hover:bg-transparent.md:border-0.md:hover:text-blue-700.md:p-0.dark:text-gray-400.md:dark:hover:text-white.dark:hover:bg-gray-700.dark:hover:text-white.md:dark:hover:bg-transparent.dark:border-gray-700{:href => "#"} About
-          %li
-            %a.block.py-2.pr-4.pl-3.text-gray-700.border-b.border-gray-100.hover:bg-gray-50.md:hover:bg-transparent.md:border-0.md:hover:text-blue-700.md:p-0.dark:text-gray-400.md:dark:hover:text-white.dark:hover:bg-gray-700.dark:hover:text-white.md:dark:hover:bg-transparent.dark:border-gray-700{:href => "#"} Services
-          %li
-            %a.block.py-2.pr-4.pl-3.text-gray-700.border-b.border-gray-100.hover:bg-gray-50.md:hover:bg-transparent.md:border-0.md:hover:text-blue-700.md:p-0.dark:text-gray-400.md:dark:hover:text-white.dark:hover:bg-gray-700.dark:hover:text-white.md:dark:hover:bg-transparent.dark:border-gray-700{:href => "#"} Pricing
-          %li
-            %a.block.py-2.pr-4.pl-3.text-gray-700.border-b.border-gray-100.hover:bg-gray-50.md:hover:bg-transparent.md:border-0.md:hover:text-blue-700.md:p-0.dark:text-gray-400.md:dark:hover:text-white.dark:hover:bg-gray-700.dark:hover:text-white.md:dark:hover:bg-transparent.dark:border-gray-700{:href => "#"} Contact
-
+-#%header.leading-normal.tracking-normal.hidden
+-#  %nav.bg-white.border-gray-200.px-2.sm:px-4.rounded.dark:bg-gray-800{:class => "py-2.5"}
+-#    .container.flex.flex-wrap.justify-between.items-center.mx-auto
+-#      %a.flex.items-center{:href => "https://flowbite.com"}
+-#        %img.mr-3.h-6.sm:h-9{:alt => "Flowbite Logo", :src => "/docs/images/logo.svg"}/
+-#        %span.self-center.text-xl.font-semibold.whitespace-nowrap.dark:text-white Flowbite
+-#      .flex.items-center.md:order-2
+-#        %button#user-menu-button.flex.mr-3.text-sm.bg-gray-800.rounded-full.md:mr-0.focus:ring-4.focus:ring-gray-300.dark:focus:ring-gray-600{"aria-expanded" => "false", "data-dropdown-toggle" => "dropdown", :type => "button"}
+-#          %span.sr-only Open user menu
+-#          %img.w-8.h-8.rounded-full{:alt => "user photo", :src => "/docs/images/people/profile-picture-3.jpg"}/
+-#        / Dropdown menu
+-#        #dropdown.hidden.z-50.my-4.text-base.list-none.bg-white.rounded.divide-y.divide-gray-100.shadow.dark:bg-gray-700.dark:divide-gray-600
+-#          .py-3.px-4
+-#            %span.block.text-sm.text-gray-900.dark:text-white Bonnie Green
+-#            %span.block.text-sm.font-medium.text-gray-500.truncate.dark:text-gray-400 name@flowbite.com
+-#          %ul.py-1{"aria-labelledby" => "dropdown"}
+-#            %li
+-#              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"} Dashboard
+-#            %li
+-#              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"} Settings
+-#            %li
+-#              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"} Earnings
+-#            %li
+-#              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"} Sign out
+-#        %button.inline-flex.items-center.p-2.ml-1.text-sm.text-gray-500.rounded-lg.md:hidden.hover:bg-gray-100.focus:outline-none.focus:ring-2.focus:ring-gray-200.dark:text-gray-400.dark:hover:bg-gray-700.dark:focus:ring-gray-600{"aria-controls" => "mobile-menu-2", "aria-expanded" => "false", "data-collapse-toggle" => "mobile-menu-2", :type => "button"}
+-#          %span.sr-only Open main menu
+-#          %svg.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+-#            %path{"clip-rule" => "evenodd", :d => "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "fill-rule" => "evenodd"}
+-#          %svg.hidden.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+-#            %path{"clip-rule" => "evenodd", :d => "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
+-#      #mobile-menu-2.hidden.justify-between.items-center.w-full.md:flex.md:w-auto.md:order-1
+-#        %ul.flex.flex-col.mt-4.md:flex-row.md:space-x-8.md:mt-0.md:text-sm.md:font-medium
+-#          %li
+-#            %a.block.py-2.pr-4.pl-3.text-white.bg-blue-700.rounded.md:bg-transparent.md:text-blue-700.md:p-0.dark:text-white{"aria-current" => "page", :href => "#"} Home
+-#          %li
+-#            %a.block.py-2.pr-4.pl-3.text-gray-700.border-b.border-gray-100.hover:bg-gray-50.md:hover:bg-transparent.md:border-0.md:hover:text-blue-700.md:p-0.dark:text-gray-400.md:dark:hover:text-white.dark:hover:bg-gray-700.dark:hover:text-white.md:dark:hover:bg-transparent.dark:border-gray-700{:href => "#"} About
+-#          %li
+-#            %a.block.py-2.pr-4.pl-3.text-gray-700.border-b.border-gray-100.hover:bg-gray-50.md:hover:bg-transparent.md:border-0.md:hover:text-blue-700.md:p-0.dark:text-gray-400.md:dark:hover:text-white.dark:hover:bg-gray-700.dark:hover:text-white.md:dark:hover:bg-transparent.dark:border-gray-700{:href => "#"} Services
+-#          %li
+-#            %a.block.py-2.pr-4.pl-3.text-gray-700.border-b.border-gray-100.hover:bg-gray-50.md:hover:bg-transparent.md:border-0.md:hover:text-blue-700.md:p-0.dark:text-gray-400.md:dark:hover:text-white.dark:hover:bg-gray-700.dark:hover:text-white.md:dark:hover:bg-transparent.dark:border-gray-700{:href => "#"} Pricing
+-#          %li
+-#            %a.block.py-2.pr-4.pl-3.text-gray-700.border-b.border-gray-100.hover:bg-gray-50.md:hover:bg-transparent.md:border-0.md:hover:text-blue-700.md:p-0.dark:text-gray-400.md:dark:hover:text-white.dark:hover:bg-gray-700.dark:hover:text-white.md:dark:hover:bg-transparent.dark:border-gray-700{:href => "#"} Contact
+-#

@@ -2,10 +2,15 @@
   "name": "Paul",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:skipmaple/Paul.git",
-  "author": "skipmaple <skipmaple@gmail.com>",
+  "repository": "https://github.com/UncleMaple/Paul.git",
+  "author": "drewlee <skipmaple@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "flowbite": "^1.4.1"
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   }
 }
