@@ -7,12 +7,12 @@
     = csp_meta_tag
 
     = stylesheet_link_tag "tailwind","inter-font", "data-turbo-track": 'reload'
-    = stylesheet_link_tag "https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css", "data-turbo-track": 'reload'
+    -# = stylesheet_link_tag "https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css", "data-turbo-track": 'reload'
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
     -#%link{"rel": "stylesheet", "href": "https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css" }
-    %script{ "src":"https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"}
+    -#%script{ "src":"https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"}
 
     -# insert favicons. use https://realfavicongenerator.net/
     = render 'application/favicon'
@@ -20,7 +20,7 @@
 
   %body{:class => "bg-light-100 dark:bg-dark-600"}
     = render 'layouts/header'
-    .container
+    .container.mx-auto.mt-28.px-5.flex
       - flash.each do |message_type, message|
         = content_tag(:div, message, class: "alert alert-#{message_type}")
       = yield
