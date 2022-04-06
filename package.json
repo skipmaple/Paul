@@ -1,0 +1,11 @@
+{
+  "name": "Paul",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:skipmaple/Paul.git",
+  "author": "skipmaple <skipmaple@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "flowbite": "^1.4.1"
+  }
+}
