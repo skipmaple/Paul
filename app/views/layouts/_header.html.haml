@@ -59,14 +59,14 @@
               %button{:class => "flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600","aria-expanded" => "false", "data-dropdown-toggle" => "dropdown", :type => "button"}
                 %span.sr-only Open user menu
                 -#%img.w-8.h-8.rounded-full{:alt => "user photo", :src => "/docs/images/people/profile-picture-3.jpg"}/
-                = gravatar_for @user, class: "w-10 h-10 rounded-full"
+                = gravatar_for current_user, class: "w-10 h-10 rounded-full"
               / Dropdown menu
               #dropdown{:class => "hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"}
                 .py-3.px-4
                   %span.block.text-sm.text-gray-900.dark:text-white
-                    = @user&.name
+                    = current_user.name
                   %span.block.text-sm.font-medium.text-gray-500.truncate.dark:text-gray-400
-                    = @user&.email
+                    = current_user.email
                 %ul.py-1{"aria-labelledby" => "dropdown"}
                   %li
                     %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => user_path(current_user)}
