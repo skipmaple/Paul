@@ -16,13 +16,10 @@
   .center.jumbotron
     %h1= t(:welcome_title)
 
-    -#%h2
-    -#  This is the home page for the
-    -#  %a{href: "http://baidu.com"} Setaria
-
     %h2
       %a{href: "#"}= t(:welcome_content, project_name: "#{t(:base_title)}")
 
     = link_to t(:sign_up_now), signup_path, class: "btn btn-lg btn-primary"
 
--#= link_to image_tag("setaria.jpg", alt: "Setaria logo"), root_path
+  %section#homepage-not-login
+    .container

@@ -20,12 +20,13 @@
 
   %body{:class => "bg-light-100 dark:bg-dark-600"}
     = render 'layouts/header'
-    .container.mx-auto.mt-28.px-5.flex
+    -#.container.mx-auto.mt-28.px-5.flex
+    .container.mx-auto
       - flash.each do |message_type, message|
         = content_tag(:div, message, class: "alert alert-#{message_type}")
       = yield
-      = render 'layouts/footer'
-      = debug(params) if Rails.env.development?
+    = render 'layouts/footer'
+    -# = debug(params) if Rails.env.development?
 
 :javascript
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC

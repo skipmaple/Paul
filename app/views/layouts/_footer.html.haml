@@ -1,9 +1,28 @@
+-#%footer
+-#  %small
+-#    The
+-#    %a{ href: "#"} kellin
+-#    by DrewLee
+-#  %nav
+-#    %ul
+-#      %li= link_to t(:about), about_path
+-#      %li= link_to t(:contact), contact_path
+
+-# footer
 %footer
-  %small
-    The
-    %a{ href: "#"} kellin
-    by DrewLee
-  %nav
-    %ul
-      %li= link_to t(:about), about_path
-      %li= link_to t(:contact), contact_path
+  .hidden.bg-dark-500.bg-local.bg-no-repeat.bg-contain.bg-bottom{:class => "md:block", :style => "background-image: url(#{image_path('footer_bg')})"}
+    .container.flex.mx-auto.justify-center.py-20.space-y-8
+
+      -# Copyright and base_title
+      .flex.flex-col.space-y-4.items-center
+        .flex.space-x-1
+          .body-medium-regular.text-light-300.text-center
+            Copyright &copy;
+          .body-medium-regular.text-light-300.text-center
+            = Date.today.year
+          .body-medium-regular.text-light-300.text-center
+            |
+          .body-medium-bold.text-light-300.text-center
+            = t(:base_title)
+        .body-medium-regular.text-light-300.text-center
+          All Rights Reserved.
