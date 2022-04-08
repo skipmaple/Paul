@@ -34,8 +34,12 @@ zh-CN:
       mini_magick_processing_error: "上传图片出现错误"
 
   # home_page
-  welcome_title: 欢迎来到克林
-  welcome_content: "这是我们的主页"
+  welcome_title: 欢迎来到OneTail
+  welcome_content: "I research things I find interesting,
+  then document my research with a public blog post,
+  which I can easily find and refer to later."
+  welcome_content_2: "Hopefully other people will find these posts helpful,
+  relevant, or interesting."
 
   # sign_up
   user_name: 怎么称呼您?

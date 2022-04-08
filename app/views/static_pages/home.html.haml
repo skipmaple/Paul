@@ -13,13 +13,28 @@
       %h3= t(:micropost_feed)
       = render 'shared/feed'
 - else
-  .center.jumbotron
-    %h1= t(:welcome_title)
-
-    %h2
-      %a{href: "#"}= t(:welcome_content, project_name: "#{t(:base_title)}")
-
-    = link_to t(:sign_up_now), signup_path, class: "btn btn-lg btn-primary"
+  -#.center.jumbotron
+  -#  %h1= t(:welcome_title)
+  -#
+  -#  %h2
+  -#    %a{href: "#"}= t(:welcome_content, project_name: "#{t(:base_title)}")
+  -#
+  -#  = link_to t(:sign_up_now), signup_path, class: "btn btn-lg btn-primary"
 
   %section#homepage-not-login
-    .container
+    -# Flex Container
+    .container.flex.flex-col.flex-nowrap.h-screen.px-6.pb-20.mx-auto.space-y-8.items-center.justify-center
+      -#.flex.flex-col.items-center.space-y-10
+      %h1.text-center.max-w-3xl.text-dark-400
+        = t(:welcome_title)
+      %p.max-w-lg.text-center.text-dark-300
+        = t(:welcome_content)
+        -# = t(:welcome_content_2)
+      %button.rounded-lg.bg-primary-600{ :class => "hover:bg-primary-700 focus:ring-4 focus:ring-4 focus:ring-blue-300"}
+        .flex.justify-center.px-8.py-4.md:space-x-2
+          = image_tag("icons/start_icon")
+          %h5.text-primary-100.text-center
+            = t(:sign_up_now)
+      -# Next page btn
+    .flex.flex-col.mb-10.hidden.items-start
+      = image_tag("icons/next_circle_btn.svg")
