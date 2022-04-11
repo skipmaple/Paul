@@ -20,8 +20,11 @@
   -#    %a{href: "#"}= t(:welcome_content, project_name: "#{t(:base_title)}")
   -#
   -#  = link_to t(:sign_up_now), signup_path, class: "btn btn-lg btn-primary"
+  = render 'layouts/header'
+
   .bg-strip-patterns.w-full.h-screen.bg-local.bg-clip-padding.-z-10
   .bg-3d-shapes.w-full.h-screen.bg-local.bg-clip-padding.-z-10.dark:bg-3d-shapes-dark
+
   %section#homepage-not-login
     -# Flex Container
     .container.flex.flex-col.flex-nowrap.h-screen.px-6.pb-20.mx-auto.space-y-8.items-center.justify-center
@@ -35,7 +38,9 @@
         .flex.justify-center.px-8.py-4.md:space-x-2
           = image_tag("icons/start_icon")
           %h5.text-primary-100.text-center
-            = t(:sign_up_now)
+            = link_to t(:sign_up_now), signup_path
       -# Next page btn
     .flex.flex-col.mb-10.hidden.items-start
       = image_tag("icons/next_circle_btn.svg")
+
+  = render 'layouts/footer'

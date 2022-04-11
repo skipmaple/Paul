@@ -7,26 +7,19 @@
     = csp_meta_tag
 
     = stylesheet_link_tag "tailwind","inter-font", "data-turbo-track": 'reload'
-    -# = stylesheet_link_tag "https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css", "data-turbo-track": 'reload'
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
-    -#%link{"rel": "stylesheet", "href": "https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css" }
-    -#%script{ "src":"https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"}
-
-    -# insert favicons. use https://realfavicongenerator.net/
     = render 'application/favicon'
     = render 'layouts/shim'
 
   %body{:class => "h-screen bg-light-100 dark:bg-dark-600"}
 
     .flex.flex-col.min-h-screen
-      = render 'layouts/header'
-      .container.mx-auto.flex-1.overflow-auto
-        - flash.each do |message_type, message|
-          = content_tag(:div, message, class: "alert alert-#{message_type}")
-        = yield
-    = render 'layouts/footer'
+      - flash.each do |message_type, message|
+        = content_tag(:div, message, class: "alert alert-#{message_type}")
+      = yield
+
     -# = debug(params) if Rails.env.development?
 
 :javascript

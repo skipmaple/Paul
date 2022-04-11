@@ -111,4 +111,69 @@
         @apply font-sans text-lg font-bold;
     }
 
+    .heading-h1-bold {
+        @apply font-heading;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 49px;
+        line-height: 64px;
+        /* identical to box height, or 131% */
+        text-transform: capitalize;
+    }
+
+    .heading-h2-bold {
+        @apply font-heading;
+        /* Heading/H2/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 39.06px;
+        line-height: 56px;
+        /* identical to box height, or 143% */
+        text-transform: capitalize;
+    }
+
+    .heading-h3-bold {
+        @apply font-heading;
+        /* Heading/H3/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 31.25px;
+        line-height: 48px;
+        /* identical to box height, or 154% */
+        text-transform: capitalize;
+    }
+
+    .heading-h4-bold {
+        @apply font-heading;
+        /* Heading/H4/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 40px;
+        /* identical to box height, or 160% */
+        text-transform: capitalize;
+    }
+
+    .heading-h5-bold {
+        @apply font-heading;
+        /* Heading/H5/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 32px;
+        /* identical to box height, or 160% */
+        text-transform: capitalize;
+    }
+
+    .heading-h6-bold {
+        @apply font-heading;
+        /* Heading/H6/Bold */
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height, or 150% */
+        text-transform: capitalize;
+    }
+
 }
