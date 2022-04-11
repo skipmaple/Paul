@@ -20,14 +20,15 @@
   -#    %a{href: "#"}= t(:welcome_content, project_name: "#{t(:base_title)}")
   -#
   -#  = link_to t(:sign_up_now), signup_path, class: "btn btn-lg btn-primary"
-
+  .bg-strip-patterns.w-full.h-screen.bg-local.bg-clip-padding.-z-10
+  .bg-3d-shapes.w-full.h-screen.bg-local.bg-clip-padding.-z-10.dark:bg-3d-shapes-dark
   %section#homepage-not-login
     -# Flex Container
     .container.flex.flex-col.flex-nowrap.h-screen.px-6.pb-20.mx-auto.space-y-8.items-center.justify-center
       -#.flex.flex-col.items-center.space-y-10
-      %h1.text-center.max-w-3xl.text-dark-400
+      %h1.text-center.max-w-3xl.text-dark-400.dark:text-light-300
         = t(:welcome_title)
-      %p.max-w-lg.text-center.text-dark-300
+      %p.max-w-lg.text-center.text-dark-300.dark:text-light-600
         = t(:welcome_content)
         -# = t(:welcome_content_2)
       %button.rounded-lg.bg-primary-600{ :class => "hover:bg-primary-700 focus:ring-4 focus:ring-4 focus:ring-blue-300"}

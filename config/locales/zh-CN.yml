@@ -35,9 +35,7 @@ zh-CN:
 
   # home_page
   welcome_title: 欢迎来到OneTail
-  welcome_content: "I research things I find interesting,
-  then document my research with a public blog post,
-  which I can easily find and refer to later."
+  welcome_content: "我发现 我调研 我记录 我分享 方便查找和下次阅读，希望你也能找到有用的信息。"
   welcome_content_2: "Hopefully other people will find these posts helpful,
   relevant, or interesting."
 
@@ -67,7 +65,7 @@ zh-CN:
   forgot_password: 忘记密码
   remember_me: 记住我
   new_user?: 新用户?
-  sign_up_now: 注册个账号吧!
+  sign_up_now: 注册账号吧!
   post_hint: 分享新鲜事...
   over_max_file_size_alert: 最大上传文件大小为5MB
   following: 关注
