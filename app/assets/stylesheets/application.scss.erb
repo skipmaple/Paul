@@ -1,0 +1,58 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+
+  background: linear-gradient(157.42deg, rgba(240, 246, 255, 0.2) 4.94%, rgba(240, 246, 255, 0) 68.33%) no-repeat;
+  //  -webkit-background-size: 100vw 100vh,100vw 100vh,57.6vw 87.8vh,47.14vw 79.66vh;
+  //  -moz-background-size: 100vw 100vh,100vw 100vh,57.6vw 87.8vh,47.14vw 79.66vh;
+  //  -o-background-size: 100vw 100vh,100vw 100vh,57.6vw 87.8vh,47.14vw 79.66vh;
+  background-size: 100vw 100vh, 100vw 100vh;
+
+}
+
+.bg-strip-patterns{
+  background-image: url(<%= asset_path 'bg_strip_patterns.svg' %>);
+  background-size: 57.6vw 87.8vh;
+  background-position: top 0 left 0;
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  top: 0;
+  left: 0;
+}
+
+.bg-3d-shapes{
+  background-image: url(<%= asset_path 'bg_3d_shapes.svg' %>);
+  background-size:  47.14vw 79.66vh;
+  background-position: bottom 54px right 32px;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.dark .dark\:bg-3d-shapes-dark{
+  background-image: url(<%= asset_path 'bg_3d_shapes_dark.svg' %>);
+  background-size:  47.14vw 79.66vh;
+  background-position: bottom 54px right 32px;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+

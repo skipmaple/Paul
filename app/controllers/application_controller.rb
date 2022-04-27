@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
     I18n.with_locale(locale, &action)
   end
 
-  private
-
   # 确保用户已登录
   def logged_in_user
     unless logged_in?

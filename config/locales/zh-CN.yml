@@ -1,6 +1,6 @@
 zh-CN:
   # basic
-  base_title: 克林
+  base_title: OneTail
   home: 主页
   help: 帮助
   users: 全部用户
@@ -34,8 +34,10 @@ zh-CN:
       mini_magick_processing_error: "上传图片出现错误"
 
   # home_page
-  welcome_title: 欢迎来到克林
-  welcome_content: "这是我们的主页"
+  welcome_title: 欢迎来到OneTail
+  welcome_content: "我发现 我调研 我记录 我分享 方便查找和下次阅读，希望你也能找到有用的信息。"
+  welcome_content_2: "Hopefully other people will find these posts helpful,
+  relevant, or interesting."
 
   # sign_up
   user_name: 怎么称呼您?
@@ -63,7 +65,7 @@ zh-CN:
   forgot_password: 忘记密码
   remember_me: 记住我
   new_user?: 新用户?
-  sign_up_now: 注册个账号吧!
+  sign_up_now: 注册账号吧!
   post_hint: 分享新鲜事...
   over_max_file_size_alert: 最大上传文件大小为5MB
   following: 关注

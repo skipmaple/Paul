@@ -1,6 +1,6 @@
 en:
   # basic
-  base_title: Kellin
+  base_title: OneTail
   home: Home
   help: Help
   users: Users
@@ -16,7 +16,7 @@ en:
 
   # email
   email: email
-  title_upcase: KELLIN
+  title_upcase: ONETAIL
   email_hi: Hi
   activate_email_content: "Welcome to Kellin! Click on the link below to activate your account:"
   activate: Activate
@@ -32,8 +32,12 @@ en:
   form_error: "The form contains %{error_count}."
 
   # home_page
-  welcome_title: Welcome to the Kellin
-  welcome_content: "This is the home page for the %{project_name}"
+  welcome_title: Welcome To OneTail
+  welcome_content: "I research things I find interesting,
+then document my research with a public blog post,
+which I can easily find and refer to later."
+  welcome_content_2: "Hopefully other people will find these posts helpful,
+relevant, or interesting."
 
   # sign_up
   user_name: Name

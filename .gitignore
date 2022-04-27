@@ -39,6 +39,7 @@ Guardfile
 /public/uploads/*
 config/database.yml
 data
+pg_data
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
