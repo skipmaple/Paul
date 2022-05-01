@@ -1,16 +1,23 @@
-= form_for(@micropost) do |f|
-  = render 'shared/error_messages', object: f.object
-  .field
-    = f.text_area :content, placeholder: t(:post_hint)
-  .picture
-    = f.file_field(:picture, {id: 'micropost_picture', accept: 'image/jpeg,image/jpg,image/gif,image/png'})
-  = f.submit t(:post), class: "btn btn-primary"
+-# = form_for(@micropost) do |f|
+-#   = render 'shared/error_messages', object: f.object
+-#   .field
+-#     = f.text_area :content, placeholder: t(:post_hint)
+-#   .picture
+-#     = f.file_field(:picture, {id: 'micropost_picture', accept: 'image/jpeg,image/jpg,image/gif,image/png'})
+-#   = f.submit t(:post), class: "btn btn-primary"
 
--#:javascript
--#  $('#micropost_picture').bind('change', function() {
--#    var size_in_megabytes = this.files[0].size/1024/1024;
--#    if (size_in_megabytes > 5) {
--#      var alert_msg = t('over_max_file_size_alert');
--#      alert(alert_msg);
--#    }
--#  });
+= form_for(@micropost) do |f|
+  .div.w-full.mb-4.rounded-lg.bg-gray-50.dark:bg-gray-700
+    .flex.flex-row
+      = link_to gravatar_for(current_user, size: 50), current_user, class: "mt-2"
+      .div.w-full
+        = render 'shared/error_messages', object: f.object
+        .div.px-4.py-2
+          = f.text_area :content, placeholder: t(:post_hint), class: "w-full px-0 resize-none body-medium-regular text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+        .div{class: "flex items-center justify-between px-0 py-2"}
+          .div{class: "flex pl-0 space-x-1 sm:pl-2"}
+            = f.button(:picture, {id: 'micropost_picture', accept: 'image/jpeg,image/jpg,image/gif,image/png', class: "inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"} ) do
+              = image_tag("icons/image")
+            = f.button(:picture, {id: 'micropost_picture', accept: 'image/jpeg,image/jpg,image/gif,image/png', class: "inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"} ) do
+              = image_tag("icons/emoji")
+          = f.submit t(:post), class: "inline-flex items-center py-2.5 px-4 body-small-bold font-medium text-center text-primary-100 bg-primary-400 rounded-2xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"

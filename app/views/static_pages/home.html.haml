@@ -1,15 +1,17 @@
 -provide(:title, t(:home))
-
+= render 'layouts/header'
 - if logged_in?
-  .row
-    %aside.col-md-4
-      %section.user_info
+  .container.flex.flex-row.mx-auto.px-6
+    %aside{:class => "basis-1/4"}
+      %section#user_info.mt-24
         = render 'shared/user_info'
-      %section.stats
-        = render 'shared/stats'
-      %section.micropost_form
-        = render 'shared/micropost_form'
-    .col-md-8
+      %section.more_info
+        = render 'shared/more_info'
+      -#%section.stats
+      -#  = render 'shared/stats'
+      -#%section.micropost_form
+      -#  = render 'shared/micropost_form'
+    .div{:class => "basis-2/4"}
       %h3= t(:micropost_feed)
       = render 'shared/feed'
 - else
@@ -20,7 +22,6 @@
   -#    %a{href: "#"}= t(:welcome_content, project_name: "#{t(:base_title)}")
   -#
   -#  = link_to t(:sign_up_now), signup_path, class: "btn btn-lg btn-primary"
-  = render 'layouts/header'
 
   .bg-strip-patterns.w-full.h-screen.bg-local.bg-clip-padding.-z-10
   .bg-3d-shapes.w-full.h-screen.bg-local.bg-clip-padding.-z-10.dark:bg-3d-shapes-dark
@@ -43,4 +44,4 @@
     .flex.flex-col.mb-10.hidden.items-start
       = image_tag("icons/next_circle_btn.svg")
 
-  = render 'layouts/footer'
+= render 'layouts/footer'

@@ -20,11 +20,11 @@
   = render 'shared/error_messages', object: f.object
   .mb-6
     = f.label :name, t(:user_name), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
-    = f.text_field :name, palceholder: "user_name", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+    = f.text_field :name, placeholder: "Username", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 
   .mb-6
     = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
-    = f.email_field :email, palceholder: "email_address", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+    = f.email_field :email, placeholder: "Email Address", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
   .mb-6
     = f.label :password, t(:password), class: ".block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
     = f.password_field :password, class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50'

@@ -1,13 +1,37 @@
-%li{ id: "micropost-#{micropost.id}"}
-  = link_to gravatar_for(micropost.user, size: 50), micropost.user
-  %span.user= link_to micropost.user.name, micropost.user
-  %span.content
-    = micropost.content
-    = image_tag micropost.picture.url if micropost.picture?
-  %span.timestamp
-    - time_ago = time_ago_in_words(micropost.created_at)
-    = t('post_time', time_ago: I18n.locale == :en ? time_ago : time_ago.gsub(/\s/, ""))
+%li{ id: "micropost-#{micropost.id}", class: "py-2.5 border-t border-solid border-dark-100"}
+  .flex.flex-col
+    .flex.flex-row.items-start
+      -#  头像
+      = link_to gravatar_for(micropost.user, size: 50), micropost.user
+      .flex.px-4.w-full.justify-between
+        -#  名字
+        .flex.flex-col.space-y-1
+          = link_to micropost.user.name, micropost.user
 
-    - if current_user?(micropost.user)
-      = link_to t(:delete), micropost, method: :delete,
-                                     data: { confirm: t(:confirm)}
+          %span.body-small-bold.text-dark-200
+            - time_ago = time_ago_in_words(micropost.created_at)
+            = t('post_time', time_ago: I18n.locale == :en ? time_ago : time_ago.gsub(/\s/, ""))
+
+        -#  更多
+        %button#dropdownDefault{"aria-expanded" => "false", "data-dropdown-placement" => "bottom-end", "data-dropdown-toggle" => "post-dropdown-more"}
+          = image_tag("icons/more_horizontal")
+        #post-dropdown-more.z-10.hidden.bg-light-100.divide-y.divide-dark-400.rounded.shadow.w-44.dark:bg-gray-500
+          %ul{ "class" => "py-1 text-sm text-gray-700 dark:text-gray-200", "aria-labelledby" => "dropdownDefault" }
+            %li
+              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => micropost_path(micropost), data: { turbo_method: :delete } }
+                = t(:delete)
+            %li
+              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"}
+                = t(:edit)
+
+    .div
+      -#  post 内容
+      = micropost.content
+      = image_tag micropost.picture.url if micropost.picture?
+    .div
+      -#  评论 转发 点赞
+
+
+    -# - if current_user?(micropost.user)
+    -#   = link_to t(:delete), micropost, method: :delete,
+    -#                                  data: { confirm: t(:confirm)}

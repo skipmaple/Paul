@@ -1,4 +1,5 @@
+= render 'shared/micropost_form'
 - if @feed_items.any?
-  %ol.microposts
+  %ol.list-none.p-0
     = render @feed_items
   = paginate @feed_items

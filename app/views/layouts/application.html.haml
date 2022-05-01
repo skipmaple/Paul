@@ -16,8 +16,9 @@
   %body{:class => "h-screen bg-light-100 dark:bg-dark-600"}
 
     .flex.flex-col.min-h-screen
-      - flash.each do |message_type, message|
-        = content_tag(:div, message, class: "alert alert-#{message_type}")
+      -# - flash.each do |message_type, message|
+      -#   = content_tag(:div, message, class: "alert alert-#{message_type}")
+      = render 'layouts/flash'
       = yield
 
     -# = debug(params) if Rails.env.development?

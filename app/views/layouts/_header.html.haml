@@ -61,7 +61,7 @@
                 -#%img.w-8.h-8.rounded-full{:alt => "user photo", :src => "/docs/images/people/profile-picture-3.jpg"}/
                 = gravatar_for current_user, class: "w-10 h-10 rounded-full"
               / Dropdown menu
-              #dropdown{:class => "hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"}
+              #dropdown{:class => "hidden z-50 my-4 text-base list-none bg-light-100 rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"}
                 .py-3.px-4
                   %span.block.text-sm.text-gray-900.dark:text-white
                     = current_user.name
