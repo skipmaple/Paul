@@ -1,18 +1,16 @@
 - provide(:title, @user.name)
-= render 'layouts/header'
-.row
-  %aside.col-md-4
-    %section.user_info
-      %h1
-        = gravatar_for @user
-        = @user.name
-    %section.stats
+
+.container.flex.flex-row.mx-auto.px-6.space-x-4
+  %aside{:class => "basis-1/4"}
+    %section
+      = render 'shared/user_info'
+    %section.mt-4
       = render 'shared/stats'
 
-  .col-md-8
+  .div{:class => "basis-2/4"}
     = render 'follow_form' if logged_in?
     - if @user.microposts.any?
       %h3= "#{t(:microposts)} (#{@user.microposts.count})"
-      %ol.microposts
+      %ol.list-none.p-0
         = render @microposts
       = paginate @microposts

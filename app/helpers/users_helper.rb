@@ -13,7 +13,7 @@ module UsersHelper
   # end
 
   def gravatar_for(user, options = {})
-    options[:class] = "inline-block rounded-full ring-2 ring-white" unless options[:class]
+    options[:class] = "rounded-full" unless options[:class]
     options[:alt] = user&.name unless options[:alt]
     options[:size] = 80 unless options[:size]
     if Rails.env.development?

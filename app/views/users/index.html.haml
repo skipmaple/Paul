@@ -1,9 +1,12 @@
 - provide(:title, t(:all_users))
-%h1= t(:all_users)
 
-= paginate @users
+.container.flex.flex-row.mx-auto.space-x-4
+  %aside{:class => "basis-1/4 py-8"}
+    %h3.text-dark-300= t(:all_users)
+  %aside{:class => "basis-3/4"}
+    = paginate @users
 
-%ul.users
-  = render @users
+    %ul.users
+      = render @users
 
-= paginate @users
+    = paginate @users
