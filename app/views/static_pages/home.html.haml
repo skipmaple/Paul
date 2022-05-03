@@ -1,7 +1,6 @@
 -provide(:title, t(:home))
-= render 'layouts/header'
 - if logged_in?
-  .container.flex.flex-row.mx-auto.px-6
+  .container.flex.flex-row.mx-auto.px-6.space-x-4
     %aside{:class => "basis-1/4"}
       %section#user_info.mt-24
         = render 'shared/user_info'
@@ -12,7 +11,7 @@
       -#%section.micropost_form
       -#  = render 'shared/micropost_form'
     .div{:class => "basis-2/4"}
-      %h3= t(:micropost_feed)
+      %h4= t(:micropost_feed)
       = render 'shared/feed'
 - else
   -#.center.jumbotron
@@ -43,5 +42,3 @@
       -# Next page btn
     .flex.flex-col.mb-10.hidden.items-start
       = image_tag("icons/next_circle_btn.svg")
-
-= render 'layouts/footer'

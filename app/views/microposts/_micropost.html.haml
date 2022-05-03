@@ -1,12 +1,12 @@
-%li{ id: "micropost-#{micropost.id}", class: "py-2.5 border-t border-solid border-dark-100"}
-  .flex.flex-col
+%li{ id: "micropost-#{micropost.id}", class: "px-3 py-2.5 border border-solid border-light-200"}
+  .flex.flex-col.space-y-2
     .flex.flex-row.items-start
       -#  头像
       = link_to gravatar_for(micropost.user, size: 50), micropost.user
-      .flex.px-4.w-full.justify-between
+      .flex.w-full.pl-4.justify-between
         -#  名字
         .flex.flex-col.space-y-1
-          = link_to micropost.user.name, micropost.user
+          = link_to(micropost.user.name, micropost.user, class: 'heading-h6-bold')
 
           %span.body-small-bold.text-dark-200
             - time_ago = time_ago_in_words(micropost.created_at)
@@ -30,6 +30,16 @@
       = image_tag micropost.picture.url if micropost.picture?
     .div
       -#  评论 转发 点赞
+      .flex.w-full.justify-between
+        .flex.space-x-2
+          = image_tag("icons/comment")
+          -#%span.body-small-bold.text-dark-200 1
+        .flex.space-x-2
+          = image_tag("icons/retweet")
+          -#%span.body-small-bold.text-dark-200 20
+        .flex.space-x-2
+          = image_tag("icons/like")
+          -#%span.body-small-bold.text-dark-200 333
 
 
     -# - if current_user?(micropost.user)

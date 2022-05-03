@@ -1,11 +1,11 @@
 .flex-col
-  = link_to gravatar_for(current_user), current_user
+  = link_to gravatar_for(@user), @user
   %h5.pt-2
-    = link_to current_user.name, current_user
-%span
-  = pluralize(current_user.microposts.count, "micropost")
+    = link_to @user.name, @user
+-#%span
+-#  = pluralize(current_user.microposts.count, "micropost")
 
-.div.mt-6
-  %span.body-medium-regular.pr-3
+.div.mt-4
+  %span.body-medium-bold.pr-3
     No one can call back yesterday.Yesterday will not be called again.
   -#  current_user.intro
