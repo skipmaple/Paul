@@ -24,24 +24,24 @@
               %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"}
                 = t(:edit)
 
-    .div
+    .div.py-2
       -#  post 内容
       = micropost.content
       = image_tag micropost.picture.url if micropost.picture?
-    .div
-      -#  评论 转发 点赞
-      .flex.w-full.justify-between
-        .flex.space-x-2
-          = image_tag("icons/comment")
-          -#%span.body-small-bold.text-dark-200 1
-        .flex.space-x-2
-          = image_tag("icons/retweet")
-          -#%span.body-small-bold.text-dark-200 20
-        .flex.space-x-2
-          = image_tag("icons/like")
-          -#%span.body-small-bold.text-dark-200 333
-
-
-    -# - if current_user?(micropost.user)
-    -#   = link_to t(:delete), micropost, method: :delete,
-    -#                                  data: { confirm: t(:confirm)}
+    -#.div
+    -#  -#  评论 转发 点赞
+    -#  .flex.w-full.justify-between
+    -#    .flex.space-x-2
+    -#      = image_tag("icons/comment")
+    -#      -#%span.body-small-bold.text-dark-200 1
+    -#    .flex.space-x-2
+    -#      = image_tag("icons/retweet")
+    -#      -#%span.body-small-bold.text-dark-200 20
+    -#    .flex.space-x-2
+    -#      = image_tag("icons/like")
+    -#      -#%span.body-small-bold.text-dark-200 333
+    -#
+    -#
+    -#-# - if current_user?(micropost.user)
+    -#-#   = link_to t(:delete), micropost, method: :delete,
+    -#-#                                  data: { confirm: t(:confirm)}

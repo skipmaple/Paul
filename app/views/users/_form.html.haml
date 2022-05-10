@@ -18,18 +18,22 @@
 
 = form_for(@user) do |f|
   = render 'shared/error_messages', object: f.object
-  .mb-6
-    = f.label :name, t(:user_name), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
-    = f.text_field :name, placeholder: "Username", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+  .flex.flex-col.space-y-6
+    %div
+      = f.label :name, t(:user_name), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
+      = f.text_field :name, placeholder: "Username", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 
-  .mb-6
-    = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
-    = f.email_field :email, placeholder: "Email Address", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-  .mb-6
-    = f.label :password, t(:password), class: ".block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
-    = f.password_field :password, class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50'
-  .mb-6
-    = f.label :password_confirmation, t(:user_password_confirm), class: ".block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
-    = f.password_field :password_confirmation, class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50'
+    %div
+      = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
+      = f.email_field :email, placeholder: "Email Address", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 
-  = f.submit yield(:button_text), class: "text-light-300 bg-primary-600 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:bg-blue-600 heading-h6-bold rounded-lg w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    %div
+      = f.label :password, t(:password), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
+      = f.password_field :password, class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50'
+
+    %div
+      = f.label :password_confirmation, t(:user_password_confirm), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-300"
+      = f.password_field :password_confirmation, class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50'
+
+    %div
+      = f.submit yield(:button_text), class: "text-light-300 bg-primary-600 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:bg-blue-600 heading-h6-bold rounded-lg w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
