@@ -16,12 +16,17 @@
 
 body {
 
-  background: linear-gradient(157.42deg, rgba(240, 246, 255, 0.2) 4.94%, rgba(240, 246, 255, 0) 68.33%) no-repeat;
-  //  -webkit-background-size: 100vw 100vh,100vw 100vh,57.6vw 87.8vh,47.14vw 79.66vh;
-  //  -moz-background-size: 100vw 100vh,100vw 100vh,57.6vw 87.8vh,47.14vw 79.66vh;
-  //  -o-background-size: 100vw 100vh,100vw 100vh,57.6vw 87.8vh,47.14vw 79.66vh;
-  background-size: 100vw 100vh, 100vw 100vh;
+}
 
+.bg-body{
+  background-image: url(<%= asset_path 'bg/bg_body' %>);
+  background-size: 100% auto;
+  background-position: left top -13px;
+}
+
+.bg-not-login{
+  background: linear-gradient(157.42deg, rgba(240, 246, 255, 0.2) 4.94%, rgba(240, 246, 255, 0) 68.33%) no-repeat;
+  background-size: 100vw 100vh, 100vw 100vh;
 }
 
 .bg-strip-patterns{
@@ -54,5 +59,27 @@ body {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.bg-blur-light{
+  background: rgba(242, 243, 246, 0.4);
+  /* Color/Light/200 */
+
+  border: 1px solid #F2F3F6;
+  backdrop-filter: blur(24px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 5px;
+}
+
+.dark .dark\:bg-blur-dark{
+  background: rgba(122, 122, 138, 0.2);
+  /* Color/Dark/300 */
+
+  border: 1px solid #545569;
+  backdrop-filter: blur(24px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 5px;
 }
 

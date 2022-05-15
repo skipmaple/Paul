@@ -1,5 +1,5 @@
 %li{:class => "page#{' current' if page.current?}"}
   - if page.current?
-    = link_to page, "#", "aria-current" => "page", :class => 'z-10 py-2 px-3 leading-tight text-primary-400 bg-primary-100 border border-primary-200 hover:bg-primary-200 hover:text-primary-500 dark:border-dark-300 dark:bg-dark-300 dark:text-light-300'
+    = link_to page, "#", "aria-current" => "page", :class => 'z-10 py-2 px-3 leading-tight rounded text-primary-400 bg-primary-100 border border-primary-200 hover:bg-primary-200 hover:text-primary-500 dark:border-dark-300 dark:bg-dark-300 dark:text-light-300'
   - else
-    = link_to_unless page.current?, page, url, { :remote => remote, :rel => page.rel, :class => 'py-2 px-3 leading-tight text-dark-200 bg-light-100 border border-light-300 hover:bg-light-200 hover:text-dark-300 dark:bg-dark-400 dark:border-dark-300 dark:text-dark-100 dark:hover:bg-dark-300 dark:hover:text-white' }
+    = link_to_unless page.current?, page, url, { :remote => remote, :rel => page.rel, :class => 'py-2 px-3 leading-tight rounded text-dark-200 bg-light-100 border border-light-300 hover:bg-light-200 hover:text-dark-300 dark:bg-dark-400 dark:border-dark-300 dark:text-dark-100 dark:hover:bg-dark-300 dark:hover:text-white' }

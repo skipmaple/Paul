@@ -1,9 +1,17 @@
 - provide(:title, t(:edit_user))
 - provide(:button_text, t(:save_changes))
-%h1= t(:update_your_profile)
-.row
-  .col-md-6.col-md-offset-3
-    = render 'form'
-    .gravatar_edit
-      = gravatar_for @user
-      %a{ href: "http://gravatar.com/emails", target: "_blank", rel: "noopener" }= t(:change)
+
+.bg-local.bg-no-repeat.bg-body
+  .container.mx-auto.py-8
+    .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
+
+      %aside{ :class => "basis-1/4 py-8" }
+        %h4{ :class => "text-dark-400 dark:text-light-400" }
+          = t(:update_your_profile)
+
+      %aside{ :class => "basis-2/4 flex flex-col space-y-6 p-8" }
+        .flex.items-center.justify-start.space-x-4
+          = gravatar_for @user
+          %a{ href: "http://gravatar.com/emails", target: "_blank", rel: "noopener", class: "text-dark-300 dark:text-light-600" }= t(:change)
+
+        = render 'users/form'

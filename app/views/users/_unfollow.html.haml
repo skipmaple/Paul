@@ -1,4 +1,4 @@
-= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+= form_for(current_user.active_relationships.find_by(followed_id: user.id),
            html: { method: :delete },
            remote: true) do |f|
-  = f.submit t(:unfollow), class: "btn"
+  = f.submit t(:unfollow), class: "inline-flex items-center py-2 px-3 body-small-regular text-center text-dark-300 bg-light-100 rounded-full border border-dark-200 hover:bg-red-200 hover:border-red-300 hover:text-red-500 dark:bg-dark-500 dark:border-dark-400 dark:text-light-300 dark:hover:bg-dark-400 dark:hover:border-dark-200"

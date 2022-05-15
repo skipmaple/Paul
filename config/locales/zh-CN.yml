@@ -66,8 +66,8 @@ zh-CN:
   forgot_password: 忘记密码
   remember_me: 记住我
   new_user?: 新用户?
-  sign_up_now: 注册账号吧!
-  post_hint: 分享新鲜事...
+  sign_up_now: 注册账号
+  post_hint: 有什么新鲜事?
   over_max_file_size_alert: 最大上传文件大小为5MB
   following: 关注
   followers: 粉丝

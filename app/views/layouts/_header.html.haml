@@ -26,9 +26,9 @@
 -#        - else
 -#          %li= link_to t(:login), login_path
 
-%header.leading-normal.tracking-normal.min-h-16
-  %nav.p-2.mt-0.w-full.top-0.left-0.relative.z-10{:class => "bg-transparent"}
-    .container.flex.flex-wrap.justify-between.items-center.mx-auto
+%header.leading-normal.tracking-normal
+  %nav.py-8.mt-0.w-full.top-0.left-0.relative.z-10{:class => "bg-transparent"}
+    .container.flex.flex-wrap.justify-between.items-center.mx-auto.px-5
       %a.flex.items-center.no-underline{ :class => "hover:text-white hover:no-underline md:order-first", :href => root_path }
         %h3.self-center{:class => "text-dark-400 dark:text-light-300"}
           =t(:base_title)
@@ -43,7 +43,7 @@
               =t(:about)
           %li{"data-controller" => "theme-toggle"}
             / Dark mode switcher
-            %button#theme-toggle{ "data-action" => "click->theme-toggle#handleToggleTheme", :class=> "flex justify-between items-center w-full text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-dark-300 hover:text-light-400 hover:bg-dark-400 dark:text-light-300 dark:hover:bg-dark-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"}
+            %button#theme-toggle{ "data-action" => "click->theme-toggle#handleToggleTheme", :class=> "flex justify-between items-center w-full rounded-lg text-sm p-2.5 border-b border-light-300 hover:bg-dark-500 md:border-0 hover:text-light-100 text-dark-300 dark:text-light-300 dark:hover:bg-dark-100"}
               = image_tag("icon_theme_toggle_dark.svg", class: "hidden", id: "theme-toggle-dark-icon", "data-theme-toggle-target": "toggleDarkIcon")
               = image_tag("icon_theme_toggle_light.svg", class: "hidden", id: "theme-toggle-light-icon", "data-theme-toggle-target": "toggleLightIcon")
             / Dark mode switcher end

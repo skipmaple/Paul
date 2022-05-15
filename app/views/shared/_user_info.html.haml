@@ -1,11 +1,14 @@
-.flex-col
-  = link_to gravatar_for(@user), @user
-  %h5.pt-2
-    = link_to @user.name, @user
--#%span
--#  = pluralize(current_user.microposts.count, "micropost")
+.flex-col.space-y-4
 
-.div.mt-4
-  %span.body-medium-bold.pr-3
-    No one can call back yesterday.Yesterday will not be called again.
+  = link_to gravatar_for(@user), @user
+
+  %h5{ :class => "text-dark-400 dark:text-light-400" }
+    = link_to @user.name, @user
+
+  .div
+    %span.body-medium-regular{ :class => "text-dark-300 dark:text-light-600" }
+      No one can call back yesterday.Yesterday will not be called again.
   -#  current_user.intro
+
+  - if logged_in?
+    = render 'users/follow_form', user: @user
