@@ -14,14 +14,25 @@
  *= require_self
  */
 
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
 body {
-
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
 }
 
 .bg-body{
   background-image: url(<%= asset_path 'bg/bg_body' %>);
   background-size: 100% auto;
   background-position: left top -13px;
+}
+
+.bg-sign-in{
+  background-image: url(<%= asset_path 'bg/bg_sign_in' %>);
 }
 
 .bg-not-login{

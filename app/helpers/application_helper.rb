@@ -31,13 +31,13 @@ module ApplicationHelper
         'inner_div_class' => 'text-green-500 dark:text-green-600',
         'close_btn_class' => 'bg-green-100 text-green-500 focus:ring-green-400 hover:bg-green-200 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300'
       },
-      'warning' => {
+      'alert' => {
         'div_class' => 'bg-yellow-100 dark:bg-yellow-200',
         'svg_class' => 'text-yellow-700 dark:text-yellow-800',
         'inner_div_class' => 'text-yellow-700 dark:text-yellow-800',
         'close_btn_class' => 'bg-yellow-100 text-yellow-500 focus:ring-yellow-400 hover:bg-yellow-200 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300'
       },
-      'toast' => {
+      'notice' => {
         'div_class' => 'bg-gray-100 dark:bg-gray-200',
         'svg_class' => 'text-gray-700 dark:text-gray-800',
         'inner_div_class' => 'text-gray-700 dark:text-gray-800',

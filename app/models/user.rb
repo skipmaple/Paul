@@ -1,16 +1,24 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token, :reset_token
-  before_save :downcase_email
-  before_create :create_activation_digest
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :trackable, :confirmable, :lockable, :omniauthable
+
+  # attr_accessor :remember_token, :activation_token, :reset_token
+
+  # before_save :downcase_email
+  # before_create :create_activation_digest
   # before_save {self.email = email.downcase}  # 数据库中存储email均为小写
+
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
   validates :email, presence: true, length: { maximum: 255 },
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  # validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :locale, presence: true, inclusion: { in: I18n.available_locales.map(&:to_s) }
-  has_secure_password
 
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
@@ -46,36 +54,36 @@ class User < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
 
-  # 忘记用户
-  def forget
-    update_attribute(:remember_digest, nil)
-  end
-
-  # 发送激活邮件
-  def send_activation_email
-    UserMailer.account_activation(self).deliver_now
-  end
-
-  # 激活账户
-  def activate
-    update_columns(activated: true, activated_at: Time.zone.now)
-  end
-
-  # 发送密码重设邮件
-  def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
-  end
-
-  # 设置密码重设及相关属性
-  def create_reset_digest
-    self.reset_token = User.new_token
-    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
-  end
-
-  # 如果密码重设请求超时了，返回true
-  def password_reset_expired?
-    reset_sent_at < 2.hours.ago
-  end
+  # # 忘记用户
+  # def forget
+  #   update_attribute(:remember_digest, nil)
+  # end
+  #
+  # # 发送激活邮件
+  # def send_activation_email
+  #   UserMailer.account_activation(self).deliver_now
+  # end
+  #
+  # # 激活账户
+  # def activate
+  #   update_columns(activated: true, activated_at: Time.zone.now)
+  # end
+  #
+  # # 发送密码重设邮件
+  # def send_password_reset_email
+  #   UserMailer.password_reset(self).deliver_now
+  # end
+  #
+  # # 设置密码重设及相关属性
+  # def create_reset_digest
+  #   self.reset_token = User.new_token
+  #   update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
+  # end
+  #
+  # # 如果密码重设请求超时了，返回true
+  # def password_reset_expired?
+  #   reset_sent_at < 2.hours.ago
+  # end
 
   # 返回用户的动态流
   def feed
@@ -110,14 +118,14 @@ class User < ApplicationRecord
 
   private
 
-  # 把电子邮件地址转换为小写
-  def downcase_email
-    self.email = email.downcase
-  end
+  # # 把电子邮件地址转换为小写
+  # def downcase_email
+  #   self.email = email.downcase
+  # end
 
-  # 创建并赋值激活令牌和摘要
-  def create_activation_digest
-    self.activation_token = User.new_token
-    self.activation_digest = User.digest(activation_token)
-  end
+  # # 创建并赋值激活令牌和摘要
+  # def create_activation_digest
+  #   self.activation_token = User.new_token
+  #   self.activation_digest = User.digest(activation_token)
+  # end
 end

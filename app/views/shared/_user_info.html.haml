@@ -10,5 +10,5 @@
       No one can call back yesterday.Yesterday will not be called again.
   -#  current_user.intro
 
-  - if logged_in?
+  - if user_signed_in?
     = render 'users/follow_form', user: @user

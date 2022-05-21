@@ -50,7 +50,7 @@ class PasswordResetsController < ApplicationController
 
   # 确保是有效用户
   def valid_user
-    redirect_to root_path unless @user&.activated? && @user.authenticated?(:reset, params[:id])
+    redirect_to root_path unless @user&.confirmed? && @user.authenticated?(:reset, params[:id])
   end
 
   # 检查重设令牌是否过期

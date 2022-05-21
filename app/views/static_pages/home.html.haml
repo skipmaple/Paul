@@ -1,5 +1,5 @@
 -provide(:title, t(:home))
-- if logged_in?
+- if user_signed_in?
   .bg-local.bg-no-repeat.bg-body
     .container.mx-auto.py-8
       .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
@@ -18,13 +18,6 @@
           -#%section.micropost_form
           -#  = render 'shared/micropost_form'
 - else
-  -#.center.jumbotron
-  -#  %h1= t(:welcome_title)
-  -#
-  -#  %h2
-  -#    %a{href: "#"}= t(:welcome_content, project_name: "#{t(:base_title)}")
-  -#
-  -#  = link_to t(:sign_up_now), signup_path, class: "btn btn-lg btn-primary"
   .bg-not-login
   .bg-strip-patterns.w-full.h-screen.bg-local.bg-clip-padding.-z-10
   .bg-3d-shapes.w-full.h-screen.bg-local.bg-clip-padding.-z-10.dark:bg-3d-shapes-dark
@@ -40,7 +33,7 @@
         .flex.justify-center.px-8.py-4.md:space-x-2
           = image_tag("icons/start_icon")
           %h5.text-primary-100.text-center
-            = link_to t(:sign_up_now), signup_path
+            = link_to t(:sign_up_now), new_user_registration_path
       -# Next page btn
     .flex.flex-col.mb-10.hidden.items-start
       = image_tag("icons/next_circle_btn.svg")

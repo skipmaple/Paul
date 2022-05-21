@@ -113,3 +113,7 @@ gem 'tailwindcss-rails', '~> 2.0'
 
 gem "sassc", "~> 2.4"
 
+
+gem "devise", "~> 4.8"
+
+gem "omniauth-github", "~> 2.0"

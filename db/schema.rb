@@ -63,18 +63,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_160322) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", comment: "用户名"
-    t.string "email", comment: "邮箱"
+    t.string "email", default: "", null: false, comment: "邮箱"
+    t.string "encrypted_password", default: "", null: false, comment: "密码加密"
+    t.string "reset_password_token", comment: "重设密码token"
+    t.datetime "reset_password_sent_at", precision: nil, comment: "重设密码token发送时间"
+    t.datetime "remember_created_at", precision: nil, comment: "记住我创建时间"
+    t.integer "sign_in_count", default: 0, null: false, comment: "登录次数"
+    t.datetime "current_sign_in_at", precision: nil, comment: "当前登录时间"
+    t.datetime "last_sign_in_at", precision: nil, comment: "最后一次登录时间"
+    t.string "current_sign_in_ip", comment: "当前登录IP"
+    t.string "last_sign_in_ip", comment: "最后一次登录IP"
+    t.string "confirmation_token", comment: "确认注册token"
+    t.datetime "confirmed_at", precision: nil, comment: "确认注册时间"
+    t.datetime "confirmation_sent_at", precision: nil, comment: "确认注册token发送时间"
+    t.string "unconfirmed_email", comment: "未确认邮箱"
+    t.integer "failed_attempts", default: 0, null: false, comment: "登录失败尝试次数"
+    t.string "unlock_token", comment: "解锁token"
+    t.datetime "locked_at", precision: nil, comment: "加锁时间"
+    t.boolean "admin", default: false, comment: "管理员"
+    t.string "locale", default: "zh-CN", comment: "语言"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest", comment: "密码验证"
-    t.string "remember_digest", comment: "记住我"
-    t.boolean "admin", default: false, comment: "管理员"
-    t.string "activation_digest", comment: "激活摘要"
-    t.boolean "activated", default: false, comment: "激活状态"
-    t.datetime "activated_at", precision: nil, comment: "激活时间"
-    t.string "reset_digest", comment: "密码重设摘要"
-    t.datetime "reset_sent_at", precision: nil, comment: "密码重设摘要发送时间"
-    t.string "locale", default: "zh-CN", comment: "语言"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
