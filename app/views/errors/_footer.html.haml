@@ -1,0 +1,11 @@
+%nav
+  .grid.grid-cols-3.gap-1.justify-items-center.justify-center.items-center{ :class => "text-dark-300 dark:text-light-600" }
+    %div
+      = link_to 'Home', root_path
+    %div
+      - if current_user
+        = link_to 'Sign out and sign in with a different account', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }
+      - else
+        = link_to 'Sign In / Register', new_session_path(:user, redirect_to_referer: 'yes')
+    %div
+      = link_to 'Help', help_path

@@ -1,14 +1,13 @@
 - provide(:title, t(:all_users))
 
-.bg-local.bg-no-repeat.bg-body
-  .container.mx-auto.py-8
-    .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
+.container.mx-auto.py-8
+  .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
 
-      %aside{:class => "basis-3/4"}
-        %ul.divide-y{ class: 'divide-light-200 dark:divide-dark-400' }
-          = render @users
+    %aside{:class => "basis-3/4"}
+      %ul.divide-y{ class: 'divide-light-200 dark:divide-dark-400' }
+        = render @users
 
-        = paginate @users
+      = paginate @users
 
-      %aside{:class => "basis-1/4 py-2"}
-        %h4{ :class => "text-dark-400 dark:text-light-400" }= t(:all_users)
+    %aside{:class => "basis-1/4 py-2"}
+      %h4{ :class => "text-dark-400 dark:text-light-400" }= t(:all_users)

@@ -13,12 +13,12 @@
     = render 'application/favicon'
     = render 'layouts/shim'
 
-  %body{:class => "flex flex-col min-h-screen bg-light-100 dark:bg-dark-600"}
+  %body.bg-local.bg-no-repeat.bg-body{:class => "flex flex-col min-h-screen bg-light-100 dark:bg-dark-600"}
     - unless content_for?(:no_app_layout)
       .flex.flex-col
         = render 'layouts/header'
         = render 'layouts/flash'
-      %div.app-content-container
+      %div.app-content-container.h-auto
         = yield
       = render 'layouts/footer'
     - else

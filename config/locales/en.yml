@@ -16,6 +16,7 @@ en:
 
   # email
   email: email
+  Email: Email
   title_upcase: ONETAIL
   email_hi: Hi
   activate_email_content: "Welcome to Kellin! Click on the link below to activate your account:"
@@ -56,6 +57,7 @@ relevant, or interesting."
 
   # edit_user
   edit_user: Edit usr
+  user_settings: User settings
   update_your_profile: Update your profile
   save_changes: Save changes
   change: change
@@ -88,3 +90,11 @@ relevant, or interesting."
   all_users: All users
   language: Language
   are_you_sure: Are you sure?
+
+  Profile: "Profile"
+  Account: "Account"
+  Preferences: "Preferences"
+  Github: "Github"
+  location: "Location"
+  github_url: "Github URL"
+  description: "Description"

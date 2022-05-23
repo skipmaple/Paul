@@ -16,6 +16,7 @@ zh-CN:
 
   # email
   email: 邮箱
+  Email: 邮箱
   title_upcase: 克林
   email_hi: 你好
   activate_email_content: "欢迎来到克林! 请点击激活按钮以激活您的账号:"
@@ -57,6 +58,7 @@ zh-CN:
 
   # edit_user
   edit_user: 编辑用户
+  user_settings: 用户设置
   update_your_profile: 修改个人信息
   save_changes: 保存修改
   change: 更改
@@ -95,4 +97,12 @@ zh-CN:
       last: 尾页
       previous: 上一页
       next: 下一页
+
+  Profile: "用户资料"
+  Account: "账户"
+  Preferences: "偏好设置"
+  Github: "Github"
+  location: "位置"
+  github_url: "Github URL"
+  description: "自我介绍"
 

@@ -1,0 +1,17 @@
+!!! 5
+%html{ lang: "en" }
+  %head
+    %title= full_title(yield(:title))
+    %meta{ "name": "viewport", "content": "width=device-width,initial-scale=1" }
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag "tailwind","inter-font", "data-turbo-track": 'reload'
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+
+    = render 'application/favicon'
+    = render 'layouts/shim'
+  %body{:class => "flex flex-col min-h-screen bg-light-100 dark:bg-dark-600"}
+    = yield
+

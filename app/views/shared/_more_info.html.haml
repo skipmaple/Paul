@@ -3,12 +3,17 @@
   %li
     .flex.space-x-3
       = image_tag("icons/location.svg")
-      %span.body-medium-regular.text-dark-300 Earth
+      %span.body-medium-regular.text-dark-300
+        = @user.location
   %li
-    .flex.space-x-3
-      = image_tag("icons/email.svg")
-      %span.body-medium-regular.text-dark-300 Email
+    = link_to("mailto:#{@user.email}") do
+      .flex.space-x-3
+        = image_tag("icons/email.svg")
+        %span.body-medium-regular.text-dark-300
+          = t(:Email)
   %li
-    .flex.space-x-3
-      = image_tag("icons/github.svg")
-      %span.body-medium-regular.text-dark-300 Github
+    = link_to(@user.github_url) do
+      .flex.space-x-3
+        = image_tag("icons/github.svg")
+        %span.body-medium-regular.text-dark-300
+          = t(:Github)

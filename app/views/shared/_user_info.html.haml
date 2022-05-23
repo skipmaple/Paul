@@ -5,10 +5,10 @@
   %h5{ :class => "text-dark-400 dark:text-light-400" }
     = link_to @user.name, @user
 
-  .div
-    %span.body-medium-regular{ :class => "text-dark-300 dark:text-light-600" }
-      No one can call back yesterday.Yesterday will not be called again.
-  -#  current_user.intro
+  - if @user.description
+    .div
+      %span.body-medium-regular{ :class => "text-dark-300 dark:text-light-600" }
+        = @user.description
 
   - if user_signed_in?
     = render 'users/follow_form', user: @user
