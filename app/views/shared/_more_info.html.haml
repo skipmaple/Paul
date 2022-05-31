@@ -12,7 +12,7 @@
         %span.body-medium-regular.text-dark-300
           = t(:Email)
   %li
-    = link_to(@user.github_url) do
+    = link_to("https://github.com/#{@user.github_url}") do
       .flex.space-x-3
         = image_tag("icons/github.svg")
         %span.body-medium-regular.text-dark-300

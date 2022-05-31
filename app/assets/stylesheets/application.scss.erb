@@ -94,3 +94,26 @@ body {
   border-radius: 5px;
 }
 
+input:checked ~ .dot {
+  transform: translateX(133%);
+  background-image: url(<%= asset_path 'national_flag/united-kingdom' %>);
+//  border-width: 0.5px;
+//  border-color: #012169;
+}
+
+input:checked ~ .line {
+  background-color: #C8102E;
+  border-color: #012169;
+}
+
+input:checked ~ .show-zh-text {
+  display: none;
+}
+
+input:checked ~ .show-en-text {
+  display: block;
+}
+
+.bg-china-flag {
+  background-image: url(<%= asset_path 'national_flag/china' %>);
+}

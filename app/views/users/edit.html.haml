@@ -10,14 +10,6 @@
       = render 'left_menu'
 
     %aside#settingTabContent{ :class => "basis-3/4 pl-16 pr-4 py-8" }
-
-
-      -##profile.hidden.p-4.bg-light-500.rounded-lg.dark:bg-gray-800{"aria-labelledby" => "profile-tab", :role => "tabpanel"}
-      -#  %p.text-sm.text-dark-300.dark:text-light-600
-      -#    This is some placeholder content the
-      -#    = succeed "." do
-      -#      %strong.font-medium.text-dark-400.dark:text-light-400 Profile tab's associated content
-
       #profile.hidden.flex.flex-col.justify-start.space-y-4{"aria-labelledby" => "profile-tab", :role => "tabpanel"}
         .flex.space-x-4.items-center
           = gravatar_for @user
@@ -26,16 +18,29 @@
         = render 'users/form'
 
       #account.hidden.p-4.bg-light-500.rounded-lg.dark:bg-gray-800{"aria-labelledby" => "account-tab", :role => "tabpanel"}
-        %p.text-sm.text-dark-300.dark:text-light-600
-          This is some placeholder content the
-          = succeed "." do
-            %strong.font-medium.text-dark-400.dark:text-light-400 Account tab's associated content
+        -#%p.text-sm.text-dark-300.dark:text-light-600
+        -#  This is some placeholder content the
+        -#  = succeed "." do
+        -#    %strong.font-medium.text-dark-400.dark:text-light-400 Account tab's associated content
+        = render 'devise/registrations/edit', { resource_name: 'user', resource: @user }
 
-      #general.hidden.p-4.bg-light-500.rounded-lg.dark:bg-gray-800{"aria-labelledby" => "general-tab", :role => "tabpanel"}
-        %p.text-sm.text-dark-300.dark:text-light-600
-          This is some placeholder content the
-          = succeed "." do
-            %strong.font-medium.text-dark-400.dark:text-light-400 General tab's associated content
+      #general.hidden.flex.justify-start.items-center.space-x-4{"aria-labelledby" => "general-tab", :role => "tabpanel", "data-turbo": "false"}
+        .body-medium-bold.text-dark-400.dark:text-light-400
+          = t(:language)
+        %label.flex.items-center.cursor-pointer{:for => "language", "data-controller": "language-toggle"}
+          / toggle
+          .relative{"data-action": "click->language-toggle#upload","data-language-toggle-payload-param": "{\"url\":\"/language\", \"user_id\": #{@user.id}, \"language\": \"#{@user.language == 'en' ? "zh-CN" : "en"}\"}"}
+            / input
+            -#%input#toggle-language.sr-only{:type => "checkbox"}/
+            = check_box_tag(:language, nil, @user.language == 'en', class: "sr-only", "data-language-toggle-target": "language", "data-turbo": "false")
+            / line
+            .line.block.w-16.h-8.rounded-full.border-2.bg-yellow-200.border-red-600
+            / dot
+            .dot.absolute.left-1.top-1.bg-cover.bg-china-flag.w-6.h-6.rounded-full.transition
+            / show-zh-text
+            .show-zh-text.absolute.right-2.top-1.w-6.h-6.transition.text-red-600.text-center.body-medium-bold 汉
+            / show-en-text
+            .show-en-text.hidden.absolute.left-2.top-1.w-6.h-6.transition.text-white.text-center.body-medium-bold En
 
       #teams.hidden.p-4.bg-light-500.rounded-lg.dark:bg-gray-800{"aria-labelledby" => "teams-tab", :role => "tabpanel"}
         %p.text-sm.text-dark-300.dark:text-light-600

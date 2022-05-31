@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_23_135713) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_15_160322) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,13 +80,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_23_135713) do
     t.integer "failed_attempts", default: 0, null: false, comment: "登录失败尝试次数"
     t.string "unlock_token", comment: "解锁token"
     t.datetime "locked_at", precision: nil, comment: "加锁时间"
+    t.string "provider"
+    t.string "uid"
     t.boolean "admin", default: false, comment: "管理员"
-    t.string "locale", default: "zh-CN", comment: "语言"
+    t.string "language", default: "zh-CN", comment: "语言"
+    t.string "location", comment: "位置"
+    t.string "github_url", comment: "github 链接"
+    t.text "description", comment: "自我介绍"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "github_url", comment: "github 链接"
-    t.string "location", comment: "位置"
-    t.text "description", comment: "自我介绍"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

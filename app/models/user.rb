@@ -18,7 +18,7 @@ class User < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
   # validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  validates :locale, presence: true, inclusion: { in: I18n.available_locales.map(&:to_s) }
+  validates :language, presence: true, inclusion: { in: I18n.available_locales.map(&:to_s) }
 
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",

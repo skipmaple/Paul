@@ -17,10 +17,10 @@ class StaticPagesController < ApplicationController
   end
 
   def language
-    return unless I18n.locale_available?(params[:locale])
+    return unless I18n.locale_available?(params[:language])
 
-    current_user.update!(locale: params[:locale]) if logged_in? && current_user&.locale != params[:locale]
-    I18n.default_locale = params[:locale]
+    current_user.update!(language: params[:language]) if signed_in? && current_user&.language != params[:language]
+    I18n.default_locale = params[:language]
     redirect_to request.referrer || root_url
   end
 

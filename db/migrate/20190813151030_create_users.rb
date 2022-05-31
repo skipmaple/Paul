@@ -41,7 +41,10 @@ class CreateUsers < ActiveRecord::Migration[6.0]
 
       # Custom
       t.boolean :admin, default: false, comment: "管理员"
-      t.string :locale, default: "zh-CN", comment: "语言"
+      t.string :language, default: "zh-CN", comment: "语言"
+      t.string :location, comment: "位置"
+      t.string :github_url, comment: "github 链接"
+      t.text :description, comment: "自我介绍"
 
 
 

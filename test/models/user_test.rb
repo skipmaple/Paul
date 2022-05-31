@@ -122,8 +122,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   # 验证用户有默认语言设置为'zh-CN'
-  test "should have default locale value" do
-    assert @user.locale == 'zh-CN'
+  test "should have default language value" do
+    assert @user.language == 'zh-CN'
   end
 
 end
