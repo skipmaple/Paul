@@ -105,4 +105,9 @@ zh-CN:
   location: "位置"
   github_url: "Github URL"
   description: "自我介绍"
+  current_password: "当前密码"
+  cancel_my_account: "注销账号"
+  Unhappy?: "不开心?"
+  (leave blank if you don't want to change it): "(如果不想修改可以置空)"
+  (we need your current password to confirm your changes): "(我们需要您的当前密码来确认修改有效)"
 
