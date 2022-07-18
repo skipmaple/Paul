@@ -3,7 +3,8 @@
   %head
     %title= full_title(yield(:title))
     %meta{ "name": "viewport", "content": "width=device-width,initial-scale=1" }
-    %meta{ "name": "turbo-visit-control", "content": "reload" }
+    -# https://turbo.hotwired.dev/handbook/drive#ensuring-specific-pages-trigger-a-full-reload
+    -#%meta{ "name": "turbo-visit-control", "content": "reload" }
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -14,23 +15,27 @@
     = render 'application/favicon'
     = render 'layouts/shim'
 
-  %body.bg-local.bg-no-repeat.bg-body{:class => "flex flex-col min-h-screen bg-light-100 dark:bg-dark-600"}
-    - unless content_for?(:no_app_layout)
-      .flex.flex-col
-        = render 'layouts/header'
-        = render 'layouts/flash'
-      %div.app-content-container.h-auto
-        = yield
-      = render 'layouts/footer'
-    - else
-      = render 'layouts/flash'
-      = yield
-    -# = debug(params) if Rails.env.development?
+  - if content_for?(:no_body_bg)
+    %body.bg-local.bg-no-repeat{:class => "flex flex-col min-h-screen bg-light-100 dark:bg-dark-600"}
+  - else
+    %body.bg-local.bg-no-repeat.bg-body{:class => "flex flex-col min-h-screen bg-light-100 dark:bg-dark-600"}
 
-:javascript
-  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-  } else {
-      document.documentElement.classList.remove('dark')
-  }
+  - unless content_for?(:no_app_layout)
+    .flex.flex-col
+      = render 'layouts/header'
+      = render 'layouts/flash'
+    %div.app-content-container.h-auto
+      = yield
+    = render 'layouts/footer'
+  - else
+    = render 'layouts/flash'
+    = yield
+  -# = debug(params) if Rails.env.development?
+
+-#:javascript
+-#  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+-#  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+-#      document.documentElement.classList.add('dark');
+-#  } else {
+-#      document.documentElement.classList.remove('dark')
+-#  }

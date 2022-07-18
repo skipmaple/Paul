@@ -117,3 +117,9 @@ gem "sassc", "~> 2.4"
 gem "devise", "~> 4.8"
 
 gem "omniauth-github", "~> 2.0"
+
+gem "redcarpet", "~> 3.5"
+
+gem "evil_icons", "~> 1.10"
+
+gem "friendly_id", "~> 5.4"

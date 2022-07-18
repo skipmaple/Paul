@@ -1,0 +1,46 @@
+- provide(:title, 'New post')
+- content_for(:no_body_bg, true)
+- content_for(:no_app_layout, true)
+
+= form_for @post do |f|
+  .flex.flex-row{ 'data-controller': 'post-setting-toggle' }
+    %section.main-body.relative.w-full{'data-post-setting-toggle-target': 'mainBody'}
+      -# header part
+      %header.h-16.w-full.px-2.py-6.absolute.top-0.left-0.right-0.z-10.bg-light-100.sm:justify-between.sm:items-center.sm:flex
+        -# left part
+        .flex.items-center
+          = link_to(posts_path, class: 'inline-flex space-x-2 px-4 py-2 rounded hover:bg-light-200') do
+            = image_tag('icons/back')
+            %span{class: 'body-small-regular text-dark-300 dark:text-light-600'} Posts
+
+          %span{class: 'body-small-regular text-dark-100'} Draft-Saved
+
+        -# right part
+        .flex.flex-col.gap-4.mt-4.sm:flex-row.sm:mt-0.sm:items-center
+          %button.inline-flex.items-start.justify-center.px-5.py-3.text-dark-300.dark:text-light-600.transition.rounded.hover:bg-light-200.focus:outline-none.focus:ring{:type => "button"}
+            %span.text-sm.font-medium Preview
+          %button.inline-flex.items-start.justify-center.px-5.py-3.text-dark-300.dark:text-light-600.transition.rounded.hover:bg-light-200.focus:outline-none.focus:ring{:type => "button"}
+            = f.submit('Publish', class: 'text-sm font-medium')
+          %div{ class: 'inline-flex space-x-2 px-4 py-2 rounded hover:bg-light-200', id: 'post-setting-open-btn', 'data-post-setting-toggle-target': 'postSettingOpenBtn'}
+            = image_tag('icons/editor_settings_off', 'data-action': 'click->post-setting-toggle#open')
+
+      -# = post edit part
+      .w-full.h-screen.overflow-x-hidden.overflow-y-auto.z-0.relative
+        -# - if @post.errors.any?
+        -#   #error_explanation
+        -#     %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+        -#     %ul
+        -#       - @post.errors.full_messages.each do |message|
+        -#         %li= message
+        .flex{'data-controller' => 'editor', class: 'editor-container py-[8vw] px-20'}
+          -# = f.label :body
+          .codemirror-editor.flex-1
+            = f.text_area :body, id: 'content-editor', 'data-action' => 'input->editor#handleInput', 'data-editor-target' => 'editor', 'class' => 'invisible'
+          .markdown-preview.flex-1.pl-3{'data-editor-target' => 'markdown-preview'}
+            -# = markdown(@post.body)
+
+
+    -# hidden post settings part
+    %section.hidden.settings-menu-container.min-w-96.z-20#post-setting-sidebar{ 'data-post-setting-toggle-target': 'postSettingSidebar' }
+      = render partial: 'post_settings', locals:{ f: f }
+

@@ -1,19 +1,21 @@
 - @user ||= current_user
 %ul.mt-8.space-y-6
   %li
-    .flex.space-x-3
-      = image_tag("icons/location.svg")
-      %span.body-medium-regular.text-dark-300
-        = @user.location
-  %li
     = link_to("mailto:#{@user.email}") do
       .flex.space-x-3
         = image_tag("icons/email.svg")
-        %span.body-medium-regular.text-dark-300
+        %span.body-medium-regular.text-dark-300.dark:text-light-400
           = t(:Email)
-  %li
-    = link_to("https://github.com/#{@user.github_url}") do
+  - if @user.location
+    %li
       .flex.space-x-3
-        = image_tag("icons/github.svg")
-        %span.body-medium-regular.text-dark-300
-          = t(:Github)
+        = image_tag("icons/location.svg")
+        %span.body-medium-regular.text-dark-300.dark:text-light-400
+          = @user.location
+  - if @user.github_url
+    %li
+      = link_to("https://github.com/#{@user.github_url}") do
+        .flex.space-x-3
+          = image_tag("icons/github.svg")
+          %span.body-medium-regular.text-dark-300.dark:text-light-400
+            = t(:Github)

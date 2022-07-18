@@ -18,16 +18,18 @@ export default class extends Controller {
         }
 
         let user = {
-            id: params['id'],
+            id: params['user_id'],
             language: params['language'],
         }
 
         try {
             const response = axios.post(params['url'], user, {headers: headers})
             if (response.status === 200) {
-                this.languageTarget.checked = !this.languageTarget.checked
+                // this.languageTarget.checked = !this.languageTarget.checked
+                // location.reload()
+            } else if (response.status === 422) {
+                console.log('no need to change.')
             }
-            location.reload()
         } catch (error) {
             if (error.response) {
                 console.log(error.reponse.status)

@@ -29,7 +29,7 @@
           = t(:language)
         %label.flex.items-center.cursor-pointer{:for => "language", "data-controller": "language-toggle"}
           / toggle
-          .relative{"data-action": "click->language-toggle#upload","data-language-toggle-payload-param": "{\"url\":\"/language\", \"user_id\": #{@user.id}, \"language\": \"#{@user.language == 'en' ? "zh-CN" : "en"}\"}"}
+          .relative{"data-action": "click->language-toggle#upload", "data-language-toggle-payload-param": "{\"url\":\"/users/language\", \"user_id\": #{@user.id}, \"language\": \"#{@user.language == 'en' ? "zh-CN" : "en"}\"}"}
             / input
             -#%input#toggle-language.sr-only{:type => "checkbox"}/
             = check_box_tag(:language, nil, @user.language == 'en', class: "sr-only", "data-language-toggle-target": "language", "data-turbo": "false")
@@ -42,6 +42,8 @@
             / show-en-text
             .show-en-text.hidden.absolute.left-2.top-1.w-6.h-6.transition.text-white.text-center.body-medium-bold En
 
+      #preferences.hidden.flex.justify-start.items-center.space-x-4{"aria-labelledby" => "preferences-tab", :role => "tabpanel", "data-turbo": "false", "data-controller": "user"}
+        = render 'preferences'
       #teams.hidden.p-4.bg-light-500.rounded-lg.dark:bg-gray-800{"aria-labelledby" => "teams-tab", :role => "tabpanel"}
         %p.text-sm.text-dark-300.dark:text-light-600
           This is some placeholder content the

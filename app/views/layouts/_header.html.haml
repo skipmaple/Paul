@@ -39,6 +39,9 @@
             %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-300 dark:text-light-300 hover:text-dark-400 hover:underline", :href => root_path }
               =t(:home)
           %li
+            %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-300 dark:text-light-300 hover:text-dark-400 hover:underline", :href => posts_path }
+              =t(:posts)
+          %li
             %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-300 dark:text-light-300 hover:text-dark-400 hover:underline", :href => about_path }
               =t(:about)
           %li{"data-controller" => "theme-toggle"}

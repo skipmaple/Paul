@@ -1,0 +1,11 @@
+.flex.space-x-4.rounded.py-8
+
+  %section#post-info{:class => "basis-3/4 flex flex-col h-50 space-y-4 relative"}
+    = link_to post_path(post) do
+      %h6{:class => "heading-h6-bold text-dark-400 dark:text-light-400"}= post.title
+    %span{ class: 'text-dark-300 dark:text-light-600' }= post.excerpt
+    %span.absolute.bottom-0.left-0.body-small-bold.text-dark-200= post.published_at&.strftime("%Y-%m-%d")
+
+  %section#post-img{:class => "basis-1/4"}
+    = link_to post_path(post) do
+      = image_tag("post_demo")
