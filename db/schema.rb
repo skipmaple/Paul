@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_15_160322) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_12_095431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,13 +42,43 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_160322) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.text "content", comment: "博客内容"
     t.bigint "user_id", null: false, comment: "user_id为外键"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture", comment: "micropost上传图片"
+    t.string "slug", comment: "friendly_id slug"
+    t.index ["slug"], name: "index_microposts_on_slug", unique: true
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title", comment: "标题"
+    t.string "excerpt", comment: "摘要"
+    t.string "feature_image", comment: "图片"
+    t.text "body", comment: "内容"
+    t.integer "visibility_level", default: 0, comment: "可见性"
+    t.string "reading_time", comment: "阅读时间"
+    t.string "url", comment: "链接"
+    t.datetime "published_at", default: "2022-07-12 06:40:46", comment: "发布时间"
+    t.bigint "user_id", comment: "用户id"
+    t.string "slug", comment: "friendly slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_posts_on_slug", unique: true
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -63,18 +93,38 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_160322) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", comment: "用户名"
-    t.string "email", comment: "邮箱"
+    t.string "email", default: "", null: false, comment: "邮箱"
+    t.string "encrypted_password", default: "", null: false, comment: "密码加密"
+    t.string "reset_password_token", comment: "重设密码token"
+    t.datetime "reset_password_sent_at", precision: nil, comment: "重设密码token发送时间"
+    t.datetime "remember_created_at", precision: nil, comment: "记住我创建时间"
+    t.integer "sign_in_count", default: 0, null: false, comment: "登录次数"
+    t.datetime "current_sign_in_at", precision: nil, comment: "当前登录时间"
+    t.datetime "last_sign_in_at", precision: nil, comment: "最后一次登录时间"
+    t.string "current_sign_in_ip", comment: "当前登录IP"
+    t.string "last_sign_in_ip", comment: "最后一次登录IP"
+    t.string "confirmation_token", comment: "确认注册token"
+    t.datetime "confirmed_at", precision: nil, comment: "确认注册时间"
+    t.datetime "confirmation_sent_at", precision: nil, comment: "确认注册token发送时间"
+    t.string "unconfirmed_email", comment: "未确认邮箱"
+    t.integer "failed_attempts", default: 0, null: false, comment: "登录失败尝试次数"
+    t.string "unlock_token", comment: "解锁token"
+    t.datetime "locked_at", precision: nil, comment: "加锁时间"
+    t.string "provider"
+    t.string "uid"
+    t.boolean "admin", default: false, comment: "管理员"
+    t.string "language", default: "zh-CN", comment: "语言"
+    t.string "location", comment: "位置"
+    t.string "github_url", comment: "github 链接"
+    t.text "description", comment: "自我介绍"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest", comment: "密码验证"
-    t.string "remember_digest", comment: "记住我"
-    t.boolean "admin", default: false, comment: "管理员"
-    t.string "activation_digest", comment: "激活摘要"
-    t.boolean "activated", default: false, comment: "激活状态"
-    t.datetime "activated_at", precision: nil, comment: "激活时间"
-    t.string "reset_digest", comment: "密码重设摘要"
-    t.datetime "reset_sent_at", precision: nil, comment: "密码重设摘要发送时间"
-    t.string "locale", default: "zh-CN", comment: "语言"
+    t.string "slug", comment: "friendly_id slug"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

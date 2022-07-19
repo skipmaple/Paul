@@ -1,6 +1,6 @@
 = paginator.render do
   %div.pagination.flex.justify-center.p-2
-    %ul{ class: 'inline-flex items-center -space-x-px'}
+    %ul{ class: 'inline-flex items-center space-x-1.5'}
       = prev_page_tag unless current_page.first?
       - each_page do |page|
         - if page.left_outer? || page.right_outer? || page.inside_window?

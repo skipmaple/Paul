@@ -27,7 +27,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
     user = assigns(:user)
-    assert_not user.activated?
+    assert_not user.confirmed?
     # 尝试在激活之前登录
     log_in_as user
     assert_not is_logged_in?
@@ -39,7 +39,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?
     # 激活令牌有效，电子邮箱地址有效
     get edit_account_activation_path(user.activation_token, email: user.email)
-    assert user.reload.activated?
+    assert user.reload.confirmed?
     follow_redirect!
     assert_template 'users/show'
     assert is_logged_in?

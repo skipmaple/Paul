@@ -1,5 +1,5 @@
 %li.page-next
-  = link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, :rel => 'next', :remote => remote, :class => 'block py-2 px-3 ml-0 leading-tight text-dark-200 bg-light-100 rounded-r-lg border border-light-300 hover:bg-light-200 hover:text-dark-300 dark:bg-dark-400 dark:border-dark-300 dark:text-dark-100 dark:hover:bg-dark-300 dark:hover:text-white' do
+  = link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, :rel => 'next', :remote => remote, :class => 'block py-2 px-3 ml-0 leading-tight rounded text-dark-200 bg-light-100 rounded-r-lg border border-light-300 hover:bg-light-200 hover:text-dark-300 dark:bg-dark-400 dark:border-dark-300 dark:text-dark-100 dark:hover:bg-dark-300 dark:hover:text-white' do
     %span = t('views.pagination.next').html_safe
     %svg.w-5.h-5{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
       %path{"clip-rule" => "evenodd", :d => "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z", "fill-rule" => "evenodd"}

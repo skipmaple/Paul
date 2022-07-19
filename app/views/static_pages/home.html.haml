@@ -1,44 +1,38 @@
 -provide(:title, t(:home))
-- if logged_in?
-  .container.flex.flex-row.mx-auto.px-6.space-x-4
-    %aside{:class => "basis-1/4"}
-      %section#user_info.mt-24
-        = render 'shared/user_info'
-      %section.more_info
-        = render 'shared/more_info'
-      -#%section.stats
-      -#  = render 'shared/stats'
-      -#%section.micropost_form
-      -#  = render 'shared/micropost_form'
-    .div{:class => "basis-2/4"}
-      %h4= t(:micropost_feed)
-      = render 'shared/feed'
+- if user_signed_in?
+  .container.mx-auto.py-8
+    .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
+      .div{:class => "basis-2/3"}
+        %h4{ :class => "text-dark-400 dark:text-light-400" }= t(:micropost_feed)
+        = render 'shared/feed'
+      %aside{:class => "basis-1/3 space-y-4"}
+        %section.mt-24
+          = render 'shared/user_info'
+        %section
+          = render 'shared/stats'
+        %section
+          = render 'shared/more_info'
+        -#%section.stats
+        -#  = render 'shared/stats'
+        -#%section.micropost_form
+        -#  = render 'shared/micropost_form'
 - else
-  -#.center.jumbotron
-  -#  %h1= t(:welcome_title)
-  -#
-  -#  %h2
-  -#    %a{href: "#"}= t(:welcome_content, project_name: "#{t(:base_title)}")
-  -#
-  -#  = link_to t(:sign_up_now), signup_path, class: "btn btn-lg btn-primary"
-
+  .bg-not-login
   .bg-strip-patterns.w-full.h-screen.bg-local.bg-clip-padding.-z-10
   .bg-3d-shapes.w-full.h-screen.bg-local.bg-clip-padding.-z-10.dark:bg-3d-shapes-dark
 
   %section#homepage-not-login
-    -# Flex Container
     .container.flex.flex-col.flex-nowrap.h-screen.px-6.pb-20.mx-auto.space-y-8.items-center.justify-center
-      -#.flex.flex-col.items-center.space-y-10
       %h1.text-center.max-w-3xl.text-dark-400.dark:text-light-300
         = t(:welcome_title)
       %p.max-w-lg.text-center.text-dark-300.dark:text-light-600
         = t(:welcome_content)
         -# = t(:welcome_content_2)
-      %button.rounded-lg.bg-primary-600{ :class => "hover:bg-primary-700 focus:ring-4 focus:ring-4 focus:ring-blue-300"}
+      %button.rounded-lg.bg-primary-600{ :class => "hover:bg-primary-700 focus:ring-4 focus:ring-4 focus:ring-blue-300" }
         .flex.justify-center.px-8.py-4.md:space-x-2
           = image_tag("icons/start_icon")
           %h5.text-primary-100.text-center
-            = link_to t(:sign_up_now), signup_path
+            = link_to t(:sign_up_now), new_user_registration_path
       -# Next page btn
     .flex.flex-col.mb-10.hidden.items-start
       = image_tag("icons/next_circle_btn.svg")

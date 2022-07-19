@@ -1,0 +1,37 @@
+.flex.flex-col.py-4.pl-4.pr-2.5.space-y-6.max-w-sm.w-96.h-screen.border-l
+  .flex.justify-between.items-center
+    %span.body-medium-regular.text-dark-300.dark:text-light-600 Post settings
+    %div{ class: 'inline-flex space-x-2 px-4 py-2 rounded hover:bg-light-200', id: 'post-setting-close-btn' }
+      = image_tag('icons/editor_settings_on', 'data-action': 'click->post-setting-toggle#close')
+
+  .flex.flex-col.space-y-6.overflow-y-auto
+    .flex.flex-col.space-y-2
+      %span.body-small-regular.text-dark-300.dark:text-light-600 Post URL
+      = f.text_field(:url, placeholder: 'post url', class: "post-url body-small-regular text-dark-300 dark:text-light-600")
+      %p.text-sm.text-dark-100 localhost:3030/hello-world/
+
+    .flex.flex-col.space-y-2
+      %span.body-small-regular.text-dark-300.dark:text-light-600 Post Title
+      = f.text_field(:title, placeholder: 'title', class: "post-title body-small-regular text-dark-300 dark:text-light-600")
+
+    .flex.flex-col.space-y-2
+      %span.body-small-regular.text-dark-300.dark:text-light-600 Publish date
+      -# = f.date_field(:published_at, DateTime.now.strftime('%F'), class: "body-small-regular text-dark-300 dark:text-light-600")
+      = f.date_field(:published_at,  class: "body-small-regular text-dark-300 dark:text-light-600")
+
+    .flex.flex-col.space-y-2
+      %span.body-small-regular.text-dark-300.dark:text-light-600 Excerpt
+      = f.text_area(:excerpt, class: "body-small-regular text-dark-300 dark:text-light-600")
+
+    .flex.flex-col.space-y-2
+      %span.body-small-regular.text-dark-300.dark:text-light-600 Tags
+      -# = f.select(:visibility_level, raw("<option>Tech</option><option>Life</option>"), include_blank: true, class: "body-small-regular text-dark-300 dark:text-light-600")
+
+    .flex.flex-col.space-y-2
+      %span.body-small-regular.text-dark-300.dark:text-light-600 Post access
+      = f.select(:visibility_level, options_for_select(Post.visibility_levels.map{|k,v| [k,k]}, @post.visibility_level), class: "body-small-regular text-dark-300 dark:text-light-600")
+
+    - if @post
+      = link_to(@post, method: :delete, data: { turbo_method: :delete }, class: 'inline-flex space-x-2 items-center') do
+        = image_tag('icons/delete')
+        %span{class: "body-small-regular text-red-600 dark:text-red-500"} Delete post

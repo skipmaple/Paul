@@ -1,7 +1,21 @@
-%li
-  = gravatar_for user, size: 50
-  = link_to user.name, user
-  - if current_user&.admin? && !current_user?(user)
-    |
-    = link_to t(:delete), user, method: :delete,
-                              data: { confirm: t(:are_you_sure) }
+-#%li
+-#  = gravatar_for user, size: 50
+-#  = link_to user.name, user
+-#  - if current_user&.admin? && !current_user?(user)
+-#    |
+-#    = link_to t(:delete), user, method: :delete,
+-#                              data: { confirm: t(:are_you_sure) }
+
+%li{ class: "py-2.5" }
+  .flex.flex-col.space-y-2
+    .flex.flex-row.items-center
+      -#  头像
+      = link_to gravatar_for(user, size: 50), user
+      .flex.w-full.pl-4.justify-between
+        -#  名字
+        = link_to(user.name, user, class: 'heading-h6-bold text-dark-400 dark:text-light-400')
+
+        -#  更多
+        - if current_user&.admin? && !current_user?(user)
+          = link_to t(:delete), user, method: :delete, class: "text-dark-300 dark:text-light-600",
+                                    data: { confirm: t(:are_you_sure) }

@@ -176,4 +176,9 @@
         text-transform: capitalize;
     }
 
+    .bg-sign-in {
+        @apply bg-left-top bg-no-repeat bg-cover;
+        background-image: url('bg/bg_sign_in.jpg');
+    }
+
 }

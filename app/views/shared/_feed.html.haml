@@ -1,5 +1,5 @@
 = render 'shared/micropost_form'
 - if @feed_items.any?
-  %ol.list-none.p-0
+  %ol.divide-y{ class: 'divide-light-200 dark:divide-dark-400' }
     = render @feed_items
   = paginate @feed_items

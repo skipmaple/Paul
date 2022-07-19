@@ -1,16 +1,18 @@
 - provide(:title, @user.name)
 
-.container.flex.flex-row.mx-auto.px-6.space-x-4
-  %aside{:class => "basis-1/4"}
-    %section
-      = render 'shared/user_info'
-    %section.mt-4
-      = render 'shared/stats'
+.container.mx-auto.py-8
+  .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
 
-  .div{:class => "basis-2/4"}
-    = render 'follow_form' if logged_in?
-    - if @user.microposts.any?
-      %h3= "#{t(:microposts)} (#{@user.microposts.count})"
-      %ol.list-none.p-0
-        = render @microposts
-      = paginate @microposts
+    %aside{:class => "basis-2/3 space-y-8"}
+      - if @user.microposts.any?
+        %h4{ :class => "text-dark-400 dark:text-light-400" }
+          = "#{t(:microposts)} (#{@user.microposts.count})"
+        %ol.divide-y{ class: 'divide-light-200 dark:divide-dark-400' }
+          = render @microposts
+        = paginate @microposts
+
+    %aside{:class => "basis-1/3"}
+      %section.mt-24
+        = render 'shared/user_info'
+      %section.mt-4
+        = render 'shared/stats'

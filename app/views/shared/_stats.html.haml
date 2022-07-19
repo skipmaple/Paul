@@ -1,14 +1,10 @@
 - @user ||= current_user
-.stats
-  %a{ href: "#{following_user_path(@user)}"}
-    %strong.stat#following
+.flex.space-x-2.mt-2{class: 'body-medium-regular text-dark-300 dark:text-light-600'}
+  %a{ href: "#{following_user_path(@user)}" }
+    %strong.body-medium-regular
       = @user.following.count
     = t(:following)
   %a{ href: "#{followers_user_path(@user)}"}
-    %strong.stat#followers
+    %strong.body-medium-regular
       = @user.followers.count
     = t(:followers)
-  %a{ href: "#{user_path(@user)}"}
-    %strong.stat#my_profile
-      = @user.microposts.count
-    = t(:micropost, count: @user.microposts.count)

@@ -12,9 +12,8 @@ User.create!(
     email: "skipmaple@gmail.com",
     password: "mypassword",
     password_confirmation: "mypassword",
+    confirmed_at: Time.zone.now,
     admin: true,
-    activated: true,
-    activated_at: Time.zone.now
 )
 
 User.create!(
@@ -22,9 +21,8 @@ User.create!(
     email: "example@gmail.com",
     password: "foobar",
     password_confirmation: "foobar",
+    confirmed_at: Time.zone.now,
     admin: true,
-    activated: true,
-    activated_at: Time.zone.now
 )
 
 email_list = []
@@ -44,8 +42,7 @@ email_list = []
       email: email,
       password: password,
       password_confirmation: password,
-      activated: true,
-      activated_at: Time.zone.now
+      confirmed_at: Time.zone.now
   )
 end
 

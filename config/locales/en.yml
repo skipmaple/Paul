@@ -16,6 +16,7 @@ en:
 
   # email
   email: email
+  Email: Email
   title_upcase: ONETAIL
   email_hi: Hi
   activate_email_content: "Welcome to Kellin! Click on the link below to activate your account:"
@@ -40,15 +41,23 @@ which I can easily find and refer to later."
 relevant, or interesting."
 
   # sign_up
-  user_name: Name
+  user_name: Username
   user_email: Email
   user_password: Password
   user_password_confirm: Confirmation
   sign_up: Sign up
   create_my_account: Create my account
+  "Didn't receive confirmation instructions?": Didn't receive confirmation instructions?
+  "Didn't receive unlock instructions?": Didn't receive unlock instructions?
+  resend_confirmation_instructions: Resend Confirmation
+  resend_confirmation: Resend
+  "Forgot your password?": Forgot your password?
+  "Send me reset password instructions": "Send me reset password instructions"
+  "Resend unlock instructions": "Resend unlock instructions"
 
   # edit_user
   edit_user: Edit usr
+  user_settings: User settings
   update_your_profile: Update your profile
   save_changes: Save changes
   change: change
@@ -66,7 +75,7 @@ relevant, or interesting."
   forgot_password: Forgot password
   remember_me: Remember me
   new_user?: New user?
-  sign_up_now: Sign up now!
+  sign_up_now: Sign up now
   post_hint: What's happening?
   over_max_file_size_alert: Maximum file size is 5MB. Please choose a smaller file.
   following: following
@@ -81,3 +90,19 @@ relevant, or interesting."
   all_users: All users
   language: Language
   are_you_sure: Are you sure?
+
+  Profile: "Profile"
+  Account: "Account"
+  Preferences: "Preferences"
+  Github: "Github"
+  location: "Location"
+  github_url: "Github URL"
+  description: "Description"
+  current_password: "Current password"
+  cancel_my_account: "Cancel my account"
+  Unhappy?: "Unhappy?"
+  (leave blank if you don't want to change it): "(leave blank if you don't want to change it)"
+  (we need your current password to confirm your changes): "(we need your current password to confirm your changes)"
+  posts: "Posts"
+  public: "Public"
+  private: "Private"

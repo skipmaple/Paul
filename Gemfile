@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.2.3'
+gem 'rails', '~> 7.0.3.1'
 # Use sqlite3 as the database for Active Record
 # gem 'mysql2', '~> 0.5.3'
 gem 'pg', '~> 1.3'
@@ -113,3 +113,13 @@ gem 'tailwindcss-rails', '~> 2.0'
 
 gem "sassc", "~> 2.4"
 
+
+gem "devise", "~> 4.8"
+
+gem "omniauth-github", "~> 2.0"
+
+gem "redcarpet", "~> 3.5"
+
+gem "evil_icons", "~> 1.10"
+
+gem "friendly_id", "~> 5.4"

@@ -1,23 +1,22 @@
 - provide(:title, @title)
-.row
-  %aside.col-md-4
-    %section.user_info
-      = gravatar_for @user
-      %h1= @user.name
-      -#%span= link_to "view my profile", @user
-      -#%span
-      -#  %b Microposts:
-      -#  = @user.microposts.count
-    %section.stats
-      = render 'shared/stats'
-      - if @users.any?
-        .user_avatars
-          -@users.each do |user|
-            = link_to gravatar_for(user, size: 30), user
 
-  .col-md-8
-    %h3= @title
-    - if @users.any?
-      %ul.users.follow
-        = render @users
-      = paginate @users
+.container.mx-auto.py-8
+  .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
+    .div{:class => "basis-2/3 space-y-8"}
+      %h4{ :class => "text-dark-400 dark:text-light-400" }= @title
+      - if @users.any?
+        %ul.divide-y{ class: 'divide-light-200 dark:divide-dark-400' }
+          = render @users
+        = paginate @users
+
+    %aside{:class => "basis-1/3 space-y-4"}
+      %section.mt-24
+        = render 'shared/user_info'
+      %section.flex.flex-col.space-y-2
+        = render 'shared/stats'
+        - if @users.any?
+          .flex.mb-5.-space-x-4
+            - @users.first(5).each do |user|
+              = link_to gravatar_for(user, size: 40, class: 'w-10 h-10 border-2 border-light-100 rounded-full dark:border-dark-600'), user
+            - if @users.size > 5
+              = link_to( "+#{ @users.count - 5 }", '#', class: 'flex items-center justify-center w-10 h-10 body-small-regular text-light-100 bg-dark-500 border-2 border-light-100 rounded-full hover:bg-dark-600 dark:border-dark-600')

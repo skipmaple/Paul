@@ -1,4 +1,7 @@
 class Micropost < ApplicationRecord
+  extend FriendlyId
+  friendly_id :uuid, use: :slugged
+
   belongs_to :user
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 1000 }
@@ -13,5 +16,9 @@ class Micropost < ApplicationRecord
     if picture.size > 5.megabytes
       errors.add(:picture, t(:over_max_file_size_alert))
     end
+  end
+
+  def uuid
+    [Digest::MD5.hexdigest([content, id].join)]
   end
 end

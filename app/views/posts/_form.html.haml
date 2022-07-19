@@ -1,0 +1,29 @@
+= form_for @post do |f|
+  - if @post.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+      %ul
+        - @post.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :excerpt
+    = f.text_field :excerpt
+  .field
+    = f.label :feature_image
+    = f.text_field :feature_image
+  .field{'data-controller' => 'editor'}
+    = f.label :body
+    = f.text_area :body, id: 'content-editor', 'data-action' => 'input->editor#handleInput', 'data-editor-target' => 'editor', 'class' => 'hidden'
+  .field
+    .flex.items-center.mb-4
+      = f.radio_button :visibility_level, :public, checked: true, class: 'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+      = f.label :visibility_level, t(:public), class: 'ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+    .flex.items-center.mb-4
+      = f.radio_button :visibility_level, :private, class: 'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+      = f.label :visibility_level, t(:private), class: 'ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+
+  .actions
+    = f.submit 'Save'

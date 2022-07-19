@@ -1,0 +1,38 @@
+-provide(:title, @post.title)
+
+.container.mx-auto.py-8
+  .flex.mx-5.p-10.space-x-12.justify-center.background-clip-content.bg-blur-light.dark:bg-blur-dark
+    .w-full.overflow-x-hidden.z-0.relative
+      .flex.p-20{'data-controller' => 'post'}
+        .post-markdown-view{'data-post-target' => 'postMarkdownView'}
+        .post-plain-text.hidden{'data-post-target' => 'postPlainText'}
+          = @post.body
+
+
+-#%p
+-#  %b Title:
+-#  = @post.title
+-#%p
+-#  %b Excerpt:
+-#  = @post.excerpt
+-#%p
+-#  %b Feature image:
+-#  = @post.feature_image
+-#%p
+-#  %b Body:
+-#  = markdown(@post.body)
+-#%p
+-#  %b Visibility level:
+-#  = @post.visibility_level
+-#%p
+-#  %b Reading time:
+-#  = @post.reading_time
+-#%p
+-#  %b Published at:
+-#  = @post.published_at
+-#
+-#= link_to 'Edit', edit_post_path(@post)
+-#\|
+-#= link_to 'Back', posts_path
+
+
