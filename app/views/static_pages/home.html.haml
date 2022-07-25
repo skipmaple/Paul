@@ -1,21 +1,20 @@
 -provide(:title, t(:home))
 - if user_signed_in?
-  .container.mx-auto.py-8
-    .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
-      .div{:class => "basis-2/3"}
-        %h4{ :class => "text-dark-400 dark:text-light-400" }= t(:micropost_feed)
-        = render 'shared/feed'
-      %aside{:class => "basis-1/3 space-y-4"}
-        %section.mt-24
-          = render 'shared/user_info'
-        %section
-          = render 'shared/stats'
-        %section
-          = render 'shared/more_info'
-        -#%section.stats
-        -#  = render 'shared/stats'
-        -#%section.micropost_form
-        -#  = render 'shared/micropost_form'
+  .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
+    .div{:class => "basis-2/3"}
+      %h4{ :class => "text-dark-400 dark:text-light-400" }= t(:micropost_feed)
+      = render 'shared/feed'
+    %aside{:class => "basis-1/3 space-y-4"}
+      %section.mt-24
+        = render 'shared/user_info'
+      %section
+        = render 'shared/stats'
+      %section
+        = render 'shared/more_info'
+      -#%section.stats
+      -#  = render 'shared/stats'
+      -#%section.micropost_form
+      -#  = render 'shared/micropost_form'
 - else
   .bg-not-login
   .bg-strip-patterns.w-full.h-screen.bg-local.bg-clip-padding.-z-10

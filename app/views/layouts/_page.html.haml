@@ -1,0 +1,13 @@
+-# = render "layouts/broadcast"
+%div#page-container.min-h-screen.relative
+  %main.content-wrapper.pb-56{ id: "content-body" }
+    = render 'layouts/header'
+    %div.mb-10.relative{ class: "#{(container_class unless @no_container)} #{page_with_sidebar_class} #{(bg_blur_wrap_class if @bg_blur_wrap)}" }
+      - if defined?(nav) && nav
+        = render "layouts/nav/sidebar/#{nav}"
+      = render "layouts/flash"
+      = yield :before_content
+      = yield
+
+  = yield :after_content
+  = render 'layouts/footer'

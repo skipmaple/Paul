@@ -11,6 +11,41 @@ module ApplicationHelper
     end
   end
 
+  # Check if a particular controller is the current one
+  #
+  # args - One or more controller names to check (using path notation when inside namespaces)
+  #
+  # Examples
+  #
+  #   # On TreeController
+  #   current_controller?(:tree)           # => true
+  #   current_controller?(:commits)        # => false
+  #   current_controller?(:commits, :tree) # => true
+  #
+  #   # On Admin::ApplicationController
+  #   current_controller?(:application)         # => true
+  #   current_controller?('admin/application')  # => true
+  #   current_controller?('gitlab/application') # => false
+  def current_controller?(*args)
+    args.any? do |v|
+      Paul::Utils.safe_downcase!(v.to_s) == controller.controller_name || Paul::Utils.safe_downcase!(v.to_s) == controller.controller_path
+    end
+  end
+
+  # Check if a particular action is the current one
+  #
+  # args - One or more action names to check
+  #
+  # Examples
+  #
+  #   # On Projects#new
+  #   current_action?(:new)           # => true
+  #   current_action?(:create)        # => false
+  #   current_action?(:new, :create)  # => true
+  def current_action?(*args)
+    args.any? { |v| Paul::Utils.safe_downcase!(v.to_s) == action_name }
+  end
+
   def markdown(text)
     options = {
       hard_wrap: true,
@@ -88,5 +123,14 @@ module ApplicationHelper
   def large_button(text, path, options={})
     options[:class] = 'py-3.5 px-8 ' + (options[:class] || '')
     ot_button(text, path, options, 'strong', { class: 'heading-h5-bold' })
+  end
+
+  def collapsed_sidebar?
+    cookies["sidebar_collapsed"] == "true"
+  end
+
+  def bg_blur_wrap_class
+    css_class = ["bg-blur-light-wrap dark:bg-blur-dark-wrap"]
+    css_class.join(' ')
   end
 end

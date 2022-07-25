@@ -182,3 +182,68 @@
     }
 
 }
+
+/* header height => 112px */
+
+@layer components {
+    .nav-sidebar {
+        /*@apply absolute bottom-0 left-0 z-50 w-64 top-28 bg-gray-50 dark:bg-gray-800;*/
+        @apply absolute bottom-0 left-0 z-50 top-0 w-64 bg-gray-50 dark:bg-gray-800;
+        transition: width 0.3s, left 0.3s;
+        transform: translate3d(0, 0, 0);
+
+        /*li {*/
+        /*    &.active {*/
+        /*        > a {*/
+        /*            font-weight: bold;*/
+        /*        }*/
+
+        /*        border-left-width: 4px;*/
+        /*        border-color: #2084FF;*/
+        /*    }*/
+        /*}*/
+    }
+
+    .content-wrapper {
+        @apply w-full;
+    }
+
+    .page-with-contextual-sidebar {
+        /*@apply pl-64;*/
+        padding-left: 256px !important;
+        transition: padding-left 0.3s;
+    }
+
+    .container-fluid {
+        @apply container mx-auto;
+    }
+
+    .bg-blur-light-wrap {
+        @apply py-10 px-[60px];
+        background: rgba(242, 243, 246, 0.4);
+        /* Color/Light/200 */
+
+        border: 1px solid #F2F3F6;
+        backdrop-filter: blur(24px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        border-radius: 5px;
+    }
+
+    .dark .dark\:bg-blur-dark-wrap{
+        @apply py-10 px-[60px];
+        background: rgba(122, 122, 138, 0.2);
+        /* Color/Dark/300 */
+
+        border: 1px solid #545569;
+        backdrop-filter: blur(24px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        border-radius: 5px;
+    }
+
+
+    /*.content-wrapper-margin {*/
+    /*    @apply mt-28;*/
+    /*}*/
+}

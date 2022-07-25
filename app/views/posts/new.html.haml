@@ -2,6 +2,8 @@
 - content_for(:no_body_bg, true)
 - content_for(:no_app_layout, true)
 
+- @no_container = true
+
 = form_for @post do |f|
   .flex.flex-row{ 'data-controller': 'post-setting-toggle' }
     %section.main-body.relative.w-full{'data-post-setting-toggle-target': 'mainBody'}
