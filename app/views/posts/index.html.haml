@@ -1,16 +1,15 @@
 -provide(:title, t(:posts))
 
-.container.mx-auto.py-8
-  .flex.mx-5.p-10.space-x-12.justify-center.background-clip-content.bg-blur-light.dark:bg-blur-dark.divide-x{ class: 'divide-light-200 dark:divide-dark-400' }
-    %section{:class => "basis-2/3"}
-      %h4{ :class => "mb-2 text-center text-dark-400 dark:text-light-400" }= t(:posts)
-      - if @posts.any?
-        %ol.divide-y{ class: 'divide-light-200 dark:divide-dark-400' }
-          = render @posts
-        = paginate @posts
-      - else
-        %span Empty
+.flex.mx-5.p-10.space-x-12.justify-center.background-clip-content.bg-blur-light.dark:bg-blur-dark.divide-x{ class: 'divide-light-200 dark:divide-dark-400' }
+  %section{:class => "basis-2/3"}
+    %h4{ :class => "mb-2 text-center text-dark-400 dark:text-light-400" }= t(:posts)
+    - if @posts.any?
+      %ol.divide-y{ class: 'divide-light-200 dark:divide-dark-400' }
+        = render @posts
+      = paginate @posts
+    - else
+      %span Empty
 
-    %section.px-12{:class => "basis-1/3"}
-      = micro_button('New Post', new_post_path, class: 'inline-flex')
+  %section.px-12{:class => "basis-1/3"}
+    = micro_button('New Post', new_post_path, class: 'inline-flex')
 

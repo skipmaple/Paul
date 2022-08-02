@@ -1,0 +1,31 @@
+- provide(:title, t(:edit_user))
+- provide(:button_text, t(:save_changes))
+
+= form_for(@user) do |f|
+  = render 'shared/error_messages', object: f.object
+  .flex.flex-col.space-y-6
+    %div
+      = f.label :name, t(:user_name), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
+      = f.text_field :name, placeholder: "Username", class: 'border border-light-300 rounded bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
+
+    -#%div
+    -#  = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
+    -#  = f.email_field :email, placeholder: "Email Address", class: 'border border-light-300 rounded bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
+
+    %div
+      = f.label :location, t(:location), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
+      = f.text_field :location, class: 'border border-light-300 rounded bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-50'
+
+    %div
+      = f.label :github_url, t(:github_url), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
+      .flex
+        %span.inline-flex.items-center.px-3.border.border-r-0.border-light-300.rounded-l.bg-light-300.dark:bg-dark-300.dark:border-dark-300.text-dark-300.dark:text-light-400
+          https://github.com/
+        = f.text_field :github_url, class: 'rounded-none rounded-r bg-light-transparent_300 dark:bg-dark-transparent_300 border border-light-300  dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-ful p-2.5 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-50'
+
+    %div
+      = f.label :description, t(:description), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
+      = f.text_area :description, class: 'border border-light-300 rounded bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-50'
+
+    %div.self-center
+      = f.submit yield(:button_text), class: "text-light-200 bg-primary-600 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:bg-blue-600 heading-h6-bold rounded max-w-md w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:text-light-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

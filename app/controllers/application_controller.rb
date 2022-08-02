@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  around_action :switch_language
+  around_action :set_locale
 
   def not_found
     render_404
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def switch_language(&action)
+  def set_locale(&action)
     locale = current_user&.language || I18n.default_locale
     I18n.with_locale(locale, &action)
   end

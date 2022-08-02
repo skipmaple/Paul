@@ -1,6 +1,5 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
-import "controllers"
+import "./controllers"
 import "flowbite"
 
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC

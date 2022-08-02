@@ -1,3 +1,6 @@
 web: bin/rails server -p 3030
 
-css: bin/rails tailwindcss:watch
+js: yarn build --watch
+css: yarn build:css --watch
+
+# frontend: yarn dev --watch

@@ -1,12 +1,11 @@
 -provide(:title, @post.title)
 
-.container.mx-auto.py-8
-  .flex.mx-5.p-10.space-x-12.justify-center.background-clip-content.bg-blur-light.dark:bg-blur-dark
-    .w-full.overflow-x-hidden.z-0.relative
-      .flex.p-20{'data-controller' => 'post'}
-        .post-markdown-view{'data-post-target' => 'postMarkdownView'}
-        .post-plain-text.hidden{'data-post-target' => 'postPlainText'}
-          = @post.body
+.flex.mx-5.p-10.space-x-12.justify-center.background-clip-content.bg-blur-light.dark:bg-blur-dark
+  .w-full.overflow-x-hidden.z-0.relative
+    .flex.p-20{'data-controller' => 'post'}
+      .post-markdown-view{'data-post-target' => 'postMarkdownView'}
+      .post-plain-text.hidden{'data-post-target' => 'postPlainText'}
+        = @post.body
 
 
 -#%p

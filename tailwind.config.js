@@ -1,6 +1,9 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
+// https://dev.to/vinbak/adding-tailwindcss-to-your-rails-project-with-postcss-7-compatibility-2o81
+
 module.exports = {
+    mode: 'jit',
     content: [
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js',
@@ -101,9 +104,6 @@ module.exports = {
                     transparent_200: 'rgba(242, 243, 246, 0.4)',
                     gradient: 'linear-gradient(268.13deg, #FFFFFF 7.44%, rgba(255, 255, 255, 0.2) 115.42%)',
                 },
-            },
-            fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
         },
     },

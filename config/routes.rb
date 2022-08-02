@@ -38,5 +38,9 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   resources :posts
 
+  scope path: '-' do
+    draw :settings
+  end
+
   get '*unmatched_route', to: 'application#route_not_found'
 end

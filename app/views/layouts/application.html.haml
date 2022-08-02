@@ -1,41 +1,10 @@
+- body_classes = %w[bg-local bg-no-repeat bg-light-100 dark:bg-dark-600]
+- body_classes << 'bg-body' unless content_for?(:no_body_bg)
+
 !!!5
-%html
-  %head
-    %title= full_title(yield(:title))
-    %meta{ "name": "viewport", "content": "width=device-width,initial-scale=1" }
-    -# https://turbo.hotwired.dev/handbook/drive#ensuring-specific-pages-trigger-a-full-reload
-    -#%meta{ "name": "turbo-visit-control", "content": "reload" }
-    = csrf_meta_tags
-    = csp_meta_tag
+%html{ lang: I18n.locale }
+  = render 'layouts/head'
 
-    = stylesheet_link_tag "tailwind","inter-font", "data-turbo-track": 'reload'
-    = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = javascript_importmap_tags
-
-    = render 'application/favicon'
-    = render 'layouts/shim'
-
-  - if content_for?(:no_body_bg)
-    %body.bg-local.bg-no-repeat{:class => "flex flex-col min-h-screen bg-light-100 dark:bg-dark-600"}
-  - else
-    %body.bg-local.bg-no-repeat.bg-body{:class => "flex flex-col min-h-screen bg-light-100 dark:bg-dark-600"}
-
-  - unless content_for?(:no_app_layout)
-    .flex.flex-col
-      = render 'layouts/header'
-      = render 'layouts/flash'
-    %div.app-content-container.h-auto
-      = yield
-    = render 'layouts/footer'
-  - else
-    = render 'layouts/flash'
-    = yield
+  %body{ class: body_classes }
+    = render 'layouts/page', sidebar: sidebar, nav: nav
   -# = debug(params) if Rails.env.development?
-
--#:javascript
--#  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
--#  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
--#      document.documentElement.classList.add('dark');
--#  } else {
--#      document.documentElement.classList.remove('dark')
--#  }

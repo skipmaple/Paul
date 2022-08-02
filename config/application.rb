@@ -34,5 +34,7 @@ module Paul
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    require_dependency Rails.root.join('lib/paul/utils')
   end
 end
