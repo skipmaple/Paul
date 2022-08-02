@@ -18,11 +18,11 @@
             %li
               %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-300 dark:text-light-300 hover:text-dark-400 hover:underline", :href => about_path }
                 =t(:about)
-            %li{"data-controller" => "theme-toggle"}
+            %li{"data-controller" => "toggle"}
               / Dark mode switcher
-              %button#theme-toggle{ "data-action" => "click->theme-toggle#handleToggleTheme", :class=> "flex justify-between items-center w-full rounded-lg text-sm p-2.5 border-b border-light-300 hover:bg-dark-500 md:border-0 hover:text-light-100 text-dark-300 dark:text-light-300 dark:hover:bg-dark-100"}
-                = image_tag("icon_theme_toggle_dark.svg", class: "hidden", id: "theme-toggle-dark-icon", "data-theme-toggle-target": "toggleDarkIcon")
-                = image_tag("icon_theme_toggle_light.svg", class: "hidden", id: "theme-toggle-light-icon", "data-theme-toggle-target": "toggleLightIcon")
+              %button#theme-toggle{ "data-action" => "click->toggle#handleToggleTheme", :class=> "flex justify-between items-center w-full rounded-lg text-sm p-2.5 border-b border-light-300 hover:bg-dark-500 md:border-0 hover:text-light-100 text-dark-300 dark:text-light-300 dark:hover:bg-dark-100"}
+                = image_tag("icon_theme_toggle_dark.svg", class: "", id: "theme-toggle-dark-icon", "data-toggle-target": "toggleDarkIcon")
+                = image_tag("icon_theme_toggle_light.svg", class: "hidden", id: "theme-toggle-light-icon", "data-toggle-target": "toggleLightIcon")
               / Dark mode switcher end
               %button{"class" => "md:hidden text-dark-300 hover:bg-dark-400 focus:outline-none focus:ring-2 focus:ring-gray-200 rounded-lg.text-sm p-2 inline-flex items-center dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600", "aria-controls" => "mobile-menu-4", "aria-expanded" => "false", "data-collapse-toggle" => "mobile-menu-4", :type => "button"}
                 %span.sr-only Open main menu
@@ -32,13 +32,12 @@
                   %path{"clip-rule" => "evenodd", :d => "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
 
             - if user_signed_in?
-              %li{ :class => "flex flex-col items-center" }
-                %button{:class => "flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600","aria-expanded" => "false", "data-dropdown-toggle" => "dropdown", :type => "button"}
+              %li{ :class => "flex flex-col items-center relative", 'data-controller' => 'toggle' }
+                %button{:class => "flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600","aria-expanded" => "false", :type => "button", 'data-action' => 'click->toggle#handleToggleUserMenu'}
                   %span.sr-only Open user menu
-                  -#%img.w-8.h-8.rounded-full{:alt => "user photo", :src => "/docs/images/people/profile-picture-3.jpg"}/
                   = gravatar_for current_user, class: "w-10 h-10 rounded-full"
                 / Dropdown menu
-                #dropdown{:class => "hidden z-50 my-4 text-base list-none bg-light-100 rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"}
+                %div{:class => "hidden absolute top-12 z-50 text-base list-none bg-light-100 rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600", "data-toggle-target": "userMenuDropdown"}
                   .py-3.px-4
                     %span.block.text-sm.text-gray-900.dark:text-white
                       = current_user.name

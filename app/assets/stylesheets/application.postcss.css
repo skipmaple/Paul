@@ -8,75 +8,63 @@
 @tailwind utilities;
 
 @layer base {
-    h1 {
-        @apply font-heading;
+    html {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Poppins", sans-serif;
         font-style: normal;
         font-weight: 700;
+        text-transform: capitalize;
+        color: #000000;
+    }
+
+    h1 {
+        @apply font-heading;
         font-size: 49px;
         line-height: 64px;
         /* identical to box height, or 131% */
-        text-transform: capitalize;
-        color: #000000;
     }
 
     h2 {
         @apply font-heading;
         /* Heading/H2/Bold */
-        font-style: normal;
-        font-weight: 700;
-        font-size: 39.06px;
+        font-size: 39px;
         line-height: 56px;
         /* identical to box height, or 143% */
-        text-transform: capitalize;
-        color: #000000;
     }
 
     h3 {
         @apply font-heading;
         /* Heading/H3/Bold */
-        font-style: normal;
-        font-weight: 700;
-        font-size: 31.25px;
+        font-size: 31px;
         line-height: 48px;
         /* identical to box height, or 154% */
-        text-transform: capitalize;
-        color: #000000;
     }
 
     h4 {
         @apply font-heading;
         /* Heading/H4/Bold */
-        font-style: normal;
-        font-weight: 700;
         font-size: 25px;
         line-height: 40px;
         /* identical to box height, or 160% */
-        text-transform: capitalize;
-        color: #000000;
     }
 
     h5 {
         @apply font-heading;
         /* Heading/H5/Bold */
-        font-style: normal;
-        font-weight: 700;
         font-size: 20px;
         line-height: 32px;
         /* identical to box height, or 160% */
-        text-transform: capitalize;
-        color: #000000;
     }
 
     h6 {
         @apply font-heading;
         /* Heading/H6/Bold */
-        font-style: normal;
-        font-weight: 700;
         font-size: 16px;
         line-height: 24px;
         /* identical to box height, or 150% */
-        text-transform: capitalize;
-        color: #000000;
     }
 }
 
@@ -230,7 +218,7 @@
         border-radius: 5px;
     }
 
-    .dark .dark\:bg-blur-dark-wrap{
+    .dark .dark\:bg-blur-dark-wrap {
         @apply py-10 px-[60px];
         background: rgba(122, 122, 138, 0.2);
         /* Color/Dark/300 */
@@ -246,4 +234,95 @@
     /*.content-wrapper-margin {*/
     /*    @apply mt-28;*/
     /*}*/
+}
+
+.bg-body {
+    background-image: url('bg/bg_body.png');
+    background-size: 100% auto;
+    background-position: left top 80px;
+}
+
+.bg-sign-in {
+    background-image: url('bg/bg_sign_in.jpg');
+}
+
+.bg-not-login {
+    background: linear-gradient(157.42deg, rgba(240, 246, 255, 0.2) 4.94%, rgba(240, 246, 255, 0) 68.33%) no-repeat;
+    background-size: 100vw 100vh, 100vw 100vh;
+}
+
+.bg-strip-patterns {
+    background-image: url('bg/bg_strip_patterns.svg');
+    background-size: 57.6vw 87.8vh;
+    background-position: top 0 left 0;
+    background-repeat: no-repeat;
+    position: absolute;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    top: 0;
+    left: 0;
+}
+
+.bg-3d-shapes {
+    background-image: url('bg/bg_3d_shapes.svg');
+    background-size: 47.14vw 79.66vh;
+    background-position: bottom 54px right 32px;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.dark .dark\:bg-3d-shapes-dark {
+    background-image: url('bg/bg_3d_shapes_dark.svg');
+    background-size: 47.14vw 79.66vh;
+    background-position: bottom 54px right 32px;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.bg-blur-light {
+    background: rgba(242, 243, 246, 0.4);
+    /* Color/Light/200 */
+
+    border: 1px solid #F2F3F6;
+    backdrop-filter: blur(24px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 5px;
+}
+
+.dark .dark\:bg-blur-dark {
+    background: rgba(122, 122, 138, 0.2);
+    /* Color/Dark/300 */
+
+    border: 1px solid #545569;
+    backdrop-filter: blur(24px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 5px;
+}
+
+input:checked ~ .dot {
+    transform: translateX(133%);
+    background-image: url('national_flag/united-kingdom.png');
+}
+
+input:checked ~ .line {
+    background-color: #C8102E;
+    border-color: #012169;
+}
+
+input:checked ~ .show-zh-text {
+    display: none;
+}
+
+input:checked ~ .show-en-text {
+    display: block;
+}
+
+.bg-china-flag {
+    background-image: url('national_flag/china.png');
 }

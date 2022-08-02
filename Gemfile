@@ -88,7 +88,6 @@ gem 'rails-i18n', '~> 7.0', '>= 7.0.3'
 
 gem 'psych', '~> 3.3.2'
 
-gem 'importmap-rails', '~> 1.0'
 
 # Pagination
 gem 'kaminari', '~> 1.2'
@@ -122,3 +121,7 @@ gem "redcarpet", "~> 3.5"
 gem "evil_icons", "~> 1.10"
 
 gem "friendly_id", "~> 5.4"
+
+gem "jsbundling-rails", "~> 1.0"
+
+gem "foreman", "~> 0.87.2"
