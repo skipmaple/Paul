@@ -65,7 +65,7 @@ zh-CN:
 
   # common
   submit: 提交
-  post: 发布
+  post: 嘟嘟!
   edit: 编辑
   delete: 删除
   confirm: 确定要删除吗?
@@ -83,9 +83,9 @@ zh-CN:
   followers: 粉丝
   follow: 关注
   unfollow: 取消关注
-  micropost: 短讯
-  microposts: 短讯
-  micropost_feed: 短讯墙
+  micropost: 嘟文
+  microposts: 嘟文
+  micropost_feed: 嘟文
   all_users: 全部用户
   language: 语言
   are_you_sure: 确定要删除吗?
@@ -113,4 +113,9 @@ zh-CN:
   posts: "博客"
   public: "公开"
   private: "私有"
+  preferences: "偏好设置"
+  site_theme: "站点主题"
+  public_profile: "公开信息"
+  light: "明"
+  dark: "暗"
 

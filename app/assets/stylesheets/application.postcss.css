@@ -3,6 +3,9 @@
 /* body font */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* switch language use */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,11 +16,11 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
+        @apply text-dark-400 dark:text-light-400;
         font-family: "Poppins", sans-serif;
         font-style: normal;
         font-weight: 700;
         text-transform: capitalize;
-        color: #000000;
     }
 
     h1 {
@@ -69,6 +72,10 @@
 }
 
 @layer utilities {
+    .body-small-regular, .body-small-bold, .body-medium-regular, .body-medium-bold, .body-small-regular, .body-small-bold {
+        @apply text-dark-300 dark:text-light-600;
+    }
+
     .body-small-regular {
         /* Body/Small/Regular */
         @apply font-sans text-sm font-normal;
@@ -97,6 +104,10 @@
     .body-large-bold {
         /* Body/Large/Bold */
         @apply font-sans text-lg font-bold;
+    }
+
+    .heading-h1-bold, .heading-h2-bold, .heading-h3-bold, .heading-h4-bold, .heading-h5-bold, .heading-h6-bold {
+        @apply text-dark-400 dark:text-light-400;
     }
 
     .heading-h1-bold {
@@ -175,21 +186,17 @@
 
 @layer components {
     .nav-sidebar {
-        /*@apply absolute bottom-0 left-0 z-50 w-64 top-28 bg-gray-50 dark:bg-gray-800;*/
-        @apply absolute bottom-0 left-0 z-50 top-0 w-64 bg-gray-50 dark:bg-gray-800;
+        @apply absolute bottom-0 left-0 z-50 top-0 w-64;
         transition: width 0.3s, left 0.3s;
         transform: translate3d(0, 0, 0);
+    }
 
-        /*li {*/
-        /*    &.active {*/
-        /*        > a {*/
-        /*            font-weight: bold;*/
-        /*        }*/
+    .nav-sidebar li {
+        white-space: nowrap;
+    }
 
-        /*        border-left-width: 4px;*/
-        /*        border-color: #2084FF;*/
-        /*    }*/
-        /*}*/
+    .nav-sidebar li.active a {
+        @apply body-medium-bold
     }
 
     .content-wrapper {
@@ -230,10 +237,55 @@
         border-radius: 5px;
     }
 
+    .bg-blur-light {
+        @apply border border-solid border-light-200;
+        background: rgba(242, 243, 246, 0.4);
+        /* Color/Light/200 */
 
-    /*.content-wrapper-margin {*/
-    /*    @apply mt-28;*/
-    /*}*/
+        /*border: 1px solid #F2F3F6;*/
+        backdrop-filter: blur(24px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        /*border-radius: 5px;*/
+    }
+
+    .dark .dark\:bg-blur-dark {
+        @apply border border-solid border-dark-300;
+        background: rgba(122, 122, 138, 0.2);
+        /* Color/Dark/300 */
+
+        /*border: 1px solid #545569;*/
+        backdrop-filter: blur(24px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        /*border-radius: 5px;*/
+    }
+
+    /* One Tail button css style */
+    .micro-btn, .sm-btn, .base-btn, .lg-btn {
+        @apply inline-flex justify-center items-center gap-2 rounded bg-primary-600 hover:bg-primary-500 text-center text-primary-100 hover:text-light-100 focus:text-primary-200 font-sans font-bold cursor-pointer focus:outline-none;
+    }
+
+    .micro_btn {
+        @apply py-2.5 px-3 text-sm;
+    }
+
+    .sm-btn {
+        @apply py-3 px-6 text-sm;
+    }
+
+    .base-btn {
+        @apply py-3 px-8 text-base;
+    }
+
+    .lg-btn {
+        @apply py-3.5 px-8 text-lg;
+    }
+
+    .bg-devise {
+        @apply bg-cover bg-no-repeat bg-right-bottom;
+        background-image: url('bg/bg_sign_in.jpg');
+    }
 }
 
 .bg-body {
@@ -283,46 +335,87 @@
     bottom: 0;
 }
 
-.bg-blur-light {
-    background: rgba(242, 243, 246, 0.4);
-    /* Color/Light/200 */
-
-    border: 1px solid #F2F3F6;
-    backdrop-filter: blur(24px);
-    /* Note: backdrop-filter has minimal browser support */
-
-    border-radius: 5px;
+.bg-home {
+    background-image: url('bg/bg_home.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
 }
 
-.dark .dark\:bg-blur-dark {
-    background: rgba(122, 122, 138, 0.2);
-    /* Color/Dark/300 */
-
-    border: 1px solid #545569;
-    backdrop-filter: blur(24px);
-    /* Note: backdrop-filter has minimal browser support */
-
-    border-radius: 5px;
+.dark .dark\:bg-home-dark {
+    background-image: url('bg/bg_home_dark.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: local;
 }
 
-input:checked ~ .dot {
-    transform: translateX(133%);
+.homepage-not-login{
+    /*height: calc(100vh - 112px);*/
+}
+
+.h-unless-header{
+    height: calc(100vh - 112px);
+}
+
+.h-unless-header-for-blur{
+    height: calc(100vh - 152px);
+}
+
+.max-h-unless-header{
+    max-height: calc(100vh - 112px);
+}
+
+.max-h-70vh{
+    max-height: 70vh;
+}
+
+input ~ .dot {
+    transition: transform 1s linear;
+    transform: translateX(0);
+}
+
+.language-toggle input:checked ~ .dot {
+    transform: translateX(136%);
     background-image: url('national_flag/united-kingdom.png');
 }
 
-input:checked ~ .line {
-    background-color: #C8102E;
-    border-color: #012169;
+.language-toggle input:checked ~ .line {
+    background-color: #012169;
 }
 
-input:checked ~ .show-zh-text {
+.language-toggle input:checked ~ .show-zh-text {
     display: none;
 }
 
-input:checked ~ .show-en-text {
+.language-toggle input:checked ~ .show-en-text {
     display: block;
 }
 
 .bg-china-flag {
     background-image: url('national_flag/china.png');
+}
+
+.bg-theme-light {
+    background-image: url('icons/theme_dot_light.svg');
+}
+
+.theme-toggle-btn input:checked ~ .dot {
+    transform: translateX(133%);
+    background-image: url('icons/theme_dot_dark.svg');
+}
+
+.theme-toggle-btn input:checked ~ .line {
+    background: linear-gradient(to bottom, #0D0F1F,#0D0F1F 25%, #191e2c 50%, #0D0F1F 75%, #0D0F1F);
+}
+
+.theme-toggle-btn input:checked ~ .show-light-text {
+    /*display: none;*/
+    opacity: 0;
+}
+
+.theme-toggle-btn input:checked ~ .show-dark-text {
+    /*display: block;*/
+    opacity: 1;
 }

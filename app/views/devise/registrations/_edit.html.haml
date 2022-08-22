@@ -6,13 +6,13 @@
       .flex.flex-col.space-y-6
         = render "devise/shared/error_messages", resource: resource
         .field
-          = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
+          = f.label :email, t(:Email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
           = f.email_field :email, autofocus: true, autocomplete: "email", class: 'border border-light-300 rounded bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
         - if resource.pending_reconfirmation?
           %div
             Currently waiting confirmation for: #{resource.unconfirmed_email}
         .field
-          = f.label :password, t(:password), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
+          = f.label :password, t(:user_password), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
           %i{class: "text-dark-400 dark:text-light-400"}=  t("(leave blank if you don't want to change it)")
           = f.password_field :password, autocomplete: "new-password", class: 'border border-light-300 rounded bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
           - if @minimum_password_length
@@ -28,10 +28,10 @@
           %i{class: "text-dark-400 dark:text-light-400"}=t("(we need your current password to confirm your changes)")
           = f.password_field :current_password, autocomplete: "current-password", class: 'border border-light-300 rounded bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
         .actions
-          = f.submit "Update", class: "text-light-300 bg-primary-600 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:bg-blue-600 heading-h6-bold rounded max-w-md w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:text-light-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          = f.submit "Update", class: "text-light-200 bg-primary-600 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:bg-blue-600 heading-h6-bold rounded max-w-md px-5 py-2.5 text-center dark:bg-blue-600 dark:text-light-400 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
   %aside#cancel-user.flex-col.space-y-4
     .flex.items-center.justify-center
-      %h4{ class: "text-dark-400 dark:text-light-400" }= t(:cancel_my_account)
-    .flex.space-x-2{ class: "text-dark-400 dark:text-light-400" }
+      %h4{ class: "text-red-600 dark:text-red-500" }= t(:cancel_my_account)
+    .flex.space-x-2.items-center{ class: "text-dark-400 dark:text-light-400" }
       %span=t(:Unhappy?)
-      = button_to t(:cancel_my_account), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "underline body-medium-bold hover:text-red-500"
+      = button_to t(:cancel_my_account), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "underline body-medium-bold text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-500"

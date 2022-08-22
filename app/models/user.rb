@@ -66,6 +66,11 @@ class User < ApplicationRecord
     GravatarService.new.execute(email, size, scale, username: name)
   end
 
+  def github_full_url
+    return nil unless github_url.present?
+    "https://github.com/#{github_url}"
+  end
+
   private
 
   # # 把电子邮件地址转换为小写

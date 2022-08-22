@@ -3,8 +3,8 @@
     .body-medium-bold.text-dark-400.dark:text-light-400
       = t(:language)
 
-    = button_to language_user_path(@user), method: :post, remote: true, class: "relative items-center cursor-pointer" do
-      = check_box_tag(:language, nil, @user.language == 'en', class: "sr-only", "data-language-toggle-target": "language", "data-turbo": "false")
+    -# = button_to language_user_path(@user), method: :post, remote: true, class: "relative items-center cursor-pointer" do
+    = check_box_tag(:language, nil, @user.language == 'en', class: "sr-only", "data-language-toggle-target": "language", "data-turbo": "false")
       .line.block.w-16.h-8.rounded-full.border-2.bg-yellow-200.border-red-600
       .dot.absolute.left-1.top-1.bg-cover.bg-china-flag.w-6.h-6.rounded-full.transition
       .show-zh-text.absolute.right-2.top-1.w-6.h-6.transition.text-red-600.text-center.body-medium-bold 汉

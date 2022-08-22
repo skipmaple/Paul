@@ -4,32 +4,56 @@
     %nav.py-8.mt-0.w-full.top-0.left-0.relative.z-10{:class => "bg-transparent"}
       .container.flex.flex-wrap.justify-between.items-center.mx-auto.px-5
         %a.flex.items-center.no-underline{ :class => "hover:text-white hover:no-underline md:order-first", :href => root_path }
-          %h3.self-center{:class => "text-dark-400 dark:text-light-300"}
+          %h3.self-center{:class => "text-dark-400 dark:text-light-400"}
             =t(:base_title)
 
         #mobile-menu-2.hidden.w-full.md:block.md:w-auto
           %ul.flex.flex-col.mt-4{:class => "md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"}
             %li
-              %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-300 dark:text-light-300 hover:text-dark-400 hover:underline", :href => root_path }
+              %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-400 dark:text-light-400 hover:text-dark-400 hover:underline hover:underline-offset-8 hover:decoration-primary-400 hover:decoration-4", :href => root_path }
                 =t(:home)
             %li
-              %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-300 dark:text-light-300 hover:text-dark-400 hover:underline", :href => posts_path }
+              %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-400 dark:text-light-400 hover:text-dark-400 hover:underline hover:underline-offset-8 hover:decoration-primary-400 hover:decoration-4", :href => posts_path }
                 =t(:posts)
             %li
-              %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-300 dark:text-light-300 hover:text-dark-400 hover:underline", :href => about_path }
+              %a{ :class=>"block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-400 dark:text-light-400 hover:text-dark-400 hover:underline hover:underline-offset-8 hover:decoration-primary-400 hover:decoration-4", :href => about_path }
                 =t(:about)
-            %li{"data-controller" => "toggle"}
-              / Dark mode switcher
-              %button#theme-toggle{ "data-action" => "click->toggle#handleToggleTheme", :class=> "flex justify-between items-center w-full rounded-lg text-sm p-2.5 border-b border-light-300 hover:bg-dark-500 md:border-0 hover:text-light-100 text-dark-300 dark:text-light-300 dark:hover:bg-dark-100"}
-                = image_tag("icon_theme_toggle_dark.svg", class: "", id: "theme-toggle-dark-icon", "data-toggle-target": "toggleDarkIcon")
-                = image_tag("icon_theme_toggle_light.svg", class: "hidden", id: "theme-toggle-light-icon", "data-toggle-target": "toggleLightIcon")
-              / Dark mode switcher end
-              %button{"class" => "md:hidden text-dark-300 hover:bg-dark-400 focus:outline-none focus:ring-2 focus:ring-gray-200 rounded-lg.text-sm p-2 inline-flex items-center dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600", "aria-controls" => "mobile-menu-4", "aria-expanded" => "false", "data-collapse-toggle" => "mobile-menu-4", :type => "button"}
-                %span.sr-only Open main menu
-                %svg.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
-                  %path{"clip-rule" => "evenodd", :d => "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "fill-rule" => "evenodd"}
-                %svg.hidden.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
-                  %path{"clip-rule" => "evenodd", :d => "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
+
+            - if !user_signed_in?
+              %li{"data-controller" => "toggle"}
+                / Dark mode switcher
+                %button#theme-toggle{ "data-action" => "click->toggle#handleToggleTheme", :class=> "flex justify-between items-center w-full rounded-lg text-sm p-2.5 border-b border-light-300 hover:bg-dark-500 md:border-0 hover:text-light-100 text-dark-400 dark:text-light-400 dark:hover:bg-dark-400 dark:hover:text-light-100"}
+                  -# = image_tag("icon_theme_toggle_dark.svg", class: "", id: "theme-toggle-dark-icon", "data-toggle-target": "toggleDarkIcon")
+                  %svg{fill: "currentColor", height: "20", viewbox: "0 0 22 21", width: "20", xmlns: "http://www.w3.org/2000/svg", "data-toggle-target": "toggleDarkIcon"}
+                    %g{id: "Type=Bulk, Icon=Moon"}
+                      %g#Moon
+                        %path#Vector{d: "M11 0.986084C5.47396 0.986084 0.993084 5.46696 0.993084 10.993C0.993084 16.519 5.47396 20.9999 11 20.9999C16.526 20.9999 21.0069 16.519 21.0069 10.993C21.0069 10.4815 20.9624 9.97007 20.8957 9.48085C19.8061 11.0041 18.0271 11.9937 16.0035 11.9937C12.6901 11.9937 9.99931 9.30294 9.99931 5.98954C9.99931 3.97704 10.9889 2.18691 12.5122 1.09727C12.0229 1.03056 11.5115 0.986084 11 0.986084Z", "fill-rule" => "evenodd"}
+                  -# = image_tag("icon_theme_toggle_light.svg", class: "hidden", id: "theme-toggle-light-icon", "data-toggle-target": "toggleLightIcon")
+                  %svg{fill: "currentColor", height: "20", viewbox: "0 0 20 20", width: "20", xmlns: "http://www.w3.org/2000/svg", "data-toggle-target": "toggleLightIcon"}
+                    %g{id: "Type=Bulk, Icon=Sun"}
+                      %g#Sun
+                        %path#Vector{d: "M10 5.45455C7.49091 5.45455 5.45455 7.49091 5.45455 10C5.45455 12.5091 7.49091 14.5455 10 14.5455C12.5091 14.5455 14.5455 12.5091 14.5455 10C14.5455 7.49091 12.5091 5.45455 10 5.45455ZM0.909091 10.9091H2.72727C3.22727 10.9091 3.63636 10.5 3.63636 10C3.63636 9.5 3.22727 9.09091 2.72727 9.09091H0.909091C0.409091 9.09091 0 9.5 0 10C0 10.5 0.409091 10.9091 0.909091 10.9091ZM17.2727 10.9091H19.0909C19.5909 10.9091 20 10.5 20 10C20 9.5 19.5909 9.09091 19.0909 9.09091H17.2727C16.7727 9.09091 16.3636 9.5 16.3636 10C16.3636 10.5 16.7727 10.9091 17.2727 10.9091ZM9.09091 0.909091V2.72727C9.09091 3.22727 9.5 3.63636 10 3.63636C10.5 3.63636 10.9091 3.22727 10.9091 2.72727V0.909091C10.9091 0.409091 10.5 0 10 0C9.5 0 9.09091 0.409091 9.09091 0.909091ZM9.09091 17.2727V19.0909C9.09091 19.5909 9.5 20 10 20C10.5 20 10.9091 19.5909 10.9091 19.0909V17.2727C10.9091 16.7727 10.5 16.3636 10 16.3636C9.5 16.3636 9.09091 16.7727 9.09091 17.2727ZM4.53636 3.25455C4.18182 2.9 3.6 2.9 3.25455 3.25455C2.9 3.60909 2.9 4.19091 3.25455 4.53636L4.21818 5.5C4.57273 5.85455 5.15455 5.85455 5.5 5.5C5.84545 5.14545 5.85455 4.56364 5.5 4.21818L4.53636 3.25455ZM15.7818 14.5C15.4273 14.1455 14.8455 14.1455 14.5 14.5C14.1455 14.8545 14.1455 15.4364 14.5 15.7818L15.4636 16.7455C15.8182 17.1 16.4 17.1 16.7455 16.7455C17.1 16.3909 17.1 15.8091 16.7455 15.4636L15.7818 14.5ZM16.7455 4.53636C17.1 4.18182 17.1 3.6 16.7455 3.25455C16.3909 2.9 15.8091 2.9 15.4636 3.25455L14.5 4.21818C14.1455 4.57273 14.1455 5.15455 14.5 5.5C14.8545 5.84545 15.4364 5.85455 15.7818 5.5L16.7455 4.53636ZM5.5 15.7818C5.85455 15.4273 5.85455 14.8455 5.5 14.5C5.14545 14.1455 4.56364 14.1455 4.21818 14.5L3.25455 15.4636C2.9 15.8182 2.9 16.4 3.25455 16.7455C3.60909 17.0909 4.19091 17.1 4.53636 16.7455L5.5 15.7818Z", "fill-rule" => "evenodd"}
+                / Dark mode switcher end
+                %button{"class" => "md:hidden text-dark-400 hover:bg-dark-400 focus:outline-none focus:ring-2 focus:ring-gray-200 rounded-lg.text-sm p-2 inline-flex items-center dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600", "aria-controls" => "mobile-menu-4", "aria-expanded" => "false", "data-collapse-toggle" => "mobile-menu-4", :type => "button"}
+                  %span.sr-only Open main menu
+                  %svg.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+                    %path{"clip-rule" => "evenodd", :d => "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z", "fill-rule" => "evenodd"}
+                  %svg.hidden.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+                    %path{"clip-rule" => "evenodd", :d => "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
+              %li{ :class => "flex flex-col relative", 'data-controller' => 'toggle' }
+                %button{:class => "flex mr-3 py-2 md:mr-0 hover:underline hover:underline-offset-8 hover:decoration-primary-400 hover:decoration-4","aria-expanded" => "false", "data-dropdown-placement" => "bottom-end", :type => "button", 'data-action' => 'click->toggle#handleToggleUserMenu'}
+                  %span.font-montserrat.text-base.text-dark-400.dark:text-light-400 文A
+                / Dropdown menu
+                %div{:class => "hidden absolute top-12 right-[-100%] z-50 text-base list-none bg-light-100 rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600", "data-toggle-target": "userMenuDropdown"}
+                  %ul{class: 'p-1.5', "aria-labelledby" => "dropdown"}
+                    %li
+                      -#%a.block.py-2.px-4.rounded.text-sm.text-gray-700{ class: 'hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white', href: language_settings_preference_path(language: 'zh-CN') }
+                      -#  中文
+                      = button_to('中文', language_settings_preference_path(language: 'zh-CN'), method: :post, class: 'block py-2 px-4 rounded text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white')
+                    %li
+                      -#%a.block.py-2.px-4.rounded.text-sm.text-gray-700{ class: 'hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white', href: language_settings_preference_path(language: 'en'), 'data-method' => 'post'}
+                      -#  English
+                      = button_to('English', language_settings_preference_path(language: 'en'), method: :post, class: 'block py-2 px-4 rounded text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white')
 
             - if user_signed_in?
               %li{ :class => "flex flex-col items-center relative", 'data-controller' => 'toggle' }
@@ -51,7 +75,7 @@
                       %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => users_path}
                         = t(:users)
                     %li
-                      %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => edit_user_path(current_user)}
+                      %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => settings_path}
                         = t(:settings)
                   .py-1
                     %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => destroy_user_session_path, data: { turbo_method: :delete }}
@@ -64,5 +88,5 @@
                     %path{"clip-rule" => "evenodd", :d => "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
             - else
               %li
-                %a{ :class => "block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-300 dark:text-light-300 hover:text-dark-400 hover:underline", :href => new_user_session_path }
+                %a{ :class => "block py-2 px-4 pl-3 no-underline body-medium-bold text-dark-400 dark:text-light-400 hover:text-dark-400 hover:underline hover:underline-offset-8 hover:decoration-primary-400 hover:decoration-4", :href => new_user_session_path }
                   = t("login")

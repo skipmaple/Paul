@@ -2,7 +2,12 @@
 %div#page-container.min-h-screen.relative
   %main.content-wrapper.pb-56{ id: "content-body" }
     = render 'layouts/header'
-    %div.mb-10.relative{ class: "#{(container_class unless @no_container)} #{page_with_sidebar_class} #{(bg_blur_wrap_class if @bg_blur_wrap)}" }
+    - if content_for?(:home_bg)
+      .absolute.top-0.left-0.h-screen.w-full.bg-not-login.min-h-screen
+      -#.bg-strip-patterns.w-full.h-screen.bg-local.bg-clip-padding.-z-10
+      -#.bg-3d-shapes.w-full.h-screen.bg-local.bg-clip-padding.-z-10.dark:bg-3d-shapes-dark
+      .absolute.top-0.left-0.bg-home.dark:bg-home-dark.w-full.h-screen
+    %div.relative{ class: "#{(container_class unless @no_container)} #{page_with_sidebar_class} #{(bg_blur_wrap_class if @bg_blur_wrap)}" }
       - if defined?(nav) && nav
         = render "layouts/nav/sidebar/#{nav}"
       = render "layouts/flash"
