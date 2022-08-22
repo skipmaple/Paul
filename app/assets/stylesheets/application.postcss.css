@@ -73,7 +73,7 @@
 
 @layer utilities {
     .body-small-regular, .body-small-bold, .body-medium-regular, .body-medium-bold, .body-small-regular, .body-small-bold {
-        @apply text-dark-300 dark:text-light-600;
+        /*@apply text-dark-300 dark:text-light-600;*/
     }
 
     .body-small-regular {
