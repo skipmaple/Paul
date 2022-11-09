@@ -8,7 +8,7 @@ module.exports = {
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js',
         './app/views/**/*.{erb,haml,html,slim}',
-        './vendor/javascript/*.js',
+        './app/assets/stylesheets/**/*.css',
         './vendor/javascript/**/*.js',
     ],
     darkMode: 'class',

@@ -28,6 +28,7 @@
     "@lezer/lr": "^1.2.0",
     "@lezer/markdown": "^1.0.1",
     "@markdoc/markdoc": "^0.1.4",
+    "alpinejs": "^3.10.4",
     "autoprefixer": "^10.4.5",
     "axios": "^0.27.2",
     "buffer": "^6.0.3",

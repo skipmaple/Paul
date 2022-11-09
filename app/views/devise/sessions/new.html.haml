@@ -3,7 +3,7 @@
 
 %section.container.mx-auto.mb-10
   .flex.items-center.h-unless-header-for-blur.overflow-clip.bg-blur-light.dark:bg-blur-dark.rounded-3xl
-    %section.flex.flex-col.h-full.p-8.space-y-8.justify-center{:class => "md:w-1/3"}
+    %section.flex.flex-col.h-full.p-8.space-y-8.justify-center.overflow-y-scroll{:class => "md:w-1/3"}
       %h4
         = t(:login)
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -24,6 +24,10 @@
               .ml-3
                 = f.label t(:remember_me), class: "body-medium-regular text-dark-400 dark:text-light-400"
           = f.submit t(:login), class: "base-btn w-full rounded-lg"
+
+      #sign-with
+        -# = button_to "Sign in with Github", omniauth_authorize_path(:user, :github)
+        = button_to "Sign in with Github", user_github_omniauth_authorize_path, 'data-turbo' => 'false'
 
       #other-info.flex-col.space-y-4
         -# sign up

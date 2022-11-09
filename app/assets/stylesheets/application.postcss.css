@@ -283,8 +283,9 @@
     }
 
     .bg-devise {
-        @apply bg-cover bg-no-repeat bg-right-bottom;
-        background-image: url('bg/bg_sign_in.jpg');
+        /*@apply bg-cover bg-no-repeat bg-right-bottom;*/
+        @apply bg-cover bg-no-repeat bg-center;
+        background-image: url('bg/bg_sign_in.png');
     }
 }
 

@@ -18,7 +18,8 @@
         #post-dropdown-more.z-10.hidden.bg-light-100.divide-y.divide-dark-400.rounded.shadow.w-44.dark:bg-gray-500
           %ul{ "class" => "py-1 text-sm text-gray-700 dark:text-gray-200", "aria-labelledby" => "dropdownDefault" }
             %li
-              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => micropost_path(micropost), data: { turbo_method: :delete } }
+              = button_to(t(:delete), micropost_path(micropost.id), method: :delete, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white")
+              -#%a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => micropost_path(micropost), data: { turbo_method: :delete } }
                 = t(:delete)
             %li
               %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"}

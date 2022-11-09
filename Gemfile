@@ -114,6 +114,8 @@ gem "sassc", "~> 2.4"
 
 gem "devise", "~> 4.8"
 
+gem "omniauth", "~> 2.1"
+
 gem "omniauth-github", "~> 2.0"
 
 gem "redcarpet", "~> 3.5"
@@ -125,3 +127,8 @@ gem "friendly_id", "~> 5.4"
 gem "jsbundling-rails", "~> 1.0"
 
 gem "foreman", "~> 0.87.2"
+
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+# gem provides Rack CORS Middleware to our Rails app, allowing it to support cross-origin resource sharing.
+gem "rack-cors", :require => "rack/cors"
