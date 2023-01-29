@@ -35,7 +35,6 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      # 处理更新成功的情况
       flash[:success] = "Profile updated"
       redirect_to @user
     else
@@ -61,24 +60,6 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  def language
-
-
-    is_changed = false
-    is_changed = @user.update!(language: toggle_language) if signed_in?
-
-    if is_changed
-      # I18n.with_locale(params[:language])
-      # redirect_to request.referrer || root_url
-      # render 'edit'
-      redirect_to edit_user_path(@user)
-    else
-      flash[:danger] = 'you need to sign in.'
-      # render :edit, status: :unprocessable_entity
-      redirect_to edit_user_path(@user)
-    end
-  end
-
   private
 
   def user_params
@@ -89,18 +70,12 @@ class UsersController < ApplicationController
     @user = User.friendly.find(params[:id])
   end
 
-  # 确保是正确的用户
   def correct_user
     @user = User.friendly.find(params[:id])
     redirect_to root_path unless current_user?(@user)
   end
 
-  # 确保是管理员
   def admin_user
     redirect_to root_path unless current_user.admin?
-  end
-
-  def toggle_language
-    @user.language == 'en' ? 'zh-CN' : 'en'
   end
 end

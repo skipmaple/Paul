@@ -56,7 +56,7 @@ relevant, or interesting."
   "Resend unlock instructions": "Resend unlock instructions"
 
   # edit_user
-  edit_user: Edit usr
+  edit_user: Edit user
   user_settings: User settings
   update_your_profile: Update your profile
   save_changes: Save changes
@@ -69,7 +69,7 @@ relevant, or interesting."
   delete: Delete
   confirm: You sure?
   password: password
-  password_confirmation: password_confirmation
+  password_confirmation: Password confirmation
   update_password: Update password
   reset_password: Reset password
   forgot_password: Forgot password
@@ -106,3 +106,8 @@ relevant, or interesting."
   posts: "Posts"
   public: "Public"
   private: "Private"
+  preferences: "Preferences"
+  site_theme: "Site theme"
+  public_profile: "Public profile"
+  light: "Lt"
+  dark: "Dk"

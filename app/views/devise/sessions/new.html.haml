@@ -1,45 +1,46 @@
 - provide(:title, "Login")
 -# - content_for(:no_app_layout, true)
 
-%section
-  .container.mx-auto.p-12
-    .flex.justify-center.items-center.background-clip-content.bg-blur-light.dark:bg-blur-dark{style: "border-radius: 1.5rem !important;"}
-      .flex-col.p-8.space-y-8{:class => "md:basis-1/3"}
-        %h3{ :class => "text-dark-400 dark:text-light-400" }
-          = t(:login)
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          .flex-col.space-y-6
-            .field
-              = f.label t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
-              = f.email_field :email, autofocus:true, autocomplete: "email", placeholder: "email_address", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-            .field
-              .block.mb-2
-                = f.label t(:password), class: "body-medium-bold text-dark-400 dark:text-light-400"
-                - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-                  = link_to "(#{t(:forgot_password)}?)", new_password_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
-              = f.password_field :password, autocomplete: "current-password", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50'
-            - if devise_mapping.rememberable?
-              .flex.items-start.mb-6.items-center
-                .flex.items-center.h-5
-                  = f.check_box :remember_me, type: "checkbox", class: "w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                .ml-3
-                  = f.label t(:remember_me), class: "body-medium-regular text-dark-400 dark:text-light-400"
+%section.container.mx-auto.mb-10
+  .flex.items-center.h-unless-header-for-blur.overflow-clip.bg-blur-light.dark:bg-blur-dark.rounded-3xl
+    %section.flex.flex-col.h-full.p-8.space-y-8.justify-center.overflow-y-scroll{:class => "md:w-1/3"}
+      %h4
+        = t(:login)
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .flex-col.space-y-6
+          .field
+            = f.label t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
+            = f.email_field :email, autofocus:true, autocomplete: "email", placeholder: "email_address", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+          .field
+            .block.mb-2
+              = f.label t(:password), class: "body-medium-bold text-dark-400 dark:text-light-400"
+              - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+                = link_to "(#{t(:forgot_password)}?)", new_password_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
+            = f.password_field :password, autocomplete: "current-password", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50'
+          - if devise_mapping.rememberable?
+            .flex.items-start.mb-6.items-center
+              .flex.items-center.h-5
+                = f.check_box :remember_me, type: "checkbox", class: "w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+              .ml-3
+                = f.label t(:remember_me), class: "body-medium-regular text-dark-400 dark:text-light-400"
+          = f.submit t(:login), class: "base-btn w-full rounded-lg"
 
-            = f.submit t(:login), class: "text-light-200 bg-primary-600 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:bg-blue-600 heading-h6-bold rounded max-w-md w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:text-light-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      #sign-with
+        -# = button_to "Sign in with Github", omniauth_authorize_path(:user, :github)
+        = button_to "Sign in with Github", user_github_omniauth_authorize_path, 'data-turbo' => 'false'
 
-        #other-info.flex-col.space-y-4
-          -# sign up
-          #sign-up
-            = link_to new_registration_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500" do
-              = "#{t(:new_user?)} (#{t(:sign_up_now)})"
-          -#  Didn't receive confirmation instructions?
-          #confirmation-email-receive
-            - if devise_mapping.confirmable? && controller_name != 'confirmations'
-              = link_to t("Didn't receive confirmation instructions?"), new_confirmation_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
-          -# Didn't receive unlock instructions?
-          #unlock-email-receive
-            - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-              = link_to t("Didn't receive unlock instructions?"), new_unlock_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
+      #other-info.flex-col.space-y-4
+        -# sign up
+        #sign-up
+          = link_to new_registration_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500" do
+            = "#{t(:new_user?)} (#{t(:sign_up_now)})"
+        -#  Didn't receive confirmation instructions?
+        #confirmation-email-receive
+          - if devise_mapping.confirmable? && controller_name != 'confirmations'
+            = link_to t("Didn't receive confirmation instructions?"), new_confirmation_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
+        -# Didn't receive unlock instructions?
+        #unlock-email-receive
+          - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+            = link_to t("Didn't receive unlock instructions?"), new_unlock_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
 
-      %section#right-bg{ class: 'md:w-2/3 flex justify-center items-center overflow-hidden' }
-        = image_tag('bg/bg_sign_in', class: 'shrink-0 min-w-full min-h-full rounded-r-3xl')
+    %section#right-bg.h-full{ class: "md:w-2/3 bg-devise" }

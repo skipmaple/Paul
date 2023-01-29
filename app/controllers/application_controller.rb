@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
+  helper_method :current_theme
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   around_action :set_locale
@@ -37,7 +39,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_locale(&action)
-    locale = current_user&.language || I18n.default_locale
+    locale = current_user&.language || cookies[:current_locale] || I18n.default_locale
     I18n.with_locale(locale, &action)
   end
 
@@ -48,5 +50,11 @@ class ApplicationController < ActionController::Base
       flash[:danger] = "Please log in."
       redirect_to new_user_session_path
     end
+  end
+
+  def current_theme
+    # need add default setting
+    return Setting.theme unless Paul::Themes.instance.names.include? current_user&.theme
+    current_user.theme
   end
 end

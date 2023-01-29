@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :trackable, :confirmable, :lockable, :omniauthable
+         :trackable, :confirmable, :lockable, :omniauthable, omniauth_providers: %i[github]
 
   # attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -34,6 +34,15 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships
 
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.confirmed_at = Time.now
+    end
+  end
 
   # 返回用户的动态流
   def feed
@@ -64,6 +73,11 @@ class User < ApplicationRecord
 
   def avatar_url(size: nil, scale: 2, **args)
     GravatarService.new.execute(email, size, scale, username: name)
+  end
+
+  def github_full_url
+    return nil unless github_url.present?
+    "https://github.com/#{github_url}"
   end
 
   private

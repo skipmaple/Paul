@@ -3,9 +3,10 @@ module.exports = {
     require('tailwindcss')('./tailwind.config.js'),
     require('postcss-import'),
     require('postcss-flexbugs-fixes'),
-    require('postcss-nesting'),
+    require('tailwindcss/nesting'),
     require('autoprefixer'),
     require('postcss-preset-env')({
+      features: { 'nesting-rules': false },
       autoprefixer: {
         flexbox: 'no-2009'
       },

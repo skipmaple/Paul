@@ -1,5 +1,5 @@
 - @user ||= current_user
-.flex.space-x-2.mt-2{class: 'body-medium-regular text-dark-300 dark:text-light-600'}
+.flex.space-x-2.justify-center{class: 'body-medium-regular text-dark-300 dark:text-light-600'}
   %a{ href: "#{following_user_path(@user)}" }
     %strong.body-medium-regular
       = @user.following.count

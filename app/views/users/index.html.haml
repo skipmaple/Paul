@@ -1,6 +1,7 @@
 - provide(:title, t(:all_users))
+- @bg_blur_wrap = true
 
-.flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
+.flex.space-x-12.divide-x{ class: 'divide-light-200 dark:divide-dark-400' }
 
   %aside{:class => "basis-3/4"}
     %ul.divide-y{ class: 'divide-light-200 dark:divide-dark-400' }
@@ -9,4 +10,4 @@
     = paginate @users
 
   %aside{:class => "basis-1/4 py-2"}
-    %h4{ :class => "text-dark-400 dark:text-light-400" }= t(:all_users)
+    %h4.text-center{ :class => "text-dark-400 dark:text-light-400" }= t(:all_users)

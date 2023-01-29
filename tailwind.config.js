@@ -8,7 +8,7 @@ module.exports = {
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js',
         './app/views/**/*.{erb,haml,html,slim}',
-        './vendor/javascript/*.js',
+        './app/assets/stylesheets/**/*.css',
         './vendor/javascript/**/*.js',
     ],
     darkMode: 'class',
@@ -43,7 +43,8 @@ module.exports = {
         },
         fontFamily: {
             sans: ['"Open Sans"', 'sans-serif'],
-            heading: ['Poppins', 'sans-serif']
+            heading: ['Poppins', 'sans-serif'],
+            montserrat: ['Montserrat', 'sans-serif']
         },
         fontSize: {
             sm: ['12.8px', {

@@ -1,6 +1,7 @@
 - provide(:title, @user.name)
+- @bg_blur_wrap = true
 
-.flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
+.flex.space-x-12.divide-x{ class: 'divide-light-200 dark:divide-dark-400' }
 
   %aside{:class => "basis-2/3 space-y-8"}
     - if @user.microposts.any?
@@ -11,7 +12,8 @@
       = paginate @microposts
 
   %aside{:class => "basis-1/3"}
-    %section.mt-24
-      = render 'shared/user_info'
-    %section.mt-4
-      = render 'shared/stats'
+    .flex.flex-col.items-center.space-y-6{ class: 'ml-[60px] mt-[84px]' }
+      %section
+        = render 'shared/user_info'
+      %section
+        = render 'shared/stats'

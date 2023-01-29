@@ -1,0 +1,36 @@
+- provide(:title, t(:preferences))
+%div.flex.flex-col.space-y-4{class: 'min-h-[70vh]'}
+  .flex.items-center.justify-center
+    %h4{ class: "text-dark-400 dark:text-light-400" }= t(:preferences)
+
+  .flex.space-x-2.items-center
+    %span.font-montserrat.text-dark-400.dark:text-light-400 文A
+    %span.body-medium-bold.text-dark-400.dark:text-light-400
+      = t(:language)
+
+  = button_to language_settings_preference_path do
+    .relative.language-toggle
+      = check_box_tag(:language, nil, current_user&.language == 'en', class: "sr-only")
+      .line.block.w-16.h-8.rounded-full.bg-light-400
+      .dot.absolute.bg-cover.bg-china-flag.rounded-full.transition.ease-linear{ class: 'w-[22px] h-[22px] inset-y-[5px] left-1.5 duration-[3000ms]' }
+      -# show-zh-text
+      .show-zh-text.absolute.body-medium-bold.right-2.top-1.w-6.h-6.transition.duration-500.ease-in.text-red-600.text-center 中
+      -# show-en-text
+      .show-en-text.hidden.absolute.body-medium-bold.left-2.top-1.w-6.h-6.transition.duration-500.ease-in.text-white.text-center En
+
+
+  .flex.space-x-2.items-center
+    = image_tag(current_user&.theme == 'dark' ? 'icons/theme_dark': 'icons/theme_light')
+    %span.body-medium-bold.text-dark-400.dark:text-light-400
+      = t(:site_theme)
+
+  = button_to(theme_settings_preference_path, 'data-turbo' => 'false') do
+    .relative.theme-toggle-btn
+      = check_box_tag(:theme, nil, current_user&.theme == 'dark', class: "sr-only")
+      .line.block.w-16.h-8.rounded-full{ class: 'bg-[#6c93f1]' }
+      .dot.absolute.bg-cover.bg-theme-light.rounded-full{ class: 'w-[22px] h-[22px] inset-y-[5px] left-1.5' }
+      -# show-zh-text
+      .show-light-text.opacity-100.absolute.body-medium-bold.right-2.top-1.w-6.h-6.transition.duration-1000.ease-in.text-light-200.text-center= t(:light)
+      -# show-en-text
+      .show-dark-text.opacity-0.absolute.body-medium-bold.left-2.top-1.w-6.h-6.transition.duration-1000.ease-in.text-light-400.text-center= t(:dark)
+

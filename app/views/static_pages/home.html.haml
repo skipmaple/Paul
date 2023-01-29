@@ -1,27 +1,28 @@
 -provide(:title, t(:home))
 - if user_signed_in?
-  .flex.mx-5.p-10.space-x-12.background-clip-content.bg-blur-light.dark:bg-blur-dark
-    .div{:class => "basis-2/3"}
+  - @bg_blur_wrap = true
+  .flex.space-x-12.divide-x{ class: 'divide-light-200 dark:divide-dark-400' }
+    .div.space-y-6{:class => "basis-2/3"}
       %h4{ :class => "text-dark-400 dark:text-light-400" }= t(:micropost_feed)
       = render 'shared/feed'
-    %aside{:class => "basis-1/3 space-y-4"}
-      %section.mt-24
-        = render 'shared/user_info'
-      %section
-        = render 'shared/stats'
-      %section
-        = render 'shared/more_info'
+    %aside{:class => "basis-1/3"}
+      .flex.flex-col.items-center.space-y-6{ class: 'ml-[60px] mt-[84px]' }
+        %section
+          = render 'shared/user_info'
+        %section
+          .flex.flex-col.space-y-6
+            = render 'shared/stats'
+            = render 'shared/more_info'
       -#%section.stats
       -#  = render 'shared/stats'
       -#%section.micropost_form
       -#  = render 'shared/micropost_form'
 - else
-  .bg-not-login
-  .bg-strip-patterns.w-full.h-screen.bg-local.bg-clip-padding.-z-10
-  .bg-3d-shapes.w-full.h-screen.bg-local.bg-clip-padding.-z-10.dark:bg-3d-shapes-dark
+  - content_for(:no_body_bg, true)
+  - content_for(:home_bg, true)
 
-  %section#homepage-not-login
-    .container.flex.flex-col.flex-nowrap.h-screen.px-6.pb-20.mx-auto.space-y-8.items-center.justify-center
+  %section.homepage-not-login
+    .container.flex.flex-col.flex-nowrap.px-6.pb-20.mx-auto.space-y-8.items-center.justify-center{class: 'h-[calc(100vh-112px)]'}
       %h1.text-center.max-w-3xl.text-dark-400.dark:text-light-300
         = t(:welcome_title)
       %p.max-w-lg.text-center.text-dark-300.dark:text-light-600

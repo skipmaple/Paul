@@ -130,7 +130,7 @@ module ApplicationHelper
   end
 
   def bg_blur_wrap_class
-    css_class = ["bg-blur-light-wrap dark:bg-blur-dark-wrap"]
+    css_class = ["mb-10 bg-blur-light-wrap dark:bg-blur-dark-wrap"]
     css_class.join(' ')
   end
 end
