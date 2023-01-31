@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby '3.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.3.1'
+gem 'rails', '~> 7.0.4.2'
 # Use sqlite3 as the database for Active Record
 # gem 'mysql2', '~> 0.5.3'
 gem 'pg', '~> 1.3'
@@ -12,10 +12,6 @@ gem 'pg', '~> 1.3'
 gem 'puma', '~> 5.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-# gem 'webpacker', '~> 5.4', '>= 5.4.3'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5.2', '>= 5.2.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.11', '>= 2.11.5'
 # Use Redis adapter to run Action Cable in production
@@ -31,8 +27,6 @@ gem 'bootsnap', '~> 1.11', '>= 1.11.1', require: false
 # Haml is a templating engine for HTML. It's designed to make it both easier and more pleasant to write HTML documents
 gem 'haml', '~> 5.2', '>= 5.2.2'
 
-# gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
-gem "bootstrap", "~> 5.1"
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
 group :development, :test do
@@ -50,13 +44,13 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 3.36'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 4.8'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-  gem 'rails-controller-testing'
-  gem 'minitest-reporters'
-  gem 'guard'
-  gem 'guard-minitest'
+  gem 'webdrivers', '~> 5.2.0'
+  gem 'rails-controller-testing', '~> 1.0.5'
+  gem 'minitest-reporters', '~> 1.5.0'
+  gem 'guard', '~> 2.18.0'
+  gem 'guard-minitest', '~> 2.4.6'
 end
 
 group :production do
@@ -87,7 +81,6 @@ gem 'mini_magick', '~> 4.11'
 gem 'rails-i18n', '~> 7.0', '>= 7.0.3'
 
 gem 'psych', '~> 3.3.2'
-
 
 # Pagination
 gem 'kaminari', '~> 1.2'
