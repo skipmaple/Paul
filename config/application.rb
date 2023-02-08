@@ -27,6 +27,18 @@ module Paul
     config.action_view.sanitized_allowed_tags = Loofah::HTML5::SafeList::ALLOWED_ELEMENTS
     config.action_view.sanitized_allowed_attributes = Loofah::HTML5::SafeList::ALLOWED_ATTRIBUTES
 
+    # Log to STDOUT because Docker expects all processes to log here. You could
+    # then collect logs using journald, syslog or forward them somewhere else.
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+
+    # Set Redis as the back-end for the cache.
+    config.cache_store = :redis_cache_store, {
+      url: ENV.fetch("REDIS_URL") { "redis://redis:6379/1" },
+      namespace: "cache"
+    }
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

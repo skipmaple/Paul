@@ -2,7 +2,7 @@
   "name": "paul",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/UncleMaple/Paul.git",
+  "repository": "https://github.com/skipmaple/Paul.git",
   "author": "drewlee <skipmaple@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
@@ -46,13 +46,6 @@
     "tailwindcss-stimulus-components": "^3.0.4",
     "w3c-keyname": "^2.2.5"
   },
-  "scripts": {
-    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "dev": "gulp dev",
-    "css": "gulp css",
-    "js": "gulp javascript"
-  },
   "devDependencies": {
     "@babel/core": "^7.18.9",
     "@rollup/plugin-babel": "^5.3.1",
@@ -77,5 +70,12 @@
     "snazzy": "^9.0.0",
     "standard": "^17.0.0",
     "stylelint": "^14.9.1"
+  },
+  "scripts": {
+    "build:css": "./run yarn:build:css",
+    "build": "./run yarn:build",
+    "dev": "gulp dev",
+    "css": "gulp css",
+    "js": "gulp javascript"
   }
 }
