@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
+  get "/up/", to: "up#index", as: :up
+  get "/up/databases", to: "up#databases", as: :up_databases
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
