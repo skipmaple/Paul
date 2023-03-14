@@ -9,27 +9,30 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 
-# Custom Code with rails 7.0
-# Because devise-4.8.1 not apply to rails7
-# Reference https://dev.to/efocoder/how-to-use-devise-with-turbo-in-rails-7-9n9
+# # Custom Code with rails 7.0
+# # Because devise-4.8.1 not apply to rails7
+# # Reference https://dev.to/efocoder/how-to-use-devise-with-turbo-in-rails-7-9n9
+# #
+# # Begin
+# class TurboFailureApp < Devise::FailureApp
+#   def respond
+#     if request_format == :turbo_stream
+#       redirect
+#     else
+#       super
+#     end
+#   end
 #
-# Begin
-class TurboFailureApp < Devise::FailureApp
-  def respond
-    if request_format == :turbo_stream
-      redirect
-    else
-      super
-    end
-  end
-
-  def skip_format?
-    %w(html turbo_stream */*).include? request_format.to_s
-  end
-end
-# End Custom
+#   def skip_format?
+#     %w(html turbo_stream */*).include? request_format.to_s
+#   end
+# end
+# # End Custom
 
 Devise.setup do |config|
+  config.responder.error_status = :unprocessable_entity
+  config.responder.redirect_status = :see_other
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -292,8 +295,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # TODO: .gitignore secret
-  config.omniauth :github, '1378013625bf3cc9f7db', 'c66b12244a9ceb844a88e13e27d34d8e9a1a1937', scope: 'user,public_repo'
+  config.omniauth :github, ENV.fetch("GITHUB_CLIENT_ID"), ENV.fetch("GITHUB_CLIENT_SECRET"), scope: 'user,public_repo'
+  config.omniauth :google_oauth2, ENV.fetch("GOOGLE_CLIENT_ID"), ENV.fetch("GOOGLE_CLIENT_SECRET"), {}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -331,19 +334,19 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 
-  # ===> My Custom
-  # Reference https://dev.to/efocoder/how-to-use-devise-with-turbo-in-rails-7-9n9
+  # # ===> My Custom
+  # # Reference https://dev.to/efocoder/how-to-use-devise-with-turbo-in-rails-7-9n9
+  # #
+  # # Begin
+  # #
+  # # Configure the parent class to the custom controller.
+  # config.parent_controller = 'TurboDeviseUserController'
+  # config.navigational_formats = ['*/*', :html, :turbo_stream]
   #
-  # Begin
-  #
-  # Configure the parent class to the custom controller.
-  config.parent_controller = 'TurboDeviseUserController'
-  config.navigational_formats = ['*/*', :html, :turbo_stream]
-
-  # Warden configuration
-  config.warden do |manager|
-    manager.failure_app = TurboFailureApp
-  end
-  # End Custom
+  # # Warden configuration
+  # config.warden do |manager|
+  #   manager.failure_app = TurboFailureApp
+  # end
+  # # End Custom
 
 end

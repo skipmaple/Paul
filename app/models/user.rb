@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :trackable, :confirmable, :lockable, :omniauthable, omniauth_providers: %i[github]
+         :trackable, :confirmable, :lockable, :omniauthable, omniauth_providers: %i[github google_oauth2]
 
   # attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -35,13 +35,10 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.name = auth.info.name
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.confirmed_at = Time.now
-    end
+    user = where(provider: auth.provider, uid: auth.uid).first
+    user ||= User.find_by_email(auth.info.email.downcase) if auth.info.email
+    user ||= User.create(provider: auth.provider, uid: auth.uid, name: auth.info.name, email: auth.info.email, password: Devise.friendly_token[0,20], confirmed_at: Time.current)
+    user
   end
 
   # 返回用户的动态流

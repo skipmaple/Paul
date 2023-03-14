@@ -34,4 +34,4 @@
       %h4{ class: "text-red-600 dark:text-red-500" }= t(:cancel_my_account)
     .flex.space-x-2.items-center{ class: "text-dark-400 dark:text-light-400" }
       %span=t(:Unhappy?)
-      = button_to t(:cancel_my_account), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "underline body-medium-bold text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-500"
+      = button_to t(:cancel_my_account), registration_path(resource_name), data: { turbo_confirm: "Are you sure?", turbo_method: :delete }, method: :delete, class: "underline body-medium-bold text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-500"

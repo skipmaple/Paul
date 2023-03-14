@@ -13,17 +13,16 @@
             = t('post_time', time_ago: I18n.locale == :en ? time_ago : time_ago.gsub(/\s/, ""))
 
         -#  更多
-        %button#dropdownDefault{"aria-expanded" => "false", "data-dropdown-placement" => "bottom-end", "data-dropdown-toggle" => "post-dropdown-more"}
-          = image_tag("icons/more_horizontal")
-        #post-dropdown-more.z-10.hidden.bg-light-100.divide-y.divide-dark-400.rounded.shadow.w-44.dark:bg-gray-500
-          %ul{ "class" => "py-1 text-sm text-gray-700 dark:text-gray-200", "aria-labelledby" => "dropdownDefault" }
-            %li
-              = button_to(t(:delete), micropost_path(micropost.id), method: :delete, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white")
-              -#%a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => micropost_path(micropost), data: { turbo_method: :delete } }
-                = t(:delete)
-            %li
-              %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => "#"}
-                = t(:edit)
+        %div.relative{ "data-controller" => "dropdown" }
+          %button{ "data-action" => "dropdown#toggle click@window->dropdown#hide" }
+            = image_tag("icons/more_horizontal")
+          .z-10.hidden.transition.transform.absolute.right-0.origin-top-right.bg-light-100.divide-y.divide-dark-400.rounded.shadow{ class: "dark:bg-gray-500", "data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-95" }
+            %ul{ "class" => "py-1 text-sm text-gray-700 dark:text-gray-200" }
+              %li
+                = button_to( t(:delete), micropost_path(micropost.id), "data-action" => "dropdown#toggle", method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" )
+              %li
+                %a.block.py-2.px-4.text-sm.text-gray-700{:href => "#", "data-action" => "dropdown#toggle", class: "hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"}
+                  = t(:edit)
 
     .div
       -#  post 内容
