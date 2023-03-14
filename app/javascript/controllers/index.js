@@ -3,9 +3,9 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+import Dropdown from 'stimulus-dropdown'
 
-import ControllerNameController from "./controller_name_controller"
-application.register("controller-name", ControllerNameController)
+application.register('dropdown', Dropdown)
 
 import EditorController from "./editor_controller"
 application.register("editor", EditorController)
@@ -21,6 +21,3 @@ application.register("post-setting-toggle", PostSettingToggleController)
 
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
-
-import UserController from "./user_controller"
-application.register("user", UserController)
