@@ -6,9 +6,9 @@
 /* switch language use */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
     html {

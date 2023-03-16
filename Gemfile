@@ -102,8 +102,6 @@ gem 'letter_avatar', '~> 0.3.9'
 
 gem 'chinese_pinyin', '~> 1.1'
 
-gem 'tailwindcss-rails', '~> 2.0'
-
 gem "sassc", "~> 2.4"
 
 gem "devise", "~> 4.8"
