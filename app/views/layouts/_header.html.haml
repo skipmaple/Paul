@@ -56,12 +56,12 @@
                       = button_to('English', language_settings_preference_path(language: 'en'), method: :post, class: 'block py-2 px-4 rounded text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white')
 
             - if user_signed_in?
-              %li{ :class => "flex flex-col items-center relative", 'data-controller' => 'toggle' }
-                %button{:class => "flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600","aria-expanded" => "false", :type => "button", 'data-action' => 'click->toggle#handleToggleUserMenu'}
+              %li{ :class => "flex flex-col items-center relative", 'data-controller' => 'dropdown' }
+                %button{:class => "flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600","aria-expanded" => "false", :type => "button", 'data-action' => 'dropdown#toggle click@window->dropdown#hide'}
                   %span.sr-only Open user menu
                   = gravatar_for current_user, class: "w-10 h-10 rounded-full"
                 / Dropdown menu
-                %div{:class => "hidden absolute top-12 z-50 text-base list-none bg-light-100 rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600", "data-toggle-target": "userMenuDropdown"}
+                %div{:class => "hidden absolute top-12 z-50 text-base list-none bg-light-100 rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600", "data-dropdown-target" => "menu"}
                   .py-3.px-4
                     %span.block.text-sm.text-gray-900.dark:text-white
                       = current_user.name
@@ -69,16 +69,16 @@
                       = current_user.email
                   %ul.py-1{"aria-labelledby" => "dropdown"}
                     %li
-                      %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => user_path(current_user)}
+                      %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => user_path(current_user), "data-action" => "dropdown#toggle"}
                         = t(:profile)
                     %li
-                      %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => users_path}
+                      %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => users_path, "data-action" => "dropdown#toggle"}
                         = t(:users)
                     %li
-                      %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => settings_path}
+                      %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => settings_path, "data-action" => "dropdown#toggle"}
                         = t(:settings)
                   .py-1
-                    %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => destroy_user_session_path, data: { turbo_method: :delete }}
+                    %a.block.py-2.px-4.text-sm.text-gray-700.hover:bg-gray-100.dark:hover:bg-gray-600.dark:text-gray-200.dark:hover:text-white{:href => destroy_user_session_path, data: { turbo_method: :delete }, "data-action" => "dropdown#toggle"}
                       = t(:logout)
                 %button.inline-flex.items-center.p-2.ml-1.text-sm.text-gray-500.rounded-lg.md:hidden.hover:bg-gray-100.focus:outline-none.focus:ring-2.focus:ring-gray-200.dark:text-gray-400.dark:hover:bg-gray-700.dark:focus:ring-gray-600{"aria-controls" => "mobile-menu-2", "aria-expanded" => "false", "data-collapse-toggle" => "mobile-menu-2", :type => "button"}
                   %span.sr-only Open main menu
