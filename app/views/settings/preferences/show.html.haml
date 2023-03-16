@@ -20,7 +20,7 @@
 
 
   .flex.space-x-2.items-center
-    = image_tag(current_user&.theme == 'dark' ? 'icons/theme_dark': 'icons/theme_light')
+    = image_tag(current_user&.theme == 'dark' ? 'icons/theme_dark.svg': 'icons/theme_light.svg')
     %span.body-medium-bold.text-dark-400.dark:text-light-400
       = t(:site_theme)
 

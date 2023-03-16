@@ -12,7 +12,7 @@
         -# left part
         .flex.items-center
           = link_to(posts_path, class: 'inline-flex space-x-2 px-4 py-2 rounded hover:bg-light-200') do
-            = image_tag('icons/back')
+            = image_tag('icons/back.svg')
             %span{class: 'body-small-regular text-dark-300 dark:text-light-600'} Posts
 
           %span{class: 'body-small-regular text-dark-100'} Draft-Saved
@@ -24,7 +24,7 @@
           %button.inline-flex.items-start.justify-center.px-5.py-3.text-dark-300.dark:text-light-600.transition.rounded.hover:bg-light-200.focus:outline-none.focus:ring{:type => "button"}
             = f.submit('Publish', class: 'text-sm font-medium')
           %div{ class: 'inline-flex space-x-2 px-4 py-2 rounded hover:bg-light-200', id: 'post-setting-open-btn', 'data-post-setting-toggle-target': 'postSettingOpenBtn'}
-            = image_tag('icons/editor_settings_off', 'data-action': 'click->post-setting-toggle#open')
+            = image_tag('icons/editor_settings_off.svg', 'data-action': 'click->post-setting-toggle#open')
 
       -# = post edit part
       .w-full.h-screen.overflow-x-hidden.overflow-y-auto.z-0.relative

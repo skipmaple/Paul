@@ -2,7 +2,7 @@
   .flex.justify-between.items-center
     %span.body-medium-regular.text-dark-300.dark:text-light-600 Post settings
     %div{ class: 'inline-flex space-x-2 px-4 py-2 rounded hover:bg-light-200', id: 'post-setting-close-btn' }
-      = image_tag('icons/editor_settings_on', 'data-action': 'click->post-setting-toggle#close')
+      = image_tag('icons/editor_settings_on.svg', 'data-action': 'click->post-setting-toggle#close')
 
   .flex.flex-col.space-y-6.overflow-y-auto
     .flex.flex-col.space-y-2
@@ -33,5 +33,5 @@
 
     - if @post
       = link_to(@post, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'inline-flex space-x-2 items-center') do
-        = image_tag('icons/delete')
+        = image_tag('icons/delete.svg')
         %span{class: "body-small-regular text-red-600 dark:text-red-500"} Delete post
