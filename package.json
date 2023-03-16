@@ -73,8 +73,8 @@
   "devDependencies": {
   },
   "scripts": {
-    "build:css": "./run yarn:build:css",
     "build": "./run yarn:build",
+    "build:css": "./run yarn:build:css",
     "dev": "gulp dev",
     "css": "gulp css",
     "js": "gulp javascript"
