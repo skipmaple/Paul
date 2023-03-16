@@ -32,6 +32,6 @@
       = f.select(:visibility_level, options_for_select(Post.visibility_levels.map{|k,v| [k,k]}, @post.visibility_level), class: "body-small-regular text-dark-300 dark:text-light-600")
 
     - if @post
-      = link_to(@post, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'inline-flex space-x-2 items-center') do
+      = link_to(@post, method: :delete, data: { turbo_method: :delete, turbo_confirm: t(:are_you_sure) }, class: 'inline-flex space-x-2 items-center') do
         = image_tag('icons/delete.svg')
         %span{class: "body-small-regular text-red-600 dark:text-red-500"} Delete post
