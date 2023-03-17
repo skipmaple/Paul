@@ -120,6 +120,11 @@ services:
     build:
       context: .
       dockerfile: ./nginx/Dockerfile
+    profiles: [ "nginx" ]
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "3s"
+    volumes:
+      - "./public:/var/www/paul/public}"
     depends_on:
       - web
     ports:
