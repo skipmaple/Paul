@@ -116,6 +116,15 @@ services:
     <<: *default-assets
     command: "yarn build:css"
 
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    depends_on:
+      - web
+    ports:
+      - 80:80
+
 volumes:
   postgres: {}
   redis: {}
