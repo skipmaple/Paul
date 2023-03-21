@@ -2,8 +2,8 @@
 -# - content_for(:no_app_layout, true)
 
 %section.container.mx-auto.mb-10
-  .flex.items-center.h-unless-header-for-blur.overflow-clip.bg-blur-light.dark:bg-blur-dark.rounded-3xl
-    %section.flex.flex-col.h-full.p-8.space-y-8.justify-center.overflow-y-scroll{:class => "md:w-1/3"}
+  .flex.overflow-clip.bg-blur-light.rounded-3xl{:class => "max-h-[611px] dark:bg-blur-dark"}
+    %section.flex.flex-col.h-full.p-8.space-y-6.overflow-y-scroll{:class => "md:w-1/3"}
       %h4
         = t(:login)
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -40,15 +40,15 @@
       #other-info.flex-col.space-y-4
         -# sign up
         #sign-up
-          = link_to new_registration_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500" do
+          = link_to new_registration_path(resource_name), class: "block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500" do
             = "#{t(:new_user?)} (#{t(:sign_up_now)})"
         -#  Didn't receive confirmation instructions?
         #confirmation-email-receive
           - if devise_mapping.confirmable? && controller_name != 'confirmations'
-            = link_to t("Didn't receive confirmation instructions?"), new_confirmation_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
+            = link_to t("Didn't receive confirmation instructions?"), new_confirmation_path(resource_name), class: "block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
         -# Didn't receive unlock instructions?
         #unlock-email-receive
           - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-            = link_to t("Didn't receive unlock instructions?"), new_unlock_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
+            = link_to t("Didn't receive unlock instructions?"), new_unlock_path(resource_name), class: "block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
 
-    %section#right-bg.h-full{ class: "md:w-2/3 bg-devise" }
+    %section#right-bg{ class: "md:w-2/3 bg-devise" }

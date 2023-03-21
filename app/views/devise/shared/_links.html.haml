@@ -1,4 +1,4 @@
-.flex-col.pt-4.space-y-4
+.flex-col.pt-4.space-y-1
   - if controller_name != 'sessions'
     = link_to t(:login), new_session_path(resource_name), class: 'block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500'
 
@@ -14,7 +14,7 @@
   - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
     = link_to t("Didn't receive unlock instructions?"), new_unlock_path(resource_name), class: 'block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500'
 
-  - if devise_mapping.omniauthable?
-    - resource_class.omniauth_providers.each do |provider|
-      = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: 'block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500'
+  -# - if devise_mapping.omniauthable?
+  -#   - resource_class.omniauth_providers.each do |provider|
+  -#     = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: 'block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500'
 

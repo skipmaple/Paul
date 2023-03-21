@@ -18,8 +18,8 @@
           .div{class: "flex pl-0 space-x-2"}
 
             %label{ id: 'micropost_picture', class: "inline-flex justify-center text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" }
-              = image_tag("icons/image")
+              = image_tag("icons/image.svg")
               = f.file_field(:picture, { id: 'micropost_picture', accept: 'image/jpeg,image/jpg,image/gif,image/png', class: 'hidden'} )
             = f.button(:emoji, { id: 'micropost_picture', accept: 'image/jpeg,image/jpg,image/gif,image/png', class: "inline-flex justify-center text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" } ) do
-              = image_tag("icons/emoji")
+              = image_tag("icons/emoji.svg")
           = f.submit t(:post), class: "micro-btn px-4 py-2.5 body-small-bold"

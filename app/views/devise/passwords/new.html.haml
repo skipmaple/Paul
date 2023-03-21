@@ -13,21 +13,21 @@
 - provide(:button_text, t("Send me reset password instructions"))
 
 %section#forget-password-page.container.mx-auto.mb-10
-  .flex.items-center.h-unless-header-for-blur.overflow-clip.bg-blur-light.dark:bg-blur-dark.rounded-3xl
-    %section.flex.flex-col.h-full.p-8.space-y-8.justify-center{:class => "md:w-1/3"}
+  .flex.overflow-clip.bg-blur-light.rounded-3xl{:class => "max-h-[611px] dark:bg-blur-dark"}
+    %section.flex.flex-col.h-full.p-8.space-y-8{:class => "md:w-1/3"}
       %h4
         = t("Forgot your password?")
-      .overflow-y-scroll
-        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-          .flex-col.space-y-6
-            = render "devise/shared/error_messages", resource: resource
-            .field
-              = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'border border-light-300 rounded-lg bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
-            .actions
-              -# = f.submit yield(:button_text), class: "text-light-300 bg-primary-600 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:bg-blue-600 heading-h6-bold rounded-lg w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:text-light-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              = f.submit yield(:button_text), class: "sm-btn w-full rounded-lg"
+
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        .flex-col.space-y-6
+          = render "devise/shared/error_messages", resource: resource
+          .field
+            = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'border border-light-300 rounded-lg bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
+          .actions
+            -# = f.submit yield(:button_text), class: "text-light-300 bg-primary-600 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:bg-blue-600 heading-h6-bold rounded-lg w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:text-light-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            = f.submit yield(:button_text), class: "sm-btn w-full rounded-lg"
         = render "devise/shared/links"
 
 
-    %section#right-bg.h-full{ class: "md:w-2/3 bg-devise" }
+    %section#right-bg{ class: "md:w-2/3 bg-devise" }

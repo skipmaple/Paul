@@ -287,6 +287,12 @@
         @apply bg-cover bg-no-repeat bg-center;
         background-image: url('bg/bg_sign_in.png');
     }
+
+    .bg-devise:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
 }
 
 .bg-body {
@@ -366,6 +372,10 @@
 
 .max-h-unless-header{
     max-height: calc(100vh - 112px);
+}
+
+.max-h-unless-header-for-blur{
+    max-height: calc(100vh - 152px);
 }
 
 .max-h-70vh{

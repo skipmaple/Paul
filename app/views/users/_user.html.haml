@@ -18,4 +18,4 @@
         -#  更多
         - if current_user&.admin? && !current_user?(user)
           = link_to t(:delete), user, method: :delete, class: "text-dark-300 dark:text-light-600",
-                                    data: { confirm: t(:are_you_sure) }
+                                    data: { turbo_method: :delete, turbo_confirm: t(:are_you_sure) }

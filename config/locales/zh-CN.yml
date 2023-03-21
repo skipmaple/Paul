@@ -17,9 +17,9 @@ zh-CN:
   # email
   email: 邮箱
   Email: 邮箱
-  title_upcase: 克林
+  title_upcase: OneTail
   email_hi: 你好
-  activate_email_content: "欢迎来到克林! 请点击激活按钮以激活您的账号:"
+  activate_email_content: "欢迎来到OneTail! 请点击激活按钮以激活您的账号:"
   activate: 激活
   reset_pwd_email_please_content: 请点击链接跳转到重置密码界面
   reset_pwd_email_expire_title: 该链接两个小时之后到期
@@ -36,7 +36,7 @@ zh-CN:
 
   # home_page
   welcome_title: 欢迎来到OneTail
-  welcome_content: "我发现 我调研 我记录 我分享。"
+  welcome_content: "发现 调研 记录 分享"
   welcome_content_2: "Hopefully other people will find these posts helpful,
   relevant, or interesting."
 
