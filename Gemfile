@@ -57,7 +57,7 @@ end
 group :production do
   # gem 'pg', '0.20.0'
   # The Ruby cloud services library. Supports all major cloud providers including AWS, Rackspace, Linode, Blue Box, StormOnDemand, and many others. Full support for most AWS services including EC2, S3, CloudWatch, SimpleDB, ELB, and RDS.
-  # gem 'fog', '~> 2.2'
+  # gem "fog", "~> 2.3"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -129,3 +129,10 @@ gem "foreman", "~> 0.87.2"
 
 # gem provides Rack CORS Middleware to our Rails app, allowing it to support cross-origin resource sharing.
 gem "rack-cors", :require => "rack/cors"
+
+gem "activestorage-aliyun", "~> 1.1"
+
+gem 'fog-aliyun', '~>0.4.0'
+gem "fog-core", "~> 2.2"
+gem "fog-local", "~> 0.8.0"
+gem "fog-aws", "~> 3.18"

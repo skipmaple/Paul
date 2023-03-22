@@ -1,10 +1,39 @@
-test:
-  service: Disk
-  root: <%= Rails.root.join("tmp/storage") %>
-
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
+
+development:
+  service: Aliyun
+  access_key_id: <%= ENV.fetch('ALIYUN_ACCESS_KEY_ID') { "" } %>
+  access_key_secret: <%= ENV.fetch('ALIYUN_ACCESS_KEY_SECRET') { "" } %>
+  bucket: <%= ENV.fetch('ALIYUN_BUCKET') { "paul-dev" } %>
+  endpoint: <%= ENV.fetch('ALIYUN_ENDPOINT') { "oss-cn-beijing.aliyuncs.com" } %>
+  # path prefix, default: /
+  path: "paul"
+  # Bucket public: true/false, default: true, for generate public/private URL.
+  public: false
+
+test:
+  service: Aliyun
+  access_key_id: <%= ENV.fetch('ALIYUN_ACCESS_KEY_ID') { "" } %>
+  access_key_secret: <%= ENV.fetch('ALIYUN_ACCESS_KEY_SECRET') { "" } %>
+  bucket: <%= ENV.fetch('ALIYUN_BUCKET') { "paul-test" } %>
+  endpoint: <%= ENV.fetch('ALIYUN_ENDPOINT') { "oss-cn-beijing.aliyuncs.com" } %>
+  # path prefix, default: /
+  path: "paul"
+  # Bucket public: true/false, default: true, for generate public/private URL.
+  public: false
+
+production:
+  service: Aliyun
+  access_key_id: <%= ENV.fetch('ALIYUN_ACCESS_KEY_ID') { "" } %>
+  access_key_secret: <%= ENV.fetch('ALIYUN_ACCESS_KEY_SECRET') { "" } %>
+  bucket: <%= ENV.fetch('ALIYUN_BUCKET') { "paul-prod" } %>
+  endpoint: <%= ENV.fetch('ALIYUN_ENDPOINT') { "oss-cn-beijing.aliyuncs.com" } %>
+  # path prefix, default: /
+  path: "paul"
+  # Bucket public: true/false, default: true, for generate public/private URL.
+  public: false
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
