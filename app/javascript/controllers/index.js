@@ -10,11 +10,11 @@ application.register('dropdown', Dropdown)
 import EditorController from "./editor_controller"
 application.register("editor", EditorController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
 import PostController from "./post_controller"
 application.register("post", PostController)
+
+import IconController from "./icon_controller"
+application.register("icon", IconController)
 
 import PostSettingToggleController from "./post_setting_toggle_controller"
 application.register("post-setting-toggle", PostSettingToggleController)
