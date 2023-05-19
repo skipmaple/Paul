@@ -9,8 +9,8 @@ WORKDIR $RAILS_ROOT
 # create log directory
 RUN mkdir log
 # copy ssl certficate
-copy nginx/fullchain.pem /etc/letsencrypt/live/onetail.life/fullchain.pem
-copy nginx/privkey.pem /etc/letsencrypt/live/onetail.life/privkey.pem
+COPY nginx/fullchain.pem /etc/letsencrypt/live/onetail.life/fullchain.pem
+COPY nginx/privkey.pem /etc/letsencrypt/live/onetail.life/privkey.pem
 # copy over static assets
 COPY public public/
 # Copy Nginx config template

@@ -10,16 +10,16 @@
   .div.w-full.p-2.5
     .flex.space-x-4
       = link_to gravatar_for(current_user, size: 50), current_user, class: "mt-2"
-      .div.w-full
+      .div.w-full{"data-controller" => "icon"}
         = render 'shared/error_messages', object: f.object
-        .div.py-2
-          = f.text_area :content, placeholder: t(:post_hint), class: "w-full px-2 resize-none border border-light-300 rounded body-medium-regular text-dark-300 bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 focus:ring-0 dark:text-light-600 dark:placeholder-gray-400"
-        .div{class: "flex items-center justify-between px-0 py-2"}
+        = f.text_area(:content, placeholder: t(:post_hint), class: "w-full p-2 resize-none border border-light-300 rounded body-medium-regular text-dark-300 bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 focus:ring-0 dark:text-light-600 dark:placeholder-gray-400")
+        .div{class: "flex items-center justify-between px-0 py-2 space-x-2"}
           .div{class: "flex pl-0 space-x-2"}
 
             %label{ id: 'micropost_picture', class: "inline-flex justify-center text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" }
               = image_tag("icons/image.svg")
               = f.file_field(:picture, { id: 'micropost_picture', accept: 'image/jpeg,image/jpg,image/gif,image/png', class: 'hidden'} )
-            = f.button(:emoji, { id: 'micropost_picture', accept: 'image/jpeg,image/jpg,image/gif,image/png', class: "inline-flex justify-center text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600" } ) do
-              = image_tag("icons/emoji.svg")
+            %div.relative{"x-data" => "{ open: false }"}
+              = image_tag("icons/emoji.svg", "@click" => "open = !open")
+              #emoji-picker.absolute.inset-x-0.top-6.z-10.flex.items-center.justify-center{"x-show" => "open", "@click.outside" => "open = false", "@keydown.escape.window" => "open = false", "data-icon-target" => "emojiPicker"}
           = f.submit t(:post), class: "micro-btn px-4 py-2.5 body-small-bold"

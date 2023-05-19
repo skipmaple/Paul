@@ -61,3 +61,5 @@ docker-compose.override.yml
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea/vcs.xml
+nginx/fullchain.pem
+nginx/privkey.pem
