@@ -1,32 +1,73 @@
 - provide(:title, 'Sign up')
 - provide(:button_text, t(:create_my_account))
+- content_for(:no_body_bg, true)
+- content_for(:no_app_layout, true)
 
-%section.container.mx-auto.mb-10
-  .flex.overflow-clip.bg-blur-light.rounded-3xl{:class => "max-h-[611px] dark:bg-blur-dark"}
-    %section.flex.flex-col.p-8.space-y-3.overflow-y-scroll{:class => "md:w-1/3 h-[611px]"}
-      %h4= t(:sign_up)
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        .flex-col.space-y-3
-          = render "devise/shared/error_messages", resource: resource
-          .field
-            = f.label :name, t(:user_name), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-            = f.text_field :name, autofocus: true, autocomplete: "username", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          .field
-            = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          .field
-            .flex.space-x-4
-              = f.label :password, t(:password), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-              - if @minimum_password_length
-                %em{class: 'text-dark-300 dark:text-light-600'}
-                  (#{@minimum_password_length} characters minimum)
-            = f.password_field :password, autocomplete: "new-password", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          .field
-            = f.label :password_confirmation, t(:user_password_confirm), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-            = f.password_field :password_confirmation, autocomplete: "new-password", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          .actions
-            = f.submit yield(:button_text), class: "base-btn w-full rounded-lg"
+.p-4.gap-4.md:flex.md:items-center.md:justify-between.md:container.md:my-auto
+  -# Intro
+  .flex.flex-col.space-y-8.items-start
+    .heading-h4-bold.text-center Sign In to OneTail
+    .hidden.body-medium-regular{class: 'md:block'} If you don't have an account, you can register here!
 
-      = render "devise/shared/links"
+  -# image
+  .relative.w-52.h-52{ class: 'pt-[60px] mx-auto md:w-[700px] md:h-[700px]' }
+    .absolute.w-32.h-32.left-0.top-0.rounded-full{class: 'md:w-[400px] md:h-[400px] bg-[#4461F2] blur-[105px] md:blur-[272.5px] -z-50'}
+    .absolute.w-32.h-32.right-0.bottom-0.rounded-full{class: 'md:w-[400px] md:h-[400px] bg-[#DDA82A] blur-[105px] md:blur-[272.5px] -z-40'}
 
-    %section#right-bg{ class: "md:w-2/3 bg-devise" }
+    = image_tag('bg/bg_reading_book_lg.png', class: 'absolute hidden m-auto inset-0 md:block')
+    = image_tag('bg/bg_reading_book.png', class: 'absolute m-auto inset-0 md:hidden')
+
+  .flex.flex-col
+    -# top side
+
+    .flex.mt-10.mx-auto.space-x-4.justify-between{class: 'w-1/2'}
+      =link_to('#', class: 'body-medium-bold whitespace-nowrap') do
+        %span.font-montserrat.font-extrabold.text-lg.leading-5.not-italic.tracking-wider.text-primary-600.hover:text-primary-500 Sign In
+
+      =link_to('#', class: 'body-medium-bold whitespace-nowrap inline-block') do
+        %span.font-montserrat.font-extrabold.text-lg.leading-5.not-italic.tracking-wider.text-primary-600{class: 'hover:text-primary-500'} Register
+        .h-1.w-10.mx-auto.mt-2.bg-primary-400.rounded-md
+
+    -# form group
+
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      .flex-col.space-y-3
+        = render "devise/shared/error_messages", resource: resource
+        .field
+          = f.label :name, t(:user_name), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
+          = f.text_field :name, autofocus: true, autocomplete: "username", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+        .field
+          = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+        .field
+          .flex.space-x-4
+            = f.label :password, t(:password), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
+            - if @minimum_password_length
+              %em{class: 'text-dark-300 dark:text-light-600'}
+                (#{@minimum_password_length} characters minimum)
+          = f.password_field :password, autocomplete: "new-password", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+        .field
+          = f.label :password_confirmation, t(:user_password_confirm), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+        .actions
+          = f.submit yield(:button_text), class: "base-btn w-full rounded-lg"
+
+    -# other sso login
+    .flex.space-x-3.my-10.items-center
+      %hr.grow
+      %span.font-montserrat.font-semibold.text-sm.not-italic.tracking-widest.text-light-600 Or continue with
+      %hr.grow
+
+
+    .flex.justify-evenly
+      = button_to user_github_omniauth_authorize_path, 'data-turbo' => 'false' do
+        .base-btn.p-2.bg-white.border.border-light-300.text-dark-400.dark:text-white.dark:bg-transparent.dark:border-dark-400.hover:bg-white.hover:text-dark-400.hover:border-light-400.dark:hover:border-dark-300
+          %svg{ :width => "22", :height => "23", :viewbox => "0 0 22 23", :fill => "currentColor", :xmlns => "http://www.w3.org/2000/svg" }
+            %path{ :d => "M10.8676 0.875001C4.86324 0.872573 0 5.73339 0 11.7329C0 16.4772 3.04226 20.5101 7.27908 21.9911C7.84965 22.1344 7.76225 21.7289 7.76225 21.4521V19.5704C4.46748 19.9565 4.33394 17.7762 4.113 17.412C3.66625 16.6496 2.61008 16.4553 2.92571 16.0911C3.67596 15.7051 4.44077 16.1883 5.32698 17.4969C5.96797 18.4463 7.21838 18.286 7.85208 18.1282C7.99048 17.5576 8.28669 17.0478 8.69459 16.652C5.28085 16.0402 3.85806 13.9569 3.85806 11.4804C3.85806 10.2786 4.25382 9.17383 5.03077 8.28276C4.53546 6.81384 5.0769 5.55614 5.14974 5.36919C6.5604 5.24293 8.0269 6.37923 8.14101 6.46906C8.94224 6.25297 9.85759 6.13886 10.8822 6.13886C11.9117 6.13886 12.8294 6.25783 13.638 6.47635C13.9123 6.26754 15.272 5.29149 16.5831 5.41046C16.6535 5.59742 17.1828 6.82598 16.7166 8.27548C17.5033 9.16898 17.9039 10.2834 17.9039 11.4877C17.9039 13.9691 16.4714 16.0547 13.048 16.6569C13.3412 16.9452 13.574 17.2891 13.7328 17.6685C13.8917 18.0479 13.9733 18.4551 13.973 18.8663V21.5978C13.9924 21.8163 13.973 22.0324 14.3372 22.0324C18.6372 20.5829 21.7328 16.5209 21.7328 11.7353C21.7328 5.73339 16.8672 0.875001 10.8676 0.875001V0.875001Z", :fill => "currentColor" }
+      = button_to user_google_oauth2_omniauth_authorize_path, 'data-turbo' => 'false' do
+        .base-btn.p-2.bg-white.border.border-light-300.text-dark-400.dark:text-white.dark:bg-transparent.dark:border-dark-400.hover:bg-white.hover:text-dark-400.hover:border-light-400.dark:hover:border-dark-300
+          %svg{fill: "none", height: "22", viewbox: "0 0 22 22", width: "22", xmlns: "http://www.w3.org/2000/svg"}
+            %path{"clip-rule" => "evenodd", d: "M20.703 11.7132C20.703 10.9686 20.6362 10.2527 20.5121 9.56543H10.623V13.627H16.274C16.0305 14.9395 15.2908 16.0516 14.1787 16.7961V19.4307H17.5721C19.5576 17.6027 20.703 14.9109 20.703 11.7132Z", fill: "#4285F4", "fill-rule" => "evenodd"}
+            %path{"clip-rule" => "evenodd", d: "M10.6234 21.9747C13.4584 21.9747 15.8352 21.0345 17.5725 19.4309L14.1791 16.7963C13.2389 17.4263 12.0361 17.7986 10.6234 17.7986C7.88864 17.7986 5.57387 15.9515 4.74819 13.4697H1.24023V16.1902C2.96796 19.6218 6.51887 21.9747 10.6234 21.9747Z", fill: "#34A853", "fill-rule" => "evenodd"}
+            %path{"clip-rule" => "evenodd", d: "M4.74782 13.4702C4.53782 12.8402 4.4185 12.1673 4.4185 11.4752C4.4185 10.7832 4.53782 10.1102 4.74782 9.48022V6.75977H1.23986C0.528729 8.17727 0.123047 9.7809 0.123047 11.4752C0.123047 13.1695 0.528729 14.7732 1.23986 16.1907L4.74782 13.4702Z", fill: "#FBBC05", "fill-rule" => "evenodd"}
+            %path{"clip-rule" => "evenodd", d: "M10.6234 5.15075C12.165 5.15075 13.5491 5.68052 14.6373 6.72097L17.6489 3.70938C15.8305 2.01506 13.4536 0.974609 10.6234 0.974609C6.51887 0.974609 2.96796 3.32756 1.24023 6.75916L4.74819 9.47961C5.57387 6.99779 7.88864 5.15075 10.6234 5.15075Z", fill: "#EA4335", "fill-rule" => "evenodd"}

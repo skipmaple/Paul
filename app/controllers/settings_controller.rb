@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SettingsController < Settings::ApplicationController
+  before_action :authenticate_user!
   before_action :user
   before_action :authorize_change_username!, only: :update_username
 

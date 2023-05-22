@@ -24,7 +24,7 @@
                 %a.block.py-2.px-4.text-sm.text-gray-700.whitespace-nowrap{:href => "#", "data-action" => "dropdown#toggle", class: "hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"}
                   = t(:edit)
 
-    .div
+    .div{ style: "overflow-wrap: break-word;" }
       -#  post 内容
       %span.body-medium-regular{ class: 'text-dark-300 dark:text-light-600' }
         = micropost.content
