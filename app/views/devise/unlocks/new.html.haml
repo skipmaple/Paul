@@ -22,7 +22,7 @@
           = render "devise/shared/error_messages", resource: resource
           .field
             = f.label :email, t(:Email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'border border-light-300 rounded-lg bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'border border-light-300 rounded-lg bg-light-transparent-300 dark:bg-dark-transparent-300 dark:border-dark-300 text-dark-300 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-dark-300 dark:text-light-600 dark:focus:ring-blue-500 dark:focus:border-blue-500'
           .actions
             = f.submit yield(:button_text), class: "base-btn w-full rounded-lg"
       = render "devise/shared/links"

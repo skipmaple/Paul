@@ -41,11 +41,12 @@ which I can easily find and refer to later."
 relevant, or interesting."
 
   # sign_up
-  user_name: Username
+  user_name: User Name
   user_email: Email
   user_password: Password
   user_password_confirm: Confirmation
   sign_up: Sign up
+  register: Register
   create_my_account: Create my account
   "Didn't receive confirmation instructions?": Didn't receive confirmation instructions?
   "Didn't receive unlock instructions?": Didn't receive unlock instructions?
@@ -54,6 +55,7 @@ relevant, or interesting."
   "Forgot your password?": Forgot your password?
   "Send me reset password instructions": "Send me reset password instructions"
   "Resend unlock instructions": "Resend unlock instructions"
+  "Or continue with": "Or continue with"
 
   # edit_user
   edit_user: Edit user

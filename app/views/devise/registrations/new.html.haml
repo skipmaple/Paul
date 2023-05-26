@@ -3,60 +3,58 @@
 - content_for(:no_body_bg, true)
 - content_for(:no_app_layout, true)
 
-.p-4.gap-4.md:flex.md:items-center.md:justify-between.md:container.md:my-auto
+.p-4.gap-4.md:flex.md:justify-between.md:container.md:px-20
   -# Intro
-  .flex.flex-col.space-y-8.items-start
-    .heading-h4-bold.text-center Sign In to OneTail
-    .hidden.body-medium-regular{class: 'md:block'} If you don't have an account, you can register here!
+  .flex.flex-col.space-y-8.items-center.md:items-start.md:self-center
+    .font-barlow.not-italic.font-semibold.text-2xl.text-center.md:text-start.md:text-4xl.text-dark-400.dark:text-light-400 Sign In to OneTail
+    .hidden.body-medium-regular.text-xl.leading-7.font-barlow{class: 'text-dark-400 dark:text-light-400 md:block'} If you don't have an account, you can register here!
 
   -# image
-  .relative.w-52.h-52{ class: 'pt-[60px] mx-auto md:w-[700px] md:h-[700px]' }
+  .relative.w-52.h-52{ class: 'mt-[60px] mx-auto md:w-[700px] md:h-[700px]' }
     .absolute.w-32.h-32.left-0.top-0.rounded-full{class: 'md:w-[400px] md:h-[400px] bg-[#4461F2] blur-[105px] md:blur-[272.5px] -z-50'}
     .absolute.w-32.h-32.right-0.bottom-0.rounded-full{class: 'md:w-[400px] md:h-[400px] bg-[#DDA82A] blur-[105px] md:blur-[272.5px] -z-40'}
 
     = image_tag('bg/bg_reading_book_lg.png', class: 'absolute hidden m-auto inset-0 md:block')
     = image_tag('bg/bg_reading_book.png', class: 'absolute m-auto inset-0 md:hidden')
 
-  .flex.flex-col.md:space-y-16
+  .flex.flex-col{class: 'md:mt-[60px] md:space-y-20'}
     -# top side
-
-    .flex.mt-10.mx-auto.space-x-4.justify-between{class: 'w-1/2 md:mr-0'}
+    .flex.my-10.mx-auto.justify-between{class: 'w-1/2 md:w-2/3 md:self-end md:mx-0 md:my-0 md:pt-0'}
       =link_to('#', class: 'body-medium-bold md:body-small-bold whitespace-nowrap') do
-        %span.font-montserrat.font-extrabold.text-base.leading-5.not-italic.tracking-wider.text-primary-600.hover:text-primary-500 Sign In
+        %span.font-montserrat.font-extrabold.text-base.leading-5.not-italic.tracking-wider.text-primary-600.hover:text-primary-500
+          = t(:login)
 
       =link_to('#', class: 'body-medium-bold md:body-small-bold whitespace-nowrap inline-block') do
-        %span.font-montserrat.font-extrabold.text-base.leading-5.not-italic.tracking-wider.text-primary-600{class: 'hover:text-primary-500'} Register
+        %span.font-montserrat.font-extrabold.text-base.leading-5.not-italic.tracking-wider.text-primary-600{class: 'hover:text-primary-500'}
+          = t(:register)
         .h-1.w-10.mx-auto.mt-2.bg-primary-400.rounded-md
 
     .flex.flex-col
       -# form group
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'md:w-72' }) do |f|
-        .flex-col.space-y-3
+        .flex-col.space-y-5
           = render "devise/shared/error_messages", resource: resource
-          .field
-            -# = f.label :name, t(:user_name), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-            = f.text_field :name, autofocus: true, placeholder: 'name', autocomplete: "username", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          .field
-            -# = f.label :email, t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-            = f.email_field :email, autocomplete: "email", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          .field
-            .flex.space-x-4
-              -# = f.label :password, t(:password), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-              -# - if @minimum_password_length
-              -#   %em{class: 'text-dark-300 dark:text-light-600'}
-              -#     (#{@minimum_password_length} characters minimum)
-            = f.password_field :password, autocomplete: "new-password", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          .field
-            -# = f.label :password_confirmation, t(:user_password_confirm), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-600"
-            = f.password_field :password_confirmation, autocomplete: "new-password", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+          .field.relative
+            = f.text_field :name, autofocus: true, placeholder: ' ', autocomplete: 'name', class: 'did-floating-input'
+            = f.label :name, t(:user_name), class: "did-floating-label"
+          .field.relative
+            = f.email_field :email, placeholder: ' ', autocomplete: 'email', class: 'did-floating-input'
+            = f.label :email, t(:Email), class: 'did-floating-label'
+          .field.relative
+            = f.password_field :password, placeholder: ' ', autocomplete: 'new-password', class: 'did-floating-input'
+            = f.label :password, t(:user_password), class: 'did-floating-label'
+          .field.relative
+            = f.password_field :password_confirmation, placeholder: ' ', autocomplete: "new-password", class: 'did-floating-input'
+            = f.label :password_confirmation, t(:user_password_confirm), class: 'did-floating-label'
           .actions
-            = f.submit yield(:button_text), class: "base-btn w-full mt-2 rounded-lg"
+            = f.submit yield(:button_text), class: "base-btn w-full mt-2 rounded-lg tracking-widest"
 
       -# other sso login
       .flex.space-x-3.my-10.items-center
-        %hr.grow.border-none.bg-light-600{class: 'md:h-0.5'}
-        %span.font-montserrat.font-semibold.text-sm.not-italic.tracking-widest.text-light-600 Or continue with
-        %hr.grow.border-none.bg-light-600{class: 'md:h-0.5'}
+        %hr.w-full.grow.border-none.bg-light-600{class: 'h-0.5'}
+        %span.font-montserrat.font-semibold.text-sm.not-italic.tracking-widest.text-light-600.whitespace-nowrap
+          = t('Or continue with')
+        %hr.w-full.grow.border-none.bg-light-600{class: 'h-0.5'}
 
 
       .flex.justify-evenly

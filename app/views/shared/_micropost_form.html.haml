@@ -12,7 +12,7 @@
       = link_to gravatar_for(current_user, size: 50), current_user, class: "mt-2"
       .div.w-full{"data-controller" => "icon"}
         = render 'shared/error_messages', object: f.object
-        = f.text_area(:content, placeholder: t(:post_hint), class: "w-full p-2 resize-none border border-light-300 rounded body-medium-regular text-dark-300 bg-light-transparent_300 dark:bg-dark-transparent_300 dark:border-dark-300 focus:ring-0 dark:text-light-600 dark:placeholder-gray-400")
+        = f.text_area(:content, placeholder: t(:post_hint), class: "w-full p-2 resize-none border border-light-300 rounded body-medium-regular text-dark-300 bg-light-transparent-300 dark:bg-dark-transparent-300 dark:border-dark-300 focus:ring-0 dark:text-light-600 dark:placeholder-gray-400")
         .div{class: "flex items-center justify-between px-0 py-2 space-x-2"}
           .div{class: "flex pl-0 space-x-2"}
 

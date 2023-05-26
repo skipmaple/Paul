@@ -44,19 +44,20 @@ module.exports = {
         fontFamily: {
             sans: ['"Open Sans"', 'sans-serif'],
             heading: ['Poppins', 'sans-serif'],
-            montserrat: ['Montserrat', 'sans-serif']
+            montserrat: ['Montserrat', 'sans-serif'],
+            barlow: ['Barlow', 'sans-serif']
         },
-        fontSize: {
-            sm: ['12.8px', {
-                lineHeight: '16px',
-            }],
-            base: ['16px', {
-                lineHeight: '24px',
-            }],
-            lg: ['20px', {
-                lineHeight: '32px',
-            }],
-        },
+        // fontSize: {
+        //     sm: ['12.8px', {
+        //         lineHeight: '16px',
+        //     }],
+        //     base: ['16px', {
+        //         lineHeight: '24px',
+        //     }],
+        //     lg: ['20px', {
+        //         lineHeight: '32px',
+        //     }],
+        // },
         extend: {
             colors: {
                 'primary': {
@@ -90,8 +91,8 @@ module.exports = {
                     400: '#313244',
                     500: '#222433',
                     600: '#0D0F1F',
-                    transparent_300: 'rgba(84, 85, 105, 0.4)',
-                    transparent_200: 'rgba(122, 122, 138, 0.2)',
+                    'transparent-300': 'rgba(84, 85, 105, 0.4)',
+                    'transparent-200': 'rgba(122, 122, 138, 0.2)',
                     gradient: 'linear-gradient(180deg, rgba(34, 36, 51, 0) 0%, rgba(13, 15, 31, 0.6) 100%)',
                 },
                 'light': {
@@ -101,8 +102,8 @@ module.exports = {
                     400: '#D7DAE3',
                     500: '#E6E9F0',
                     600: '#CACED9',
-                    transparent_300: 'rgba(228, 231, 236, 0.4)',
-                    transparent_200: 'rgba(242, 243, 246, 0.4)',
+                    'transparent-300': 'rgba(228, 231, 236, 0.4)',
+                    'transparent-200': 'rgba(242, 243, 246, 0.4)',
                     gradient: 'linear-gradient(268.13deg, #FFFFFF 7.44%, rgba(255, 255, 255, 0.2) 115.42%)',
                 },
             },

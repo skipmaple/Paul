@@ -6,6 +6,9 @@
 /* switch language use */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
+/* sign up use */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap');
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -72,6 +75,57 @@
 }
 
 @layer utilities {
+
+    .bg-sign-in {
+        @apply bg-left-top bg-no-repeat bg-cover;
+        background-image: url('bg/bg_sign_in.jpg');
+    }
+
+}
+
+/* header height => 112px */
+
+@layer components {
+    .heading-h1-bold, .heading-h2-bold, .heading-h3-bold, .heading-h4-bold, .heading-h5-bold, .heading-h6-bold {
+        @apply font-heading font-bold not-italic capitalize text-dark-400 dark:text-light-400;
+    }
+
+    .heading-h1-bold {
+        /* Heading/H1/Bold */
+        font-size: 49px;
+        line-height: 64px;
+    }
+
+    .heading-h2-bold {
+        /* Heading/H2/Bold */
+        font-size: 39.06px;
+        line-height: 56px;
+    }
+
+    .heading-h3-bold {
+        /* Heading/H3/Bold */
+        font-size: 31.25px;
+        line-height: 48px;
+    }
+
+    .heading-h4-bold {
+        /* Heading/H4/Bold */
+        font-size: 25px;
+        line-height: 40px;
+    }
+
+    .heading-h5-bold {
+        /* Heading/H5/Bold */
+        font-size: 20px;
+        line-height: 32px;
+    }
+
+    .heading-h6-bold {
+        /* Heading/H6/Bold */
+        font-size: 16px;
+        line-height: 24px;
+    }
+
     .body-small-regular, .body-small-bold, .body-medium-regular, .body-medium-bold, .body-small-regular, .body-small-bold {
         /*@apply text-dark-300 dark:text-light-600;*/
     }
@@ -106,85 +160,6 @@
         @apply font-sans text-lg font-bold;
     }
 
-    .heading-h1-bold, .heading-h2-bold, .heading-h3-bold, .heading-h4-bold, .heading-h5-bold, .heading-h6-bold {
-        @apply text-dark-400 dark:text-light-400;
-    }
-
-    .heading-h1-bold {
-        @apply font-heading;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 49px;
-        line-height: 64px;
-        /* identical to box height, or 131% */
-        text-transform: capitalize;
-    }
-
-    .heading-h2-bold {
-        @apply font-heading;
-        /* Heading/H2/Bold */
-        font-style: normal;
-        font-weight: 700;
-        font-size: 39.06px;
-        line-height: 56px;
-        /* identical to box height, or 143% */
-        text-transform: capitalize;
-    }
-
-    .heading-h3-bold {
-        @apply font-heading;
-        /* Heading/H3/Bold */
-        font-style: normal;
-        font-weight: 700;
-        font-size: 31.25px;
-        line-height: 48px;
-        /* identical to box height, or 154% */
-        text-transform: capitalize;
-    }
-
-    .heading-h4-bold {
-        @apply font-heading;
-        /* Heading/H4/Bold */
-        font-style: normal;
-        font-weight: 700;
-        font-size: 25px;
-        line-height: 40px;
-        /* identical to box height, or 160% */
-        text-transform: capitalize;
-    }
-
-    .heading-h5-bold {
-        @apply font-heading;
-        /* Heading/H5/Bold */
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 32px;
-        /* identical to box height, or 160% */
-        text-transform: capitalize;
-    }
-
-    .heading-h6-bold {
-        @apply font-heading;
-        /* Heading/H6/Bold */
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 24px;
-        /* identical to box height, or 150% */
-        text-transform: capitalize;
-    }
-
-    .bg-sign-in {
-        @apply bg-left-top bg-no-repeat bg-cover;
-        background-image: url('bg/bg_sign_in.jpg');
-    }
-
-}
-
-/* header height => 112px */
-
-@layer components {
     .nav-sidebar {
         @apply absolute bottom-0 left-0 z-50 top-0 w-64;
         transition: width 0.3s, left 0.3s;
@@ -292,6 +267,26 @@
         content: "";
         display: block;
         padding-top: 100%;
+    }
+
+    .did-floating-label {
+        @apply absolute pointer-events-none left-2.5 top-2.5 px-1.5 transition-all duration-200 body-medium-regular tracking-widest text-dark-300 dark:text-light-600 backdrop-blur-md bg-white/30;
+    }
+
+    .did-floating-input {
+        @apply backdrop-blur-md bg-white/30 border border-dark-200 box-border rounded-lg block w-full py-2.5 px-4 dark:border-dark-600 dark:placeholder-gray-400 dark:text-white;
+    }
+
+    .did-floating-input:focus {
+        @apply ring-0 border-current;
+    }
+
+    .did-floating-input:focus ~ .did-floating-label {
+        @apply -top-2.5 body-small-regular;
+    }
+
+    .did-floating-input:not(:placeholder-shown) ~ .did-floating-label {
+        @apply -top-2.5 body-small-regular
     }
 }
 
