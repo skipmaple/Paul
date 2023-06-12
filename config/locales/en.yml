@@ -41,7 +41,7 @@ which I can easily find and refer to later."
 relevant, or interesting."
 
   # sign_up
-  user_name: User Name
+  user_name: Username
   user_email: Email
   user_password: Password
   user_password_confirm: Confirmation

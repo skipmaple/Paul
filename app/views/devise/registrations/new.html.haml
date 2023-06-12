@@ -20,19 +20,19 @@
   .flex.flex-col{class: 'md:mt-[60px] md:space-y-20'}
     -# top side
     .flex.my-10.mx-auto.justify-between{class: 'w-1/2 md:w-2/3 md:self-end md:mx-0 md:my-0 md:pt-0'}
-      =link_to('#', class: 'body-medium-bold md:body-small-bold whitespace-nowrap') do
+      =link_to(sign_in_path, class: 'body-medium-bold md:body-small-bold whitespace-nowrap') do
         %span.font-montserrat.font-extrabold.text-base.leading-5.not-italic.tracking-wider.text-primary-600.hover:text-primary-500
           = t(:login)
 
-      =link_to('#', class: 'body-medium-bold md:body-small-bold whitespace-nowrap inline-block') do
+      =link_to(sign_up_path, class: 'body-medium-bold md:body-small-bold whitespace-nowrap inline-block') do
         %span.font-montserrat.font-extrabold.text-base.leading-5.not-italic.tracking-wider.text-primary-600{class: 'hover:text-primary-500'}
           = t(:register)
         .h-1.w-10.mx-auto.mt-2.bg-primary-400.rounded-md
 
     .flex.flex-col
       -# form group
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'md:w-72' }) do |f|
-        .flex-col.space-y-5
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .flex.flex-col.space-y-5.justify-center.items-center
           = render "devise/shared/error_messages", resource: resource
           .field.relative
             = f.text_field :name, autofocus: true, placeholder: ' ', autocomplete: 'name', class: 'did-floating-input'
@@ -47,7 +47,7 @@
             = f.password_field :password_confirmation, placeholder: ' ', autocomplete: "new-password", class: 'did-floating-input'
             = f.label :password_confirmation, t(:user_password_confirm), class: 'did-floating-label'
           .actions
-            = f.submit yield(:button_text), class: "base-btn w-full mt-2 rounded-lg tracking-widest"
+            = f.submit yield(:button_text), class: "base-btn w-96 mt-2 rounded-lg tracking-widest"
 
       -# other sso login
       .flex.space-x-3.my-10.items-center

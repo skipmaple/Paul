@@ -75,6 +75,10 @@
 }
 
 @layer utilities {
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+    }
 
     .bg-sign-in {
         @apply bg-left-top bg-no-repeat bg-cover;
@@ -270,23 +274,23 @@
     }
 
     .did-floating-label {
-        @apply absolute pointer-events-none left-2.5 top-2.5 px-1.5 transition-all duration-200 body-medium-regular tracking-widest text-dark-300 dark:text-light-600 backdrop-blur-md bg-white/30;
+        @apply absolute pointer-events-none left-2.5 top-2.5 px-1.5 transition-all duration-200 body-medium-regular tracking-widest text-dark-300 dark:text-light-600 backdrop-blur-md bg-white dark:bg-dark-600;
     }
 
     .did-floating-input {
-        @apply backdrop-blur-md bg-white/30 border border-dark-200 box-border rounded-lg block w-full py-2.5 px-4 dark:border-dark-600 dark:placeholder-gray-400 dark:text-white;
+        @apply backdrop-blur-md bg-white dark:bg-dark-600 border border-dark-200 box-border rounded-lg block w-96 py-2.5 px-4 dark:border-primary-600 dark:placeholder-light-500 dark:text-light-400;
     }
 
     .did-floating-input:focus {
-        @apply ring-0 border-current;
+        @apply ring-0 border-current dark:border-primary-600;
     }
 
     .did-floating-input:focus ~ .did-floating-label {
-        @apply -top-2.5 body-small-regular;
+        @apply -top-2.5 body-small-regular rounded;
     }
 
     .did-floating-input:not(:placeholder-shown) ~ .did-floating-label {
-        @apply -top-2.5 body-small-regular
+        @apply -top-2.5 body-small-regular rounded;
     }
 }
 

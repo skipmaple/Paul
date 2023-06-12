@@ -1,57 +1,31 @@
 - provide(:title, "Login")
-- content_for(:no_body_bg, true)
-- content_for(:no_app_layout, true)
+-# - content_for(:no_app_layout, true)
 
-.p-4.gap-4.md:flex.md:justify-between.md:container.md:px-20
-  -# Intro
-  .flex.flex-col.space-y-8.items-center.md:items-start.md:self-center
-    .font-barlow.not-italic.font-semibold.text-2xl.text-center.md:text-start.md:text-4xl.text-dark-400.dark:text-light-400 Sign In to OneTail
-    .hidden.body-medium-regular.text-xl.leading-7.font-barlow{class: 'text-dark-400 dark:text-light-400 md:block'} If you don't have an account, you can register here!
-
-  -# image
-  .relative.w-52.h-52{ class: 'mt-[60px] mx-auto md:w-[700px] md:h-[700px]' }
-    .absolute.w-32.h-32.left-0.top-0.rounded-full{class: 'md:w-[400px] md:h-[400px] bg-[#4461F2] blur-[105px] md:blur-[272.5px] -z-50'}
-    .absolute.w-32.h-32.right-0.bottom-0.rounded-full{class: 'md:w-[400px] md:h-[400px] bg-[#DDA82A] blur-[105px] md:blur-[272.5px] -z-40'}
-
-    = image_tag('bg/bg_reading_book_lg.png', class: 'absolute hidden m-auto inset-0 md:block')
-    = image_tag('bg/bg_reading_book.png', class: 'absolute m-auto inset-0 md:hidden')
-
-  .flex.flex-col{class: 'md:mt-[60px] md:space-y-20'}
-    -# top side
-    .flex.my-10.mx-auto.justify-between{class: 'w-1/2 md:w-2/3 md:self-end md:mx-0 md:my-0 md:pt-0'}
-      =link_to(sign_in_path, class: 'body-medium-bold md:body-small-bold whitespace-nowrap') do
-        %span.font-montserrat.font-extrabold.text-base.leading-5.not-italic.tracking-wider.text-primary-600{class: 'hover:text-primary-500'}
-          = t(:login)
-        .h-1.w-10.mx-auto.mt-2.bg-primary-400.rounded-md
-
-      =link_to(sign_up_path, class: 'body-medium-bold md:body-small-bold whitespace-nowrap inline-block') do
-        %span.font-montserrat.font-extrabold.text-base.leading-5.not-italic.tracking-wider.text-primary-600{class: 'hover:text-primary-500'}
-          = t(:register)
-
-
-    .flex.flex-col
-      -# form group
+%section.container.mx-auto.mb-10
+  .flex.overflow-clip.bg-blur-light.rounded-3xl{:class => "max-h-[611px] dark:bg-blur-dark"}
+    %section.flex.flex-col.h-full.p-8.space-y-6.overflow-y-scroll{:class => "md:w-1/3"}
+      %h4
+        = t(:login)
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .flex.flex-col.space-y-5.justify-center.items-center
-          = render "devise/shared/error_messages", resource: resource
-          .field.relative
-            = f.email_field :email, placeholder: ' ', autocomplete: 'email', class: 'did-floating-input'
-            = f.label :email, t(:Email), class: 'did-floating-label'
-          .field.relative
-            = f.password_field :password, placeholder: ' ', autocomplete: 'new-password', class: 'did-floating-input'
-            = f.label :password, t(:user_password), class: 'did-floating-label'
-          .actions
-            = f.submit t(:login), class: "base-btn w-96 mt-2 rounded-lg tracking-widest"
+        .flex-col.space-y-6
+          .field
+            = f.label t(:email), class: "block mb-2 body-medium-bold text-dark-400 dark:text-light-400"
+            = f.email_field :email, autofocus:true, autocomplete: "email", placeholder: "email_address", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+          .field
+            .block.mb-2
+              = f.label t(:password), class: "body-medium-bold text-dark-400 dark:text-light-400"
+              - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+                = link_to "(#{t(:forgot_password)}?)", new_password_path(resource_name), class: "text-dark-400 dark:text-light-400 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
+            = f.password_field :password, autocomplete: "current-password", class: 'bg-light-200 dark:bg-dark-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+          - if devise_mapping.rememberable?
+            .flex.items-start.mb-6.items-center
+              .flex.items-center.h-5
+                = f.check_box :remember_me, type: "checkbox", class: "w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+              .ml-3
+                = f.label t(:remember_me), class: "body-medium-regular text-dark-400 dark:text-light-400"
+          = f.submit t(:login), class: "base-btn w-full rounded-lg"
 
-      -# other sso login
-      .flex.space-x-3.my-10.items-center
-        %hr.w-full.grow.border-none.bg-light-600{class: 'h-0.5'}
-        %span.font-montserrat.font-semibold.text-sm.not-italic.tracking-widest.text-light-600.whitespace-nowrap
-          = t('Or continue with')
-        %hr.w-full.grow.border-none.bg-light-600{class: 'h-0.5'}
-
-
-      .flex.justify-evenly
+      .sign-with.flex.space-x-3
         = button_to user_github_omniauth_authorize_path, 'data-turbo' => 'false' do
           .base-btn.p-2.bg-white.border.border-light-300.text-dark-400.dark:text-white.dark:bg-transparent.dark:border-dark-400.hover:bg-white.hover:text-dark-400.hover:border-light-400.dark:hover:border-dark-300
             %svg{ :width => "22", :height => "23", :viewbox => "0 0 22 23", :fill => "currentColor", :xmlns => "http://www.w3.org/2000/svg" }
@@ -63,3 +37,18 @@
               %path{"clip-rule" => "evenodd", d: "M10.6234 21.9747C13.4584 21.9747 15.8352 21.0345 17.5725 19.4309L14.1791 16.7963C13.2389 17.4263 12.0361 17.7986 10.6234 17.7986C7.88864 17.7986 5.57387 15.9515 4.74819 13.4697H1.24023V16.1902C2.96796 19.6218 6.51887 21.9747 10.6234 21.9747Z", fill: "#34A853", "fill-rule" => "evenodd"}
               %path{"clip-rule" => "evenodd", d: "M4.74782 13.4702C4.53782 12.8402 4.4185 12.1673 4.4185 11.4752C4.4185 10.7832 4.53782 10.1102 4.74782 9.48022V6.75977H1.23986C0.528729 8.17727 0.123047 9.7809 0.123047 11.4752C0.123047 13.1695 0.528729 14.7732 1.23986 16.1907L4.74782 13.4702Z", fill: "#FBBC05", "fill-rule" => "evenodd"}
               %path{"clip-rule" => "evenodd", d: "M10.6234 5.15075C12.165 5.15075 13.5491 5.68052 14.6373 6.72097L17.6489 3.70938C15.8305 2.01506 13.4536 0.974609 10.6234 0.974609C6.51887 0.974609 2.96796 3.32756 1.24023 6.75916L4.74819 9.47961C5.57387 6.99779 7.88864 5.15075 10.6234 5.15075Z", fill: "#EA4335", "fill-rule" => "evenodd"}
+      #other-info.flex-col.space-y-4
+        -# sign up
+        #sign-up
+          = link_to new_registration_path(resource_name), class: "block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500" do
+            = "#{t(:new_user?)} (#{t(:sign_up_now)})"
+        -#  Didn't receive confirmation instructions?
+        #confirmation-email-receive
+          - if devise_mapping.confirmable? && controller_name != 'confirmations'
+            = link_to t("Didn't receive confirmation instructions?"), new_confirmation_path(resource_name), class: "block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
+        -# Didn't receive unlock instructions?
+        #unlock-email-receive
+          - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+            = link_to t("Didn't receive unlock instructions?"), new_unlock_path(resource_name), class: "block text-dark-200 dark:text-dark-100 hover:underline hover:text-primary-500 dark:hover:text-primary-500"
+
+    %section#right-bg{ class: "md:w-2/3 bg-devise" }
